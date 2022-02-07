@@ -1,0 +1,232 @@
+export default {
+    name: 'StatsSettingPanel',
+
+    template: `
+<v-card flat class="ma-0 pa-0">
+    <v-tabs
+        v-model="selectedTab"
+        dark
+        background-color="grey darken-3"
+        show-arrows>
+        <v-tab
+            v-for="actor in actors"
+            :key="actor.id">
+            {{actor.name}}
+        </v-tab>
+    </v-tabs>
+    <v-tabs-items
+        dark
+        v-model="selectedTab">
+        <v-tab-item
+            v-for="actor in actors"
+            :key="actor.id">
+            <v-card
+                flat
+                class="ma-0">
+                <v-checkbox
+                    v-model="actor.godMode"
+                    label="God Mode"
+                    @change="onGodModeChange(actor)">
+                </v-checkbox>
+                <v-card-subtitle class="pa-0">Level / EXP</v-card-subtitle>
+                <v-row class="mt-0">
+                    <v-col>
+                        <v-text-field
+                            label="Lv"
+                            v-model="actor.level"
+                            outlined
+                            dense
+                            hide-details
+                            @keydown.self.stop
+                            @change="onLevelChange(actor)"></v-text-field>
+                    </v-col>
+                    <v-col>
+                        <v-text-field
+                            label="EXP"
+                            v-model="actor.exp"
+                            outlined
+                            dense
+                            hide-details
+                            @keydown.self.stop
+                            @change="onExpChange(actor)"></v-text-field>
+                    </v-col>
+                </v-row>
+                
+                <v-card-subtitle class="pa-0 mt-4">Stats</v-card-subtitle>
+                <v-row class="mt-0">
+                    <v-col
+                        v-for="(_, paramIdx) in actor.param.length"
+                        :key="paramIdx"
+                        cols="12"
+                        md="6">
+                        <v-text-field
+                            :label="paramNames[paramIdx]"
+                            v-model="actor.param[paramIdx]"
+                            outlined
+                            dense
+                            hide-details
+                            @keydown.self.stop
+                            @change="onParamChange(actor, paramIdx)"></v-text-field>
+                    </v-col>
+                </v-row>
+            </v-card>
+        </v-tab-item>
+    </v-tabs-items>
+    
+    <v-tooltip
+        bottom>
+        <span>Reload from game data</span>
+        <template v-slot:activator="{ on, attrs }">
+            <v-btn
+                style="top: 0px; right: 0px;"
+                color="pink"
+                dark
+                small
+                absolute
+                top
+                right
+                fab
+                v-bind="attrs"
+                v-on="on"
+                @click="initializeVariables">
+                <v-icon>mdi-refresh</v-icon>
+            </v-btn>
+        </template>
+    </v-tooltip>
+</v-card>
+    `,
+
+    data () {
+        return {
+            selectedTab: null,
+            paramNames: [], // name of stats (Max HP, ATK, ...)
+            actors: []
+        }
+    },
+
+    created () {
+        this.initializeVariables()
+    },
+
+    methods: {
+        extractActorData (actor) {
+            // get actor param
+            const paramSize = actor._paramPlus.length
+            const param = new Array(paramSize)
+
+            for (let paramId = 0; paramId < paramSize; ++paramId) {
+                param[paramId] = actor.param(paramId)
+            }
+
+            return {
+                _actor: actor,
+                id: actor._actorId,
+                name: actor._name,
+                godMode: !!actor.god_mode,
+                level: actor.level,
+                exp: actor.currentExp(), // actor._exp contains exp data for each class (_exp[classId] = exp)
+                param: param
+            }
+        },
+
+        initializeVariables () {
+            this.paramNames = $dataSystem.terms.params
+            this.actors = $gameParty.members().map(actor => this.extractActorData(actor))
+        },
+
+        onLevelChange (item) {
+            item._actor.changeLevel(Number(item.level), false)
+            this.initializeVariables()
+        },
+
+        onExpChange (item) {
+            item._actor.changeExp(Number(item.exp), false)
+            this.initializeVariables()
+        },
+
+        onParamChange (item, paramIndex) {
+            const diff = item.param[paramIndex] - item._actor.param(paramIndex)
+            item._actor.addParam(paramIndex, diff)
+            this.initializeVariables()
+        },
+
+        onGodModeChange (item) {
+            if (item._actor.godMode && !item.godMode) {
+                this.godModeOff(item._actor)
+            } else if (!item._actor.godMode && item.godMode) {
+                this.godMode(item._actor)
+            }
+            this.initializeVariables()
+        },
+
+        godMode (actor) {
+            if (actor instanceof Game_Actor && !(actor.godMode)) {
+                actor.godMode = true;
+
+                actor.gainHP_bkup = actor.gainHp;
+                actor.gainHp = function(value) {
+                    value = actor.mhp;
+                    actor.gainHP_bkup(value);
+                };
+
+                actor.setHp_bkup = actor.setHp;
+                actor.setHp = function(hp) {
+                    hp = actor.mhp;
+                    actor.setHp_bkup(hp);
+                };
+
+                actor.gainMp_bkup = actor.gainMp;
+                actor.gainMp = function (value) {
+                    value = actor.mmp;
+                    actor.gainMp_bkup(value);
+                };
+
+                actor.setMp_bkup = actor.setMp;
+                actor.setMp = function(mp) {
+                    mp = actor.mmp;
+                    actor.setMp_bkup(mp);
+                };
+
+                actor.gainTp_bkup = actor.gainTp;
+                actor.gainTp = function (value) {
+                    value = actor.maxTp();
+                    actor.gainTp_bkup(value);
+                };
+
+                actor.setTp_bkup = actor.setTp;
+                actor.setTp = function(tp) {
+                    tp = actor.maxTp();
+                    actor.setTp_bkup(tp);
+                };
+
+                actor.paySkillCost_bkup = actor.paySkillCost;
+                actor.paySkillCost = function (skill) {
+                    // do nothing
+                };
+
+                actor.god_mode_interval = setInterval(function() {
+                    actor.gainHp(actor.mhp);
+                    actor.gainMp(actor.mmp);
+                    actor.gainTp(actor.maxTp());
+                }, 100);
+            }
+        },
+
+        godModeOff (actor) {
+            if (actor instanceof Game_Actor && actor.godMode) {
+                actor.godMode = false;
+
+                actor.gainHp = actor.gainHP_bkup;
+                actor.setHp = actor.setHp_bkup;
+                actor.gainMp = actor.gainMp_bkup;
+                actor.setMp = actor.setMp_bkup;
+                actor.gainTp = actor.gainTp_bkup;
+                actor.setTp = actor.setTp_bkup;
+                actor.paySkillCost = actor.paySkillCost_bkup;
+
+                clearInterval(actor.god_mode_interval);
+                actor.god_mode_interval = null
+            }
+        }
+    }
+}
