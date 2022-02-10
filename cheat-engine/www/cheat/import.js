@@ -32,6 +32,4 @@ document.head.innerHTML += `
 `
 
 // import in body
-__addScript('text/javascript', 'cheat/libs/vue.js')
-__addScript('text/javascript', 'cheat/libs/vuetify.js')
 __addScript('module', 'cheat/setup.js')

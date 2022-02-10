@@ -62,13 +62,22 @@ export default {
         </template>
         <template
             v-slot:item.actions="{ item, index }">
-            <v-btn
-                color="green"
-                x-small
-                fab
-                @click="teleportLocation(item.id, Number(inputX), Number(inputY))">
-                <v-icon small>mdi-map-marker</v-icon>
-            </v-btn>
+            <v-tooltip
+                bottom>
+                <span>Teleport</span>
+                <template v-slot:activator="{ on, attrs }">
+                
+                    <v-btn
+                        color="green"
+                        x-small
+                        fab
+                        v-bind="attrs"
+                        v-on="on"
+                        @click="teleportLocation(item.id, Number(inputX), Number(inputY))">
+                        <v-icon small>mdi-map-marker</v-icon>
+                    </v-btn>
+                </template>
+            </v-tooltip>
         </template>
     </v-data-table>
 </v-card>

@@ -60,22 +60,40 @@ export default {
         </template>
         <template
             v-slot:item.actions="{ item, index }">
-            <v-btn
-                color="green"
-                x-small
-                fab
-                @click="teleportLocation(item.mapId, item.coord.x, item.coord.y)">
-                <v-icon small>mdi-map-marker</v-icon>
-            </v-btn>
             
-            <v-btn
-                color="red"
-                class="ml-2"
-                x-small
-                fab
-                @click="removeLocation(index)">
-                <v-icon small>mdi-delete</v-icon>
-            </v-btn>
+            <v-tooltip
+                bottom>
+                <span>Teleport</span>
+                <template v-slot:activator="{ on, attrs }">
+                    <v-btn
+                        color="green"
+                        x-small
+                        fab
+                        v-bind="attrs"
+                        v-on="on"
+                        @click="teleportLocation(item.mapId, item.coord.x, item.coord.y)">
+                        <v-icon small>mdi-map-marker</v-icon>
+                    </v-btn>
+                </template>
+            </v-tooltip>
+            
+            
+            <v-tooltip
+                bottom>
+                <span>Delete location</span>
+                <template v-slot:activator="{ on, attrs }">
+                    <v-btn
+                        color="red"
+                        class="ml-2"
+                        x-small
+                        fab
+                        v-bind="attrs"
+                        v-on="on"
+                        @click="removeLocation(index)">
+                        <v-icon small>mdi-delete</v-icon>
+                    </v-btn>
+                </template>
+            </v-tooltip>
         </template>
     </v-data-table>
     
@@ -165,7 +183,6 @@ export default {
 
     methods: {
         initializeVariables () {
-            console.log($gameMap.mapId())
             this.loadLocations()
             this.currentMapName = this.getMapFullPath($gameMap.mapId())
         },

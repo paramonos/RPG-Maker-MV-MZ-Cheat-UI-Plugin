@@ -122,7 +122,7 @@ export default {
                 _actor: actor,
                 id: actor._actorId,
                 name: actor._name,
-                godMode: !!actor.god_mode,
+                godMode: !!actor.godMode,
                 level: actor.level,
                 exp: actor.currentExp(), // actor._exp contains exp data for each class (_exp[classId] = exp)
                 param: param
@@ -204,7 +204,7 @@ export default {
                     // do nothing
                 };
 
-                actor.god_mode_interval = setInterval(function() {
+                actor.godModeInterval = setInterval(function() {
                     actor.gainHp(actor.mhp);
                     actor.gainMp(actor.mmp);
                     actor.gainTp(actor.maxTp());
@@ -224,8 +224,8 @@ export default {
                 actor.setTp = actor.setTp_bkup;
                 actor.paySkillCost = actor.paySkillCost_bkup;
 
-                clearInterval(actor.god_mode_interval);
-                actor.god_mode_interval = null
+                clearInterval(actor.godModeInterval);
+                actor.godModeInterval = null
             }
         }
     }

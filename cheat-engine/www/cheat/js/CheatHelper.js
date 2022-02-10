@@ -1,3 +1,12 @@
+import {Alert} from './AlertHelper.js'
+
+export class GeneralCheat {
+    // will be replaced from main component
+    static toggleCheatModal () {
+
+    }
+}
+
 export class SpeedCheat {
     // static fixed = null // WARN: declaring static variable occurs error in nw.js (why?)
 
@@ -60,13 +69,52 @@ export class SceneCheat {
         $gameSystem.onBeforeSave()
         DataManager.saveGame(slot)
 
-        // TODO: notify
+        Alert.success(`Game saved to slot ${slot}`)
     }
 
     static quickLoad (slot = 1) {
         DataManager.loadGame(slot);
         SceneManager.goto(Scene_Map);
 
-        // TODO: notify
+        Alert.success(`Game loaded from slot ${slot}`)
+    }
+}
+
+export class BattleCheat {
+    static recover (member) {
+        member.setHp(member.mhp)
+        member.setMp(member.mmp)
+    }
+
+    static recoverAllEnemy () {
+        for (const member of $gameTroop.members()) {
+            this.recover(member)
+        }
+
+        Alert.success('Recovery all enemies')
+    }
+
+    static recoverAllParty () {
+        for (const member of $gameParty.members()) {
+            this.recover(member)
+        }
+
+        Alert.success('Recovery all party members')
+    }
+
+    static changeAllEnemyHealth (newHp) {
+        for (const member of $gameTroop.members()) {
+            member.setHp(newHp)
+        }
+
+        Alert.success(`HP ${newHp} for all enemies`)
+    }
+
+    static changeAllPartyHealth (newHp) {
+        for (const member of $gameParty.members()) {
+            member.setHp(newHp)
+        }
+
+        Alert.success(`HP ${newHp} for all party members`)
     }
 }

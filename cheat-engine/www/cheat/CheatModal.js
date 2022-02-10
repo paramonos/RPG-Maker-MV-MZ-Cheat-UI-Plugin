@@ -8,6 +8,7 @@ import VariableSettingPanel from './panels/VariableSettingPanel.js'
 import SwitchSettingPanel from './panels/SwitchSettingPanel.js'
 import SaveRecallPanel from './panels/SaveRecallPanel.js'
 import TeleportPanel from './panels/TeleportPanel.js'
+import ShortcutPanel from './panels/ShortcutPanel.js'
 
 export default {
     name: 'CheatModal',
@@ -22,7 +23,8 @@ export default {
         VariableSettingPanel,
         SwitchSettingPanel,
         SaveRecallPanel,
-        TeleportPanel
+        TeleportPanel,
+        ShortcutPanel
     },
 
     template: `
@@ -31,7 +33,8 @@ export default {
     width="700" 
     height="400"
     style="z-index: 999 !important;">
-    <v-row class="fill-height ma-0 pa-0">
+    <v-row 
+        class="fill-height ma-0 pa-0">
         <div
             :style="'width: ' + navWidth + 'px;'"
             class="fill-height d-inline pa-2 overflow-y-auto hide-scrollbar">
@@ -46,15 +49,17 @@ export default {
                 item-key="name"
                 open-on-click
                 @update:active="onNavTreeUpdate">
+                <template v-slot:label="{item}">
+                    <v-icon v-text="item.icon" small class="mx-0 px-0 align-self-center"></v-icon>
+                    <span class="subtitle-2">{{item.name}}</span>
+                </template>
             </v-treeview>
         </div>
         <v-divider vertical></v-divider>
         <div
             :style="'width: calc(100% - ' + navWidth + 'px - 1px);'"
             class="fill-height d-inline pa-2 overflow-y-auto hide-scrollbar">
-            <keep-alive>
-                <component :is="currentComponentName"></component>
-            </keep-alive>
+            <component :is="currentComponentName"></component>
         </div>
     </v-row>
 </v-card>
@@ -80,55 +85,68 @@ export default {
           navTreeItems: [
               {
                   name: 'General',
+                  icon: 'mdi-hammer-screwdriver',
                   component: 'general-panel'
               },
               {
                   name: 'Shortcuts',
-                  component: ''
+                  icon: 'mdi-keyboard-outline',
+                  component: 'shortcut-panel'
               },
               {
-                  name: 'Enemy/Party Health',
+                  name: 'HP/MP',
+                  icon: 'mdi-battery-70',
                   component: 'health-setting-panel'
               },
               {
                   name: 'Stats/Level',
+                  icon: 'mdi-sword-cross',
                   component: 'stats-setting-panel'
               },
               {
                   name: 'Items',
+                  icon: 'mdi-bag-personal-outline',
                   children: [
                       {
                           name: 'Item',
+                          icon: 'mdi-flask-empty-plus',
                           component: 'item-setting-panel'
                       },
                       {
                           name: 'Weapon',
+                          icon: 'mdi-sword',
                           component: 'weapon-setting-panel'
                       },
                       {
                           name: 'Armor',
+                          icon: 'mdi-shield-plus',
                           component: 'armor-setting-panel'
                       }
                   ]
               },
               {
                   name: 'Clear States',
+                  icon: 'mdi-water-off',
                   component: ''
               },
               {
                   name: 'Variables',
+                  icon: 'mdi-variable',
                   component: 'variable-setting-panel'
               },
               {
                   name: 'Switches',
+                  icon: 'mdi-toggle-switch',
                   component: 'switch-setting-panel'
               },
               {
                   name: 'Save Locations',
+                  icon: 'mdi-map-marker-plus',
                   component: 'save-recall-panel'
               },
               {
                   name: 'Teleport',
+                  icon: 'mdi-run-fast',
                   component: 'teleport-panel'
               }
           ]

@@ -1,4 +1,5 @@
 import HealthSettingTab from './HealthSettingTab.js'
+import {BattleCheat} from '../js/CheatHelper.js'
 
 export default {
     name: 'HealthSettingPanel',
@@ -40,7 +41,7 @@ export default {
         <v-card-text>
             <health-setting-tab
                 :items="party"
-                @change="onDetailChange">>
+                @change="onDetailChange">
             </health-setting-tab>
         </v-card-text>
     </template>
@@ -85,35 +86,23 @@ export default {
             this.party = $gameParty.members().map(member => member)
         },
 
-        recover (member) {
-            member.setHp(member.mhp)
-            member.setMp(member.mmp)
+        recoverAllEnemy () {
+            BattleCheat.recoverAllEnemy()
             this.initializeVariables()
         },
 
-        recoverAllEnemy () {
-            for (const member of $gameTroop.members()) {
-                this.recover(member)
-            }
-        },
-
         recoverAllParty () {
-            for (const member of $gameParty.members()) {
-                this.recover(member)
-            }
+            BattleCheat.recoverAllParty()
+            this.initializeVariables()
         },
 
         changeAllEnemyHealth (newHp) {
-            for (const member of $gameTroop.members()) {
-                member.setHp(newHp)
-            }
+            BattleCheat.changeAllEnemyHealth(newHp)
             this.initializeVariables()
         },
 
         changeAllPartyHealth (newHp) {
-            for (const member of $gameParty.members()) {
-                member.setHp(newHp)
-            }
+            BattleCheat.changeAllPartyHealth(newHp)
             this.initializeVariables()
         },
 

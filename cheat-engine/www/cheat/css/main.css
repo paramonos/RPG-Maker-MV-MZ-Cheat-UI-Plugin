@@ -9,3 +9,13 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
 }
+
+.opaque-on-mouseover {
+    transition: opacity 0.3s;
+    opacity: 0.6;
+}
+
+.opaque-on-mouseover:hover {
+    transition: opacity 0.3s;
+    opacity: 1;
+}
