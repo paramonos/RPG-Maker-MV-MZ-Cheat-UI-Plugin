@@ -41,7 +41,7 @@ const defaultShortcutSettings = {
     },
 
     toggleNoClip: {
-        shortcut: 'ctrl w'
+        shortcut: 'alt w'
     },
 
     enemyWound: {
