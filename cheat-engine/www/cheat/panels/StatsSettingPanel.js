@@ -1,3 +1,5 @@
+import {GeneralCheat} from '../js/CheatHelper.js'
+
 export default {
     name: 'StatsSettingPanel',
 
@@ -122,7 +124,7 @@ export default {
                 _actor: actor,
                 id: actor._actorId,
                 name: actor._name,
-                godMode: !!actor.godMode,
+                godMode: GeneralCheat.isGodMode(actor),
                 level: actor.level,
                 exp: actor.currentExp(), // actor._exp contains exp data for each class (_exp[classId] = exp)
                 param: param
@@ -151,82 +153,8 @@ export default {
         },
 
         onGodModeChange (item) {
-            if (item._actor.godMode && !item.godMode) {
-                this.godModeOff(item._actor)
-            } else if (!item._actor.godMode && item.godMode) {
-                this.godMode(item._actor)
-            }
+            GeneralCheat.toggleGodMode(item._actor)
             this.initializeVariables()
-        },
-
-        godMode (actor) {
-            if (actor instanceof Game_Actor && !(actor.godMode)) {
-                actor.godMode = true;
-
-                actor.gainHP_bkup = actor.gainHp;
-                actor.gainHp = function(value) {
-                    value = actor.mhp;
-                    actor.gainHP_bkup(value);
-                };
-
-                actor.setHp_bkup = actor.setHp;
-                actor.setHp = function(hp) {
-                    hp = actor.mhp;
-                    actor.setHp_bkup(hp);
-                };
-
-                actor.gainMp_bkup = actor.gainMp;
-                actor.gainMp = function (value) {
-                    value = actor.mmp;
-                    actor.gainMp_bkup(value);
-                };
-
-                actor.setMp_bkup = actor.setMp;
-                actor.setMp = function(mp) {
-                    mp = actor.mmp;
-                    actor.setMp_bkup(mp);
-                };
-
-                actor.gainTp_bkup = actor.gainTp;
-                actor.gainTp = function (value) {
-                    value = actor.maxTp();
-                    actor.gainTp_bkup(value);
-                };
-
-                actor.setTp_bkup = actor.setTp;
-                actor.setTp = function(tp) {
-                    tp = actor.maxTp();
-                    actor.setTp_bkup(tp);
-                };
-
-                actor.paySkillCost_bkup = actor.paySkillCost;
-                actor.paySkillCost = function (skill) {
-                    // do nothing
-                };
-
-                actor.godModeInterval = setInterval(function() {
-                    actor.gainHp(actor.mhp);
-                    actor.gainMp(actor.mmp);
-                    actor.gainTp(actor.maxTp());
-                }, 100);
-            }
-        },
-
-        godModeOff (actor) {
-            if (actor instanceof Game_Actor && actor.godMode) {
-                actor.godMode = false;
-
-                actor.gainHp = actor.gainHP_bkup;
-                actor.setHp = actor.setHp_bkup;
-                actor.gainMp = actor.gainMp_bkup;
-                actor.setMp = actor.setMp_bkup;
-                actor.gainTp = actor.gainTp_bkup;
-                actor.setTp = actor.setTp_bkup;
-                actor.paySkillCost = actor.paySkillCost_bkup;
-
-                clearInterval(actor.godModeInterval);
-                actor.godModeInterval = null
-            }
         }
     }
 }

@@ -19,3 +19,11 @@
     transition: opacity 0.3s;
     opacity: 1;
 }
+
+.v-dialog__content--active {
+    z-index: 999 !important;
+}
+
+.v-overlay--active {
+    z-index: 998 !important;
+}

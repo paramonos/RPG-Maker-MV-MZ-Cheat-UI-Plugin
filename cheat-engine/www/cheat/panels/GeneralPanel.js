@@ -1,4 +1,4 @@
-import { SpeedCheat, SceneCheat } from '../js/CheatHelper.js'
+import { GeneralCheat, SpeedCheat, SceneCheat } from '../js/CheatHelper.js'
 
 export default {
     name: 'GeneralPanel',
@@ -129,7 +129,8 @@ export default {
         },
 
         onNoClipChange () {
-            $gamePlayer._through = this.noClip
+            GeneralCheat.toggleNoClip()
+            this.initializeVariables()
         },
 
         onSpeedChange () {
@@ -138,6 +139,7 @@ export default {
             if (!this.fixSpeed) {
                 SpeedCheat.removeFixSpeedInterval()
             }
+            this.initializeVariables()
         },
 
         addSpeed (amount) {
@@ -159,6 +161,7 @@ export default {
             }
 
             this.gold = $gameParty._gold
+            this.initializeVariables()
         },
 
         gotoTitle () {

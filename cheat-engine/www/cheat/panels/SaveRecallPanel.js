@@ -6,13 +6,14 @@ export default {
     <v-card-subtitle class="ma-0 pa-0">Save Location</v-card-subtitle>
     <span class="body-2 green--text text--darken-1">Map : {{currentMapName}}</span>
     <v-text-field
+        ref="locationAliasField"
         label="Location Alias"
         solo
         background-color="grey darken-3"
         v-model="locationAliasInput"
         dense
         hide-details
-        @keydown.self.stop>
+        @keydown.self.stop="onLocationAliasKeyDown">
         <template v-slot:append-outer>
             <v-tooltip
                 bottom>
@@ -153,6 +154,7 @@ export default {
 
     mounted () {
         this.initializeVariables()
+        this.$refs.locationAliasField.focus()
     },
 
     computed: {
@@ -223,9 +225,16 @@ export default {
             this.locations = JSON.parse(data)
         },
 
+        onLocationAliasKeyDown (e) {
+            if (e.code === 'Enter') {
+                this.onAddLocation()
+            }
+        },
+
         onAddLocation () {
             this.addLocation(this.locationAliasInput)
             this.locationAliasInput = ''
+            this.$refs.locationAliasField.blur()
         },
 
         addLocation (locationAlias) {

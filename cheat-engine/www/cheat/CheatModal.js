@@ -32,7 +32,7 @@ export default {
     dark
     width="700" 
     height="400"
-    style="z-index: 999 !important;">
+    style="z-index: 990 !important;">
     <v-row 
         class="fill-height ma-0 pa-0">
         <div

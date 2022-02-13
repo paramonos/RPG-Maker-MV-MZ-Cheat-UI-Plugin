@@ -2,10 +2,11 @@ import CheatModal from './CheatModal.js'
 import { GLOBAL_SHORTCUT } from "./js/GlobalShortcut.js"
 import { GeneralCheat } from './js/CheatHelper.js'
 import AlertSnackbar from './components/AlertSnackbar.js'
+import ConfirmDialog from './components/ConfirmDialog.js'
 
 export default {
     name: 'MainComponent',
-    components: { CheatModal, AlertSnackbar },
+    components: { CheatModal, AlertSnackbar, ConfirmDialog },
     template: `
 <div 
     class="pa-2"
@@ -20,6 +21,7 @@ export default {
         </cheat-modal>
     </v-fade-transition>
     <alert-snackbar></alert-snackbar>
+    <confirm-dialog></confirm-dialog>
 </div>`,
 
     style: `
@@ -38,8 +40,8 @@ export default {
     created () {
         const self = this
 
-        GeneralCheat.toggleCheatModal = () => {
-            this.toggleCheatModal()
+        GeneralCheat.toggleCheatModal = (componentName = null) => {
+            this.toggleCheatModal(componentName)
         }
 
         window.addEventListener('keydown', this.onGlobalKeyDown)
@@ -90,7 +92,11 @@ export default {
             GLOBAL_SHORTCUT.runKeyEvent(e)
         },
 
-        toggleCheatModal () {
+        toggleCheatModal (componentName) {
+            if (componentName) {
+                this.currentComponentName = componentName
+            }
+
             this.show = !this.show
         }
     }

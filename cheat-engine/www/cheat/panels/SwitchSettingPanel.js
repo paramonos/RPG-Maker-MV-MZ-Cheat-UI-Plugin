@@ -1,3 +1,5 @@
+import {ConfirmDialog} from '../js/DialogHelper.js'
+
 export default {
     name: 'SwitchSettingPanel',
 
@@ -21,20 +23,30 @@ export default {
                 hide-details
                 @keydown.self.stop>
             </v-text-field>
-            <v-row
-                class="ma-0 pa-0">
-                <v-col
-                    cols="12"
-                    md="12">
-                    <v-checkbox
-                        v-model="excludeNameless"
-                        dense
-                        hide-details
-                        label="Hide Nameless Items">
-                    
-                    </v-checkbox>
-                </v-col>
-            </v-row>
+            <div class="d-flex px-3 pt-3 pb-3">
+                <v-checkbox
+                    v-model="excludeNameless"
+                    dense
+                    hide-details
+                    label="Hide Nameless Items">
+                </v-checkbox>
+                <v-spacer></v-spacer>
+                <v-tooltip
+                    bottom>
+                    <span>{{ allSwitchOn ? 'Turn off all filtered switches' : 'Turn on all filtered switches' }}</span>
+                    <template v-slot:activator="{ on, attrs }">
+                        <v-btn
+                            color="teal"
+                            v-bind="attrs"
+                            v-on="on"
+                            fab
+                            x-small
+                            @click="toggleAllSwitches">
+                            <v-icon v-text="allSwitchIcon"></v-icon>
+                        </v-btn>
+                    </template>
+                </v-tooltip>
+            </div>
         </template>
         <template
             v-slot:item.value="{ item }">
@@ -99,12 +111,22 @@ export default {
     computed: {
         filteredTableItems () {
             return this.tableItems.filter(item => {
-                if (this.excludeNameless && !item.name) {
+                if (item.id === 0 || (this.excludeNameless && !item.name)) {
                     return false
                 }
 
                 return true
             })
+        },
+
+        allSwitchOn () {
+            const hasTurnOff = this.filteredTableItems.find((item) => item.value === false)
+
+            return !!!hasTurnOff
+        },
+
+        allSwitchIcon () {
+            return this.allSwitchOn ? 'mdi-toggle-switch-off' : 'mdi-toggle-switch'
         }
     },
 
@@ -135,6 +157,32 @@ export default {
             }
 
             return item.name.contains(search) || String(item.value).contains(search)
+        },
+
+        toggleAllSwitches () {
+            const self = this
+            ConfirmDialog.show({
+                width: 450,
+                message: (this.allSwitchOn ? 'Turn off all filtered switches?' : 'Turn on all filtered switches?') + '\n(CAUTION: Potential to give fatal errors to save data)',
+                actions: [{
+                    icon: 'mdi-close',
+                    label: 'cancel',
+                    color: 'white',
+                    action: ConfirmDialog.close
+                }, {
+                    icon: this.allSwitchIcon,
+                    color: 'green',
+                    label: this.allSwitchOn ? 'Turn Off' : 'Turn On',
+                    async action () {
+                        const value = !self.allSwitchOn
+                        self.filteredTableItems.forEach(item => {
+                            $gameSwitches.setValue(item.id, value)
+                        })
+                        self.initializeVariables()
+                        ConfirmDialog.close()
+                    }
+                }]
+            })
         }
     }
 }

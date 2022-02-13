@@ -10,6 +10,10 @@ const defaultShortcutSettings = {
         shortcut: 'ctrl c'
     },
 
+    toggleCheatModalToSaveLocationComponent: {
+        shortcut: 'ctrl m'
+    },
+
     quickSave: {
         shortcut: 'ctrl s',
         param: {
@@ -34,6 +38,10 @@ const defaultShortcutSettings = {
 
     gotoTitle: {
         shortcut: 'ctrl t'
+    },
+
+    toggleNoClip: {
+        shortcut: 'ctrl w'
     },
 
     enemyWound: {
@@ -90,6 +98,14 @@ const shortcutConfig = {
         necessary: true,
         action (param) {
             GeneralCheat.toggleCheatModal()
+        }
+    },
+
+    toggleCheatModalToSaveLocationComponent: {
+        name: 'Toggle cheat window with "Save Locations" tab',
+        desc: '',
+        action (param) {
+            GeneralCheat.toggleCheatModal('save-recall-panel')
         }
     },
 
@@ -154,6 +170,14 @@ const shortcutConfig = {
         desc: '',
         action (param) {
             SceneCheat.gotoTitle()
+        }
+    },
+
+    toggleNoClip: {
+        name: 'Toggle no clip',
+        desc: '',
+        action (param) {
+            GeneralCheat.toggleNoClip(true)
         }
     },
 
@@ -289,6 +313,9 @@ class GlobalShortcut {
         this.shortcutConfig = {}
         this.initializeShortcutConfig()
 
+        // migrate if settings file is old version
+        this.migrateShortcutSettings()
+
         // initialize shortcut map
         this.shortcutMap = new ShortcutMap()
         this.initializeShortcutMap()
@@ -299,6 +326,38 @@ class GlobalShortcut {
 
         for (const key of Object.keys(shortcutConfig)) {
             this.shortcutConfig[key] = new ShortcutConfig(key, shortcutConfig[key])
+        }
+    }
+
+
+    migrateShortcutSettings () {
+        let defaultSettings = null
+        const assignedKeys = new Set(Object.values(this.shortcutSettings).map(setting => setting.shortcut.asString()))
+
+        for (const shortcutConfig of Object.values(this.shortcutConfig)) {
+            if (!Object.hasOwnProperty.call(this.shortcutSettings, shortcutConfig.id)) {
+                // initialize default settings if not initialized
+                if (!defaultSettings) {
+                    defaultSettings = parseStringToKeyObject(defaultShortcutSettings)
+                }
+
+                // handle conflict keys
+                const defaultSetting = defaultSettings[shortcutConfig.id]
+                if (!defaultSetting.shortcut.isEmpty() && assignedKeys.has(defaultSetting.shortcut.asString())) {
+                    console.warn(`key conflicts while migrating : ${shortcutConfig.name} - ${defaultSetting.shortcut.asString()}`)
+                    defaultSetting.shortcut = Key.createEmpty()
+                }
+
+                assignedKeys.add(defaultSetting.shortcut.asString())
+
+                this.shortcutSettings[shortcutConfig.id] = defaultSettings[shortcutConfig.id]
+            }
+        }
+
+        // if settings migrated, save to file
+        if (defaultSettings) {
+            console.warn('__settings migrated')
+            this.writeShortcutSettings()
         }
     }
 
