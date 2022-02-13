@@ -23,7 +23,7 @@
 
 ### If embeded nwjs version of game is lower than 1.6.1
 - Cheats may not work properly in older versions of the game since the script is based on es6.
-- In that case, yout need to force update to the new nwjs version.
+- In that case, you need to force update to the new nwjs version.
 
 1. Download latest version of [nwjs](https://dl.nwjs.io/v0.61.0/) and unzip. (`{version}/nwjs-symbol-v{version}-win-{ia32|x64}.7z`)
     - If you need developer tools, download the sdk version.
