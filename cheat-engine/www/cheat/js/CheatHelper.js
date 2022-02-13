@@ -6,6 +6,10 @@ export class GeneralCheat {
 
     }
 
+    static openCheatModal (componentName = null) {
+
+    }
+
     static toggleNoClip (notify = false) {
         $gamePlayer._through = !$gamePlayer._through
 

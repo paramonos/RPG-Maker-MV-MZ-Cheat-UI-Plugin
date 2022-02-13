@@ -102,7 +102,7 @@ const shortcutConfig = {
     },
 
     toggleCheatModalToSaveLocationComponent: {
-        name: 'Toggle cheat window with "Save Locations" tab',
+        name: 'Toggle "Save Locations" tab',
         desc: '',
         action (param) {
             GeneralCheat.toggleCheatModal('save-recall-panel')

@@ -44,6 +44,10 @@ export default {
             this.toggleCheatModal(componentName)
         }
 
+        GeneralCheat.openCheatModal = (componentName = null) => {
+            this.openCheatModal(componentName)
+        }
+
         window.addEventListener('keydown', this.onGlobalKeyDown)
 
 
@@ -92,12 +96,32 @@ export default {
             GLOBAL_SHORTCUT.runKeyEvent(e)
         },
 
-        toggleCheatModal (componentName) {
+        openCheatModal (componentName) {
             if (componentName) {
                 this.currentComponentName = componentName
             }
 
-            this.show = !this.show
+            this.show = true
+        },
+
+        toggleCheatModal (componentName) {
+            const prevComponentName = this.currentComponentName
+
+            if (componentName) {
+                this.currentComponentName = componentName
+            }
+
+            // close
+            if (this.show) {
+                // hide modal if only componentName unchanged
+                if (!componentName || componentName === prevComponentName) {
+                    this.show = false
+                }
+                return
+            }
+
+            // open
+            this.show = true
         }
     }
 }
