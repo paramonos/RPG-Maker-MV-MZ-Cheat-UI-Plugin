@@ -2,7 +2,7 @@
 - GUI based RPG Maker MV game cheat tool
 
 
-## UI
+## UI Sample
 <p float="left">
   <img src="https://user-images.githubusercontent.com/99193603/153754676-cee2b96e-c03a-491f-b71c-3c57d6dcc474.JPG" width="500"/>
   <img src="https://user-images.githubusercontent.com/99193603/153754683-4e7a09a5-2d31-436d-8546-7a5d658eb282.JPG" width="500"/>
@@ -10,6 +10,17 @@
   <img src="https://user-images.githubusercontent.com/99193603/153754692-38e04218-7726-4827-a45b-95485de51a3c.JPG" width="500"/>
   <img src="https://user-images.githubusercontent.com/99193603/153754696-0cbc76f9-99fa-47a7-a0d0-6510a2f76e01.JPG" width="500"/>
 </p>
+
+
+## Features
+- Good usability based on GUI.
+- Editing stats, gold, speed, items, variables, switches ...
+- Supports no clip mode, god mode.
+- Supports useful customizable shortcuts.
+    - Toggle save/load window, quick save/load, goto title, toggle no clip, editing party/enemy HP ...
+- Easy to find items, switched, variables, etc by searching text.
+- Save location and recall, teleport cheats.
+- Supports developers tool.
 
 
 ## How to apply 
@@ -37,14 +48,3 @@
     - You can change shortcuts in "Shortcuts" tab.
     - <img src="https://user-images.githubusercontent.com/99193603/153754676-cee2b96e-c03a-491f-b71c-3c57d6dcc474.JPG" width="400"/>
 - Just enjoy cheat!
-
-
-## Features
-- Good usability based on GUI.
-- Editing stats, gold, speed, items, variables, switches ...
-- Supports no clip mode, god mode.
-- Supports useful customizable shortcuts.
-    - Toggle save/load window, quick save/load, goto title, toggle no clip, editing party/enemy HP ...
-- Easy to find items, switched, variables, etc by searching text.
-- Save location and recall, teleport cheats.
-- Supports developers tool.
