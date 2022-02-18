@@ -12,23 +12,45 @@ export default {
 <v-card 
     class="ma-0 pa-0"
     flat>
-    <v-card-subtitle>Enemy</v-card-subtitle>
-    <v-card-text>
-        <v-btn @click.prevent="changeAllEnemyHealth(0)">Set 0</v-btn>
-        <v-btn @click.prevent="changeAllEnemyHealth(1)">Set 1</v-btn>
-        <v-btn @click.prevent="recoverAllEnemy">Recovery</v-btn>
+    <v-card-subtitle class="caption pb-0">Battle</v-card-subtitle>
+    <v-card-text class="pt-0 pb-0">
+        <v-checkbox
+            v-model="disableRandomEncounter"
+            hide-details
+            dense
+            x-small
+            class="my-0 py-0"
+            @change="onDisableRandomEncounterChange">
+            <template v-slot:label>
+                <span class="caption">Disable Random Encounter</span>
+            </template>
+        </v-checkbox>
+        <v-btn small @click.prevent="encounterBattle">Encounter</v-btn>
+        <v-btn small @click.prevent="victory">Victory</v-btn>
+        <v-btn small @click.prevent="defeat">Defeat</v-btn>
+        <v-btn small @click.prevent="escape">Escape</v-btn>
+        <v-btn small @click.prevent="abort">Abort</v-btn>
     </v-card-text>
     
-    <v-card-subtitle>Party</v-card-subtitle>
-    <v-card-text>
-        <v-btn @click.prevent="changeAllPartyHealth(0)">Set 0</v-btn>
-        <v-btn @click.prevent="changeAllPartyHealth(1)">Set 1</v-btn>
-        <v-btn @click.prevent="recoverAllParty">Recovery</v-btn>
+    <v-card-subtitle class="caption pb-1">Enemy</v-card-subtitle>
+    <v-card-text class="pt-0 pb-0">
+        <v-btn small @click.prevent="changeAllEnemyHealth(0)">Set 0</v-btn>
+        <v-btn small @click.prevent="changeAllEnemyHealth(1)">Set 1</v-btn>
+        <v-btn small @click.prevent="recoverAllEnemy">Recovery</v-btn>
+        <v-btn small @click.prevent="fillTpAllEnemy">Fill TP</v-btn>
+    </v-card-text>
+    
+    <v-card-subtitle class="caption pb-1">Party</v-card-subtitle>
+    <v-card-text class="pt-0 pb-0">
+        <v-btn small @click.prevent="changeAllPartyHealth(0)">Set 0</v-btn>
+        <v-btn small @click.prevent="changeAllPartyHealth(1)">Set 1</v-btn>
+        <v-btn small @click.prevent="recoverAllParty">Recovery</v-btn>
+        <v-btn small @click.prevent="fillTpAllParty">Fill TP</v-btn>
     </v-card-text>
     
     <template v-if="enemy && enemy.length > 0">
-        <v-card-subtitle>Enemy Details</v-card-subtitle>
-        <v-card-text>
+        <v-card-subtitle class="caption pb-1">Enemy Details</v-card-subtitle>
+        <v-card-text class="pt-0 pb-0">
             <health-setting-tab
                 :items="enemy"
                 @change="onDetailChange">
@@ -37,8 +59,8 @@ export default {
     </template>
     
     <template v-if="party && party.length > 0">
-        <v-card-subtitle>Party Details</v-card-subtitle>
-        <v-card-text>
+        <v-card-subtitle class="caption pb-1">Party Details</v-card-subtitle>
+        <v-card-text class="pt-0 pb-0">
             <health-setting-tab
                 :items="party"
                 @change="onDetailChange">
@@ -71,6 +93,7 @@ export default {
 
     data () {
         return {
+            disableRandomEncounter: false,
             enemy: [],
             party: []
         }
@@ -84,6 +107,7 @@ export default {
         initializeVariables () {
             this.enemy = $gameTroop.members().map(member => member)
             this.party = $gameParty.members().map(member => member)
+            this.disableRandomEncounter = BattleCheat.isDisableRandomEncounter()
         },
 
         recoverAllEnemy () {
@@ -96,6 +120,16 @@ export default {
             this.initializeVariables()
         },
 
+        fillTpAllEnemy () {
+            BattleCheat.fillTpAllEnemy()
+            this.initializeVariables()
+        },
+
+        fillTpAllParty () {
+            BattleCheat.fillTpAllParty()
+            this.initializeVariables()
+        },
+
         changeAllEnemyHealth (newHp) {
             BattleCheat.changeAllEnemyHealth(newHp)
             this.initializeVariables()
@@ -103,6 +137,31 @@ export default {
 
         changeAllPartyHealth (newHp) {
             BattleCheat.changeAllPartyHealth(newHp)
+            this.initializeVariables()
+        },
+
+        encounterBattle () {
+            BattleCheat.encounterBattle()
+        },
+
+        victory () {
+            BattleCheat.victory()
+        },
+
+        defeat () {
+            BattleCheat.defeat()
+        },
+
+        escape () {
+            BattleCheat.escape()
+        },
+
+        abort () {
+            BattleCheat.abort()
+        },
+
+        onDisableRandomEncounterChange () {
+            BattleCheat.toggleDisableRandomEncounter()
             this.initializeVariables()
         },
 

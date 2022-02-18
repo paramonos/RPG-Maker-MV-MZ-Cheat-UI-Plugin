@@ -40,6 +40,18 @@ const defaultShortcutSettings = {
         shortcut: 'ctrl t'
     },
 
+    forceVictory: {
+        shortcut: 'ctrl v'
+    },
+
+    forceDefeat: {
+        shortcut: 'ctrl d'
+    },
+
+    forceEscape: {
+        shortcut: 'ctrl e'
+    },
+
     toggleNoClip: {
         shortcut: 'alt w'
     },
@@ -170,6 +182,30 @@ const shortcutConfig = {
         desc: '',
         action (param) {
             SceneCheat.gotoTitle()
+        }
+    },
+
+    forceVictory: {
+        name: 'Force victory from battle',
+        desc: '',
+        action (param) {
+            BattleCheat.victory()
+        }
+    },
+
+    forceDefeat: {
+        name: 'Force defeat from battle',
+        desc: '',
+        action (param) {
+            BattleCheat.defeat()
+        }
+    },
+
+    forceEscape: {
+        name: 'Force escape from battle',
+        desc: '',
+        action (param) {
+            BattleCheat.escape()
         }
     },
 

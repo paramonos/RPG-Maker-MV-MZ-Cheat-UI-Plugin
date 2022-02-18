@@ -5,17 +5,20 @@ export default {
 <div>
     <v-data-table
         v-if="tableHeaders"
-        denses
+        dense
         hide-default-footer
         :headers="tableHeaders"
         :items="editingItems">
         <template
+            v-slot:item.name="{ item }">
+            <span class="caption">{{item.name}}</span>
+        </template>
+        <template
             v-slot:item.hp="{ item }">
             <v-text-field
                 background-color="grey darken-3"
-                class="d-inline-flex"
-                height="10"
-                style="width: 60px;"
+                class="d-inline-flex x-small-field caption"
+                style="width: 50px;"
                 hide-details
                 solo
                 v-model="item.hp.hp"
@@ -24,15 +27,14 @@ export default {
                 @keydown.self.stop
                 @change="onDataChange">
             </v-text-field>
-            / {{item.hp.mhp}}
+            <span class="caption">/ {{item.hp.mhp}}</span>
         </template>
         <template
             v-slot:item.mp="{ item }">
             <v-text-field
                 background-color="grey darken-3"
-                class="d-inline-flex"
-                height="10"
-                style="width: 60px;"
+                class="d-inline-flex x-small-field caption"
+                style="width: 50px;"
                 hide-details
                 solo
                 v-model="item.mp.mp"
@@ -41,7 +43,7 @@ export default {
                 @keydown.self.stop
                 @change="onDataChange">
             </v-text-field>
-            / {{item.mp.mmp}}
+            <span class="caption">/ {{item.mp.mmp}}</span>
         </template>
     </v-data-table>
 </div>
