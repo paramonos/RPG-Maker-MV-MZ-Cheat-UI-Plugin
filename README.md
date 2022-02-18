@@ -29,7 +29,6 @@
 3. Copy `www` directory to your game directory.
     - It will overwrite `www/js/main.js` file, so it is recommended to make a backup file.
     - <img src="https://user-images.githubusercontent.com/99193603/153755213-b07f1abb-9c99-4157-857c-2f3a81e4a82a.JPG" width="500"/>
-4. Enjoy cheat!
 
 
 ### If embeded nwjs version of game is lower than 1.6.1
