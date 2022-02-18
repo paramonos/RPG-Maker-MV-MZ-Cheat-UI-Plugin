@@ -15,12 +15,16 @@
 ## Features
 - Good usability based on GUI.
 - Editing stats, gold, speed, items, variables, switches ...
+- Accelerate game speed (x1 ~ x10)
 - Supports no clip mode, god mode.
+- Disable random encounter.
+- Force battle victory/defeat/escape/abort.
 - Supports useful customizable shortcuts.
     - Toggle save/load window, quick save/load, goto title, toggle no clip, editing party/enemy HP ...
 - Easy to find items, switched, variables, etc by searching text.
 - Save location and recall, teleport cheats.
 - Supports developers tool.
+- **Maybe more features..?**
 
 
 ## How to apply 
