@@ -74,7 +74,7 @@ export default {
             </template>
             <template v-slot:append>
                 <v-icon color="grey lighten-3" @click="addGameSpeed(stepGameSpeed)">mdi-chevron-right</v-icon>
-                <span class="grey--text text--lighten-1 align-self-center ml-2">{{gameSpeed.toFixed(1)}}</span>
+                <span class="grey--text text--lighten-1 align-self-center ml-2">x{{gameSpeed.toFixed(1)}}</span>
             </template>
         </v-slider>
         
