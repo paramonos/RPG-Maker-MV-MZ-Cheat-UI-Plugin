@@ -153,7 +153,7 @@ export default {
             stepSpeed: 0.5,
 
             gameSpeed: 1,
-            minGameSpeed: 1,
+            minGameSpeed: 0.1,
             maxGameSpeed: 10,
             stepGameSpeed: 0.1,
             applyAllForGameSpeed: false,
