@@ -15,7 +15,7 @@
 ## Features
 - Good usability based on GUI.
 - Editing stats, gold, speed, items, variables, switches ...
-- Accelerate game speed (x1 ~ x10)
+- Accelerate game speed (x0.1 ~ x10)
 - Supports no clip mode, god mode.
 - Disable random encounter.
 - Force battle victory/defeat/escape/abort.
