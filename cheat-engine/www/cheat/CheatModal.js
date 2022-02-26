@@ -94,7 +94,7 @@ export default {
                   component: 'shortcut-panel'
               },
               {
-                  name: 'HP/MP',
+                  name: 'HP/MP/Battle',
                   icon: 'mdi-battery-70',
                   component: 'health-setting-panel'
               },

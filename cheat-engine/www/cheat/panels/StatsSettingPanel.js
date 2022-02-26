@@ -25,11 +25,31 @@ export default {
             <v-card
                 flat
                 class="ma-0">
-                <v-checkbox
-                    v-model="actor.godMode"
-                    label="God Mode"
-                    @change="onGodModeChange(actor)">
-                </v-checkbox>
+                <v-card-actions
+                    class="pa-0">
+                    <v-checkbox
+                        v-model="actor.godMode"
+                        label="God Mode"
+                        @change="onGodModeChange(actor)">
+                    </v-checkbox>
+                    <v-spacer></v-spacer>
+                    <v-tooltip
+                        bottom>
+                        <span>Reload from game data</span>
+                        <template v-slot:activator="{ on, attrs }">
+                            <v-btn
+                                color="pink"
+                                dark
+                                small
+                                fab
+                                v-bind="attrs"
+                                v-on="on"
+                                @click="initializeVariables">
+                                <v-icon>mdi-refresh</v-icon>
+                            </v-btn>
+                        </template>
+                    </v-tooltip>
+                </v-card-actions>
                 <v-card-subtitle class="pa-0">Level / EXP</v-card-subtitle>
                 <v-row class="mt-0">
                     <v-col>
@@ -74,27 +94,6 @@ export default {
             </v-card>
         </v-tab-item>
     </v-tabs-items>
-    
-    <v-tooltip
-        bottom>
-        <span>Reload from game data</span>
-        <template v-slot:activator="{ on, attrs }">
-            <v-btn
-                style="top: 0px; right: 0px;"
-                color="pink"
-                dark
-                small
-                absolute
-                top
-                right
-                fab
-                v-bind="attrs"
-                v-on="on"
-                @click="initializeVariables">
-                <v-icon>mdi-refresh</v-icon>
-            </v-btn>
-        </template>
-    </v-tooltip>
 </v-card>
     `,
 

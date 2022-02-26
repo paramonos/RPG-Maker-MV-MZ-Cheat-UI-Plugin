@@ -1,4 +1,4 @@
-import { GeneralCheat, SpeedCheat, SceneCheat } from '../js/CheatHelper.js'
+import { GeneralCheat, GameSpeedCheat, SpeedCheat, SceneCheat } from '../js/CheatHelper.js'
 
 export default {
     name: 'GeneralPanel',
@@ -51,10 +51,48 @@ export default {
         </v-slider>
         <v-checkbox
             v-model="fixSpeed"
+            class="pt-0"
             hide-details
             dense
             label="Fixed"
             @change="onSpeedChange">
+        </v-checkbox>
+        
+        <v-slider
+            v-model="gameSpeed"
+            :min="minGameSpeed"
+            :max="maxGameSpeed"
+            :step="stepGameSpeed"
+            class="mt-3"
+            thumb-label
+            thumb-color="red"
+            hide-details
+            @change="onGameSpeedChange">
+            <template v-slot:prepend>
+                <span class="grey--text text--lighten-1 align-self-center mr-2 d-inline-block" style="white-space: nowrap;">Game Speed</span>
+                <v-icon color="grey lighten-3" @click="addGameSpeed(-stepGameSpeed)">mdi-chevron-left</v-icon>
+            </template>
+            <template v-slot:append>
+                <v-icon color="grey lighten-3" @click="addGameSpeed(stepGameSpeed)">mdi-chevron-right</v-icon>
+                <span class="grey--text text--lighten-1 align-self-center ml-2">x{{gameSpeed.toFixed(1)}}</span>
+            </template>
+        </v-slider>
+        
+        <v-checkbox
+            v-model="applyAllForGameSpeed"
+            class="d-inline-flex pt-0"
+            hide-details
+            dense
+            label="All"
+            @change="onApplyAllForGameSpeedChange">
+        </v-checkbox>
+        <v-checkbox
+            v-model="applyBattleForGameSpeed"
+            class="d-inline-flex ml-2 pt-0"
+            hide-details
+            dense
+            label="Battle"
+            @change="onApplyBattleForGameSpeedChange">
         </v-checkbox>
     </v-card-text>
     
@@ -112,7 +150,14 @@ export default {
 
             minSpeed: 1,
             maxSpeed: 10,
-            stepSpeed: 0.5
+            stepSpeed: 0.5,
+
+            gameSpeed: 1,
+            minGameSpeed: 0.1,
+            maxGameSpeed: 10,
+            stepGameSpeed: 0.1,
+            applyAllForGameSpeed: false,
+            applyBattleForGameSpeed: false
         }
     },
 
@@ -126,6 +171,14 @@ export default {
             this.speed = $gamePlayer.moveSpeed()
             this.fixSpeed = SpeedCheat.isFixed()
             this.gold = $gameParty._gold
+
+            this.gameSpeed = GameSpeedCheat.getRate()
+            const gameSpeedSceneOption = GameSpeedCheat.getSceneOption()
+            if (gameSpeedSceneOption === GameSpeedCheat.sceneOptions().all) {
+                this.applyAllForGameSpeed = true
+            } else if (gameSpeedSceneOption === GameSpeedCheat.sceneOptions().battle) {
+                this.applyBattleForGameSpeed = true
+            }
         },
 
         onNoClipChange () {
@@ -174,6 +227,43 @@ export default {
 
         toggleLoadScene () {
             SceneCheat.toggleLoadScene()
+        },
+
+        onGameSpeedChange () {
+            let sceneOption = null
+            if (this.applyAllForGameSpeed) {
+                sceneOption = GameSpeedCheat.sceneOptions().all
+            } else if (this.applyBattleForGameSpeed) {
+                sceneOption = GameSpeedCheat.sceneOptions().battle
+            }
+
+            GameSpeedCheat.setGameSpeed(this.gameSpeed, sceneOption)
+            this.initializeVariables()
+        },
+
+        addGameSpeed (amount) {
+            this.gameSpeed = Math.min(Math.max(this.gameSpeed + amount, this.minGameSpeed), this.maxGameSpeed)
+            this.onGameSpeedChange()
+        },
+
+        onApplyAllForGameSpeedChange () {
+            if (this.applyAllForGameSpeed) {
+                this.applyBattleForGameSpeed = false
+            } else {
+                this.applyBattleForGameSpeed = true
+            }
+
+            this.onGameSpeedChange()
+        },
+
+        onApplyBattleForGameSpeedChange () {
+            if (this.applyBattleForGameSpeed) {
+                this.applyAllForGameSpeed = false
+            } else {
+                this.applyAllForGameSpeed = true
+            }
+
+            this.onGameSpeedChange()
         }
     }
 }

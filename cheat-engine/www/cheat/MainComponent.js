@@ -59,6 +59,7 @@ export default {
         }
 
         // ignore click event when cheat modal shown and click inside cheat modal
+        const TouchInput_onMouseDown = TouchInput._onMouseDown
         TouchInput._onMouseDown = function(event) {
             if (self.show) {
                 const bcr = document.querySelector('#cheat-modal').getBoundingClientRect();
@@ -68,13 +69,15 @@ export default {
                 }
             }
 
-            if (event.button === 0) {
-                this._onLeftButtonDown(event);
-            } else if (event.button === 1) {
-                this._onMiddleButtonDown(event);
-            } else if (event.button === 2) {
-                this._onRightButtonDown(event);
-            }
+            TouchInput_onMouseDown.call(this, event)
+
+            // if (event.button === 0) {
+            //     this._onLeftButtonDown(event);
+            // } else if (event.button === 1) {
+            //     this._onMiddleButtonDown(event);
+            // } else if (event.button === 2) {
+            //     this._onRightButtonDown(event);
+            // }
         }
     },
 
