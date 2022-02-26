@@ -1,5 +1,5 @@
-# RPG-Maker-MV-Cheat-UI-Plugin
-- GUI based RPG Maker MV game cheat tool
+# RPG-Maker-MV-MZ-Cheat-UI-Plugin
+- GUI based RPG Maker MV/MZ game cheat tool
 
 
 ## UI Sample
@@ -14,6 +14,7 @@
 
 ## Features
 - Good usability based on GUI.
+- Supports both RPG MV/MZ games.
 - Editing stats, gold, speed, items, variables, switches ...
 - Accelerate game speed (x0.1 ~ x10)
 - Supports no clip mode, god mode.
