@@ -32,4 +32,4 @@ document.head.innerHTML += `
 `
 
 // import in body
-__addScript('module', 'cheat/setup.js')
+__addScript('module', 'cheat/init/setup.js')
