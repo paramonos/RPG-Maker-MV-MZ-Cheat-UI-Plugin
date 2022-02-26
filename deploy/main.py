@@ -74,6 +74,7 @@ def merge_directory(src, dest, inplace=True):
     for src_dir in dirs:
         dir_name = os.path.basename(src_dir)
         dest_dir = os.path.join(dest, dir_name)
+
         merge_directory(src_dir, dest_dir, inplace)
 
 
@@ -103,6 +104,7 @@ if __name__ == '__main__':
         shutil.rmtree(paths.temp.get_initialize_path())
 
         # compress to zip file
+        shutil.rmtree(os.path.join(paths.temp.root_dir, '.idea'))
         shutil.make_archive(paths.get_output_file_path(game_type, args.version), 'zip', paths.temp.root_dir)
 
         # remove temp directory
