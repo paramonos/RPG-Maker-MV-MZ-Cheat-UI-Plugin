@@ -41,6 +41,8 @@ export default {
     created () {
         const self = this
 
+        customizeRPGMakerFunctions(self)
+
         GeneralCheat.toggleCheatModal = (componentName = null) => {
             this.toggleCheatModal(componentName)
         }
@@ -50,8 +52,6 @@ export default {
         }
 
         window.addEventListener('keydown', this.onGlobalKeyDown)
-
-        customizeRPGMakerFunctions()
     },
 
     beforeDestroy () {

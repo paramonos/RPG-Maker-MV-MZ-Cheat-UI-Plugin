@@ -1,5 +1,5 @@
 // customize mv functions
-export function customizeRPGMakerFunctions () {
+export function customizeRPGMakerFunctions (mainComponent) {
     // WARN: directly changing engine code can be dangerous
     // remove preventDefault
     TouchInput._onWheel = function () {
@@ -10,7 +10,7 @@ export function customizeRPGMakerFunctions () {
     // ignore click event when cheat modal shown and click inside cheat modal
     const TouchInput_onMouseDown = TouchInput._onMouseDown
     TouchInput._onMouseDown = function(event) {
-        if (self.show) {
+        if (mainComponent.show) {
             const bcr = document.querySelector('#cheat-modal').getBoundingClientRect();
             if (bcr.left <= event.clientX && event.clientX <= bcr.left + bcr.width
                 && bcr.top <= event.clientY && event.clientY <= bcr.top + bcr.height) {
