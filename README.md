@@ -29,10 +29,14 @@
 
 ## How to apply 
 1. Unpack game if needed.
-2. Download latest version of `rpg-mv-cheat-{version}.zip` from **[releases](https://github.com/paramonos/RPG-Maker-MV-Cheat-UI-Plugin/releases)** and unzip.
-3. Copy `www` directory to your game directory.
-    - It will overwrite `www/js/main.js` file, so it is recommended to make a backup file.
-    - <img src="https://user-images.githubusercontent.com/99193603/153755213-b07f1abb-9c99-4157-857c-2f3a81e4a82a.JPG" width="500"/>
+2. Download latest version of `rpg-{mv|mz}-cheat-{version}.zip` from **[releases](https://github.com/paramonos/RPG-Maker-MV-Cheat-UI-Plugin/releases)** and unzip.
+3. Copy unziped directories to `{game directory}/www` (for MZ, just copy to `{game_directory}`).
+    - It will overwrite `www/js/main.js` file, so it is strongly recommended to make a backup file.
+    - Example for RPG MV
+      <br/><img src="https://user-images.githubusercontent.com/99193603/153755213-b07f1abb-9c99-4157-857c-2f3a81e4a82a.JPG" width="500"/>
+      <br/><img src="https://user-images.githubusercontent.com/99193603/155840463-ae64385f-60c1-478c-b266-8e9580a878e6.png" width="500"/>
+    - Example for RPG MZ
+      <br/><img src="https://user-images.githubusercontent.com/99193603/155840462-028771ef-580c-4b45-969a-85f26329fef0.png" width="500"/>
 
 
 ### If embeded nwjs version of game is lower than 1.6.1
