@@ -105,7 +105,6 @@ export default {
             this.enabled = TRANSLATE_SETTINGS.isEnabled()
             this.targets = TRANSLATE_SETTINGS.getTargets()
             this.translatorRunning = await TRANSLATOR.isAvailable()
-            console.log(this.translatorRunning)
         },
 
         onChangeEnabled () {

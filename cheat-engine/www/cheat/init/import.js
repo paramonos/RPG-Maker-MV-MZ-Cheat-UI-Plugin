@@ -6,8 +6,17 @@ function __addScript(type, src) {
     document.body.appendChild(cheatScript)
 }
 
+function __loadJavaScript(src) {
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = src;
+    script.async = false;
+    script._url = src;
+    document.body.appendChild(script);
+}
+
 // load libs
-PluginManager.loadScript('../../cheat/libs/axios.min.js')
+__loadJavaScript('cheat/libs/axios.min.js')
 
 // add <div id='app'> node for vue
 const appDiv = document.createElement('div')
@@ -36,4 +45,5 @@ document.head.innerHTML += `
 `
 
 // import in body
+// __loadJavaScript('cheat/init/setup.js')
 __addScript('module', 'cheat/init/setup.js')
