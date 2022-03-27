@@ -6,6 +6,9 @@ function __addScript(type, src) {
     document.body.appendChild(cheatScript)
 }
 
+// load libs
+PluginManager.loadScript('../../cheat/libs/axios.min.js')
+
 // add <div id='app'> node for vue
 const appDiv = document.createElement('div')
 
@@ -21,6 +24,7 @@ appDiv.innerHTML = `
     </v-main>
 </v-app>
 `
+
 document.body.appendChild(appDiv)
 
 // import in head

@@ -24,7 +24,8 @@ export default {
                 dense
                 hide-details
                 @keydown.self.stop
-                @input="onSearchChange">
+                @input="onSearchChange"
+                @focus="$event.target.select()">
             </v-text-field>
         </v-col>
         <v-col
@@ -127,7 +128,8 @@ export default {
                                     hide-details
                                     @keydown.self.stop
                                     @change="onParameterChange($event, item, paramKey)"
-                                    :label="item.paramDesc[paramKey].name">
+                                    :label="item.paramDesc[paramKey].name"
+                                    @focus="$event.target.select()">
                                 </v-text-field>
                             </v-col>
                             <v-col

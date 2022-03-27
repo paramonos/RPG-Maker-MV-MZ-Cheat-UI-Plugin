@@ -277,8 +277,16 @@ export class GameSpeedCheat {
             const currStep = Math.floor(currentUpdateSceneRate)
             currentUpdateSceneRate -= currStep
 
-            for (let i = 0; i < currStep; ++i) {
+            if (currStep > 0) {
+                // update original frame
                 SceneManager_updateScene.call(this)
+
+                // update duplicated frames
+                for (let i = 0; i < currStep - 1; ++i) {
+                    SceneManager.updateInputData()
+                    SceneManager.changeScene()
+                    SceneManager_updateScene.call(this)
+                }
             }
         }
 

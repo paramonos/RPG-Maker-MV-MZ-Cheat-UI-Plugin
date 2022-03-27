@@ -1,3 +1,6 @@
+import {KEY_VALUE_STORAGE} from '../js/KeyValueStorage.js'
+import {TRANSLATE_SETTINGS, TRANSLATOR} from '../js/TranslateHelper.js'
+
 export default {
     name: 'SaveRecallPanel',
 
@@ -13,7 +16,8 @@ export default {
         v-model="locationAliasInput"
         dense
         hide-details
-        @keydown.self.stop="onLocationAliasKeyDown">
+        @keydown.self.stop="onLocationAliasKeyDown"
+        @focus="$event.target.select()">
         <template v-slot:append-outer>
             <v-tooltip
                 bottom>
@@ -52,7 +56,8 @@ export default {
                 v-model="search"
                 dense
                 hide-details
-                @keydown.self.stop>
+                @keydown.self.stop
+                @focus="$event.target.select()">
             </v-text-field>
         </template>
         <template
@@ -159,7 +164,7 @@ export default {
 
     computed: {
         tableItems () {
-            return this.locations.map(location => {
+            return this.locations.map((location, idx) => {
                 return {
                     name: location.name,
                     mapName: ($dataMapInfos[location.mapId] ? $dataMapInfos[location.mapId].name : 'NULL'),
@@ -184,12 +189,12 @@ export default {
     },
 
     methods: {
-        initializeVariables () {
+        async initializeVariables () {
             this.loadLocations()
-            this.currentMapName = this.getMapFullPath($gameMap.mapId())
+            this.currentMapName = await this.getMapFullPath($gameMap.mapId())
         },
 
-        getMapFullPath (id) {
+        async getMapFullPath (id) {
             if (!id || !$dataMapInfos[id]) {
                 return 'NULL'
             }
@@ -197,7 +202,13 @@ export default {
             let fullPath = []
             this.getMapAncestors(id, fullPath)
 
-            return fullPath.map(id => $dataMapInfos[id].name).join(' / ')
+            fullPath = fullPath.map(id => $dataMapInfos[id].name).join(' / ')
+
+            if (TRANSLATE_SETTINGS.isSwitchTranslateEnabled()) {
+                return await TRANSLATOR.translate(fullPath)
+            }
+
+            return fullPath
         },
 
         getMapAncestors (id, path) {
@@ -211,11 +222,11 @@ export default {
         },
 
         saveLocations () {
-            localStorage.setItem('cheat.locations', JSON.stringify(this.locations))
+            KEY_VALUE_STORAGE.setItem('cheat.locations', JSON.stringify(this.locations))
         },
 
         loadLocations () {
-            const data = localStorage.getItem('cheat.locations')
+            const data = KEY_VALUE_STORAGE.getItem('cheat.locations')
 
             if (!data) {
                 this.locations = []

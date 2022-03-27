@@ -1,3 +1,6 @@
+import {TRANSLATE_SETTINGS, TRANSLATOR} from '../js/TranslateHelper.js'
+import {Alert} from '../js/AlertHelper.js'
+
 export default {
     name: 'TeleportPanel',
 
@@ -14,7 +17,8 @@ export default {
                 background-color="grey darken-3"
                 hide-details
                 outlined
-                @keydown.self.stop>
+                @keydown.self.stop
+                @focus="$event.target.select()">
             </v-text-field>
         </v-col>
         <v-col
@@ -27,7 +31,8 @@ export default {
                 background-color="grey darken-3"
                 hide-details
                 outlined
-                @keydown.self.stop>
+                @keydown.self.stop
+                @focus="$event.target.select()">
             </v-text-field>
         </v-col>
     </v-row>
@@ -49,7 +54,8 @@ export default {
                 v-model="search"
                 dense
                 hide-details
-                @keydown.self.stop>
+                @keydown.self.stop
+                @focus="$event.target.select()">
             </v-text-field>
             <v-checkbox
                 v-model="excludeFullPath"
@@ -129,21 +135,34 @@ export default {
     },
 
     methods: {
-        initializeVariables () {
+        async initializeVariables () {
+            const rawDataMapInfos = $dataMapInfos.filter(mapInfo => !!mapInfo)
+            const mapNames = await this.getMapNames($dataMapInfos)
+
             this.maps = $dataMapInfos.filter(mapInfo => !!mapInfo).map(mapInfo => {
                 let fullPath = []
 
                 this.getMapAncestors(mapInfo.id, fullPath)
-                fullPath = fullPath.map(id => $dataMapInfos[id].name)
+                fullPath = fullPath.map(id => mapNames[id])
 
                 return {
                     _mapInfo: mapInfo,
                     id: mapInfo.id,
                     fullPath: fullPath,
                     fullPathJoin: fullPath.join(' / '),
-                    name: mapInfo.name,
+                    name: mapNames[mapInfo.id],
                 }
             })
+        },
+
+        async getMapNames (dataMapInfos) {
+            const rawNames = dataMapInfos.map(m => m ? m.name : '')
+
+            if (TRANSLATE_SETTINGS.isSwitchTranslateEnabled()) {
+                return await TRANSLATOR.translateBulk(rawNames)
+            }
+
+            return rawNames
         },
 
         getMapAncestors (id, path) {

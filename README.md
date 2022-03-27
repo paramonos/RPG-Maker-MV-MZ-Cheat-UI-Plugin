@@ -1,5 +1,6 @@
 # RPG-Maker-MV-MZ-Cheat-UI-Plugin
 - GUI based RPG Maker MV/MZ game cheat tool
+- [한국어 도움말](https://github.com/paramonos/RPG-Maker-MV-MZ-Cheat-UI-Plugin/blob/main/README_ko-kr.md)
 
 
 ## UI Sample
@@ -25,6 +26,7 @@
 - Easy to find items, switched, variables, etc by searching text.
 - Save location and recall, teleport cheats.
 - Supports developers tool.
+- Translate variables, switches, maps. (Needs [ezTransWeb](https://github.com/HelloKS/ezTransWeb) : Only supports for Korean.)
 - **Maybe more features..?**
 
 
@@ -54,5 +56,8 @@
 ## How to use
 - Press `Ctrl + C` to toggle cheat window.
     - You can change shortcuts in "Shortcuts" tab.
+    
+    - If you do not hover your mouse over the cheat window, you may not be able to see it well because it is a little bit transparent. Note that it appears in the upper-right corner of the game window.
+    
     - <img src="https://user-images.githubusercontent.com/99193603/153754676-cee2b96e-c03a-491f-b71c-3c57d6dcc474.JPG" width="400"/>
 - Just enjoy cheat!

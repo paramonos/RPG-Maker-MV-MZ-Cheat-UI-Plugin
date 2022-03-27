@@ -1,31 +1,47 @@
-// customize mz functions
-export function customizeRPGMakerFunctions () {
-    // WARN: directly changing engine code can be dangerous
-    // remove preventDefault
-    TouchInput._onWheel = function () {
-        this._newState.wheelX += event.deltaX
-        this._newState.wheelY += event.deltaY
-    }
-
-    // ignore click event when cheat modal shown and click inside cheat modal
-    const TouchInput_onMouseDown = TouchInput._onMouseDown
-    TouchInput._onMouseDown = function(event) {
-        if (self.show) {
-            const bcr = document.querySelector('#cheat-modal').getBoundingClientRect();
-            if (bcr.left <= event.clientX && event.clientX <= bcr.left + bcr.width
-                && bcr.top <= event.clientY && event.clientY <= bcr.top + bcr.height) {
-                return
-            }
+// customize mv functions
+export function customizeRPGMakerFunctions (mainComponent) {
+    if (Utils.RPGMAKER_NAME === 'MV') {
+        // WARN: directly changing engine code can be dangerous
+        // remove preventDefault
+        TouchInput._onWheel = function () {
+            this._events.wheelX += event.deltaX
+            this._events.wheelY += event.deltaY
         }
 
-        TouchInput_onMouseDown.call(this, event)
+        // ignore click event when cheat modal shown and click inside cheat modal
+        const TouchInput_onMouseDown = TouchInput._onMouseDown
+        TouchInput._onMouseDown = function(event) {
+            if (mainComponent.show) {
+                const bcr = document.querySelector('#cheat-modal').getBoundingClientRect();
+                if (bcr.left <= event.clientX && event.clientX <= bcr.left + bcr.width
+                    && bcr.top <= event.clientY && event.clientY <= bcr.top + bcr.height) {
+                    return
+                }
+            }
 
-        // if (event.button === 0) {
-        //     this._onLeftButtonDown(event);
-        // } else if (event.button === 1) {
-        //     this._onMiddleButtonDown(event);
-        // } else if (event.button === 2) {
-        //     this._onRightButtonDown(event);
-        // }
+            TouchInput_onMouseDown.call(this, event)
+        }
+    } else {
+        // MZ Settings
+        // WARN: directly changing engine code can be dangerous
+        // remove preventDefault
+        TouchInput._onWheel = function () {
+            this._newState.wheelX += event.deltaX
+            this._newState.wheelY += event.deltaY
+        }
+
+        // ignore click event when cheat modal shown and click inside cheat modal
+        const TouchInput_onMouseDown = TouchInput._onMouseDown
+        TouchInput._onMouseDown = function(event) {
+            if (mainComponent.show) {
+                const bcr = document.querySelector('#cheat-modal').getBoundingClientRect();
+                if (bcr.left <= event.clientX && event.clientX <= bcr.left + bcr.width
+                    && bcr.top <= event.clientY && event.clientY <= bcr.top + bcr.height) {
+                    return
+                }
+            }
+
+            TouchInput_onMouseDown.call(this, event)
+        }
     }
 }

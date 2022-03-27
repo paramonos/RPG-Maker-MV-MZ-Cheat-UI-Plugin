@@ -1,3 +1,5 @@
+import {TRANSLATE_SETTINGS, TRANSLATOR} from '../js/TranslateHelper.js'
+
 export default {
     name: 'VariableSettingPanel',
 
@@ -19,7 +21,8 @@ export default {
                 v-model="search"
                 dense
                 hide-details
-                @keydown.self.stop>
+                @keydown.self.stop
+                @focus="$event.target.select()">
             </v-text-field>
             <v-row
                 class="ma-0 pa-0">
@@ -49,7 +52,8 @@ export default {
                 label="Value"
                 dense
                 @keydown.self.stop
-                @change="onItemChange(item)">
+                @change="onItemChange(item)"
+                @focus="$event.target.select()">
             </v-text-field>
         </template>
     </v-data-table>
@@ -115,8 +119,8 @@ export default {
     },
 
     methods: {
-        initializeVariables () {
-            this.variableNames = $dataSystem.variables.slice()
+        async initializeVariables () {
+            this.variableNames = await this.getVariableNames()
 
             this.tableItems = this.variableNames.map((varName, idx) => {
                 return {
@@ -125,6 +129,16 @@ export default {
                     value: $gameVariables.value(idx)
                 }
             })
+        },
+
+        async getVariableNames () {
+            const rawVariableNames = $dataSystem.variables.slice()
+
+            if (TRANSLATE_SETTINGS.isSwitchTranslateEnabled()) {
+                return await TRANSLATOR.translateBulk(rawVariableNames)
+            }
+
+            return rawVariableNames
         },
 
         onItemChange (item) {

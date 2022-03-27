@@ -25,7 +25,8 @@ export default {
                 label="Curr Hp"
                 dense
                 @keydown.self.stop
-                @change="onDataChange">
+                @change="onDataChange"
+                @focus="$event.target.select()">
             </v-text-field>
             <span class="caption">/ {{item.hp.mhp}}</span>
         </template>
@@ -41,7 +42,8 @@ export default {
                 label="Curr Mp"
                 dense
                 @keydown.self.stop
-                @change="onDataChange">
+                @change="onDataChange"
+                @focus="$event.target.select()">
             </v-text-field>
             <span class="caption">/ {{item.mp.mmp}}</span>
         </template>
