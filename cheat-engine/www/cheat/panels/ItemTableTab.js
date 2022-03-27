@@ -19,7 +19,8 @@ export default {
                 v-model="search"
                 dense
                 hide-details
-                @keydown.self.stop>
+                @keydown.self.stop
+                @focus="$event.target.select()">
             </v-text-field>
             <v-row
                 class="ma-0 pa-0">
@@ -62,7 +63,8 @@ export default {
                 label="Amount"
                 dense
                 @keydown.self.stop
-                @change="onItemChange(item)">
+                @change="onItemChange(item)"
+                @focus="$event.target.select()">
             </v-text-field>
         </template>
     </v-data-table>

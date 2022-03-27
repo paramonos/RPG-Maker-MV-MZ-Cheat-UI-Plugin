@@ -60,7 +60,8 @@ export default {
                             dense
                             hide-details
                             @keydown.self.stop
-                            @change="onLevelChange(actor)"></v-text-field>
+                            @change="onLevelChange(actor)"
+                            @focus="$event.target.select()"></v-text-field>
                     </v-col>
                     <v-col>
                         <v-text-field
@@ -70,7 +71,8 @@ export default {
                             dense
                             hide-details
                             @keydown.self.stop
-                            @change="onExpChange(actor)"></v-text-field>
+                            @change="onExpChange(actor)"
+                            @focus="$event.target.select()"></v-text-field>
                     </v-col>
                 </v-row>
                 
@@ -88,7 +90,8 @@ export default {
                             dense
                             hide-details
                             @keydown.self.stop
-                            @change="onParamChange(actor, paramIdx)"></v-text-field>
+                            @change="onParamChange(actor, paramIdx)"
+                            @focus="$event.target.select()"></v-text-field>
                     </v-col>
                 </v-row>
             </v-card>

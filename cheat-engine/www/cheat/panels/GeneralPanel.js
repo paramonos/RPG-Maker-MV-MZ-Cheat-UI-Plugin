@@ -26,7 +26,8 @@ export default {
             dense
             hide-details
             @keydown.self.stop
-            @change="onGoldChange">
+            @change="onGoldChange"
+            @focus="$event.target.select()">
         </v-text-field>
     </v-card-text>
     

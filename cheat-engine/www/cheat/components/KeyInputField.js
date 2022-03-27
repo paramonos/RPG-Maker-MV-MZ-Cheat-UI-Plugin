@@ -12,7 +12,8 @@ export default {
     :background-color="backgroundColor"
     dense
     hide-details
-    @keydown.self.stop.prevent="onShortcutInput">
+    @keydown.self.stop.prevent="onShortcutInput"
+    @focus="$event.target.select()">
     <template v-slot:append>
         <v-btn 
             v-if="deletable"

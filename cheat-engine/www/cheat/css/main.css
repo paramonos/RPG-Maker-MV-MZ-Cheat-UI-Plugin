@@ -1,3 +1,8 @@
+/* hide body scrollbar */
+body::-webkit-scrollbar {
+    display: none;
+}
+
 .hide-scrollbar::-webkit-scrollbar {
     width: 0 !important;
     height: 0 !important;
@@ -12,7 +17,7 @@
 
 .opaque-on-mouseover {
     transition: opacity 0.3s;
-    opacity: 0.6;
+    opacity: 0.3;
 }
 
 .opaque-on-mouseover:hover {

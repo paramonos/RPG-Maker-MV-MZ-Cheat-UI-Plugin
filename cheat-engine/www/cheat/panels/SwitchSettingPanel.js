@@ -1,4 +1,6 @@
 import {ConfirmDialog} from '../js/DialogHelper.js'
+import {TRANSLATOR} from '../js/TranslateHelper.js'
+import {TRANSLATE_SETTINGS} from '../js/TranslateHelper.js'
 
 export default {
     name: 'SwitchSettingPanel',
@@ -21,7 +23,8 @@ export default {
                 v-model="search"
                 dense
                 hide-details
-                @keydown.self.stop>
+                @keydown.self.stop
+                @focus="$event.target.select()">
             </v-text-field>
             <div class="d-flex px-3 pt-3 pb-3">
                 <v-checkbox
@@ -131,8 +134,8 @@ export default {
     },
 
     methods: {
-        initializeVariables () {
-            this.switchNames = $dataSystem.switches.slice()
+        async initializeVariables () {
+            this.switchNames = await this.getSwitchNames()
 
             this.tableItems = this.switchNames.map((switchName, idx) => {
                 return {
@@ -141,6 +144,16 @@ export default {
                     value: $gameSwitches.value(idx)
                 }
             })
+        },
+
+        async getSwitchNames () {
+            const rawSwitchNames = $dataSystem.switches.slice()
+
+            if (TRANSLATE_SETTINGS.isSwitchTranslateEnabled()) {
+                return await TRANSLATOR.translateBulk(rawSwitchNames)
+            }
+
+            return rawSwitchNames
         },
 
         onItemChange (item) {
@@ -156,7 +169,7 @@ export default {
                 return true
             }
 
-            return item.name.contains(search) || String(item.value).contains(search)
+            return item.name.contains(search)
         },
 
         toggleAllSwitches () {
