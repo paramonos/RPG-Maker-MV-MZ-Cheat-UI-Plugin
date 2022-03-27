@@ -62,7 +62,7 @@
 
 - [exTransWeb](https://github.com/HelloKS/ezTransWeb) 의 설명에 따라 로컬에서 번역 서버를 실행시켜두어야 함.
 - 제대로 실행이 된 경우 치트 툴 "Translate" 탭에서 초록색 글자로 확인 가능.
-  ![화면 캡처 2022-03-27 211057](https://user-images.githubusercontent.com/99193603/160281987-49b5291a-11e6-4a1c-8ded-f908b1274685.png)
+  <img src="https://user-images.githubusercontent.com/99193603/160281987-49b5291a-11e6-4a1c-8ded-f908b1274685.png" width="500"/>
 
 
 
