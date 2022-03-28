@@ -4,6 +4,7 @@ import { GeneralCheat } from './js/CheatHelper.js'
 import AlertSnackbar from './components/AlertSnackbar.js'
 import ConfirmDialog from './components/ConfirmDialog.js'
 import { customizeRPGMakerFunctions } from './init/customize_functions.js'
+import {Key} from './js/KeyCodes.js'
 
 export default {
     name: 'MainComponent',
@@ -33,6 +34,7 @@ export default {
 
     data () {
         return {
+            currentKey: Key.createEmpty(),
             show: false,
             currentComponentName: null
         }
@@ -52,11 +54,12 @@ export default {
         }
 
         window.addEventListener('keydown', this.onGlobalKeyDown)
+        window.addEventListener('keyup', this.onGlobalKeyUp)
     },
 
     beforeDestroy () {
         window.removeEventListener('keydown', this.onGlobalKeyDown)
-
+        window.removeEventListener('keyup', this.onGlobalKeyUp)
     },
 
     watch: {
@@ -69,7 +72,18 @@ export default {
 
     methods: {
         onGlobalKeyDown (e) {
-            GLOBAL_SHORTCUT.runKeyEvent(e)
+            if (e.repeat) {
+                GLOBAL_SHORTCUT.runKeyRepeatEvent(e, Key.fromKey(this.currentKey))
+            } else {
+                this.currentKey.add(e.keyCode)
+                GLOBAL_SHORTCUT.runKeyEnterEvent(e, Key.fromKey(this.currentKey))
+            }
+        },
+
+
+        onGlobalKeyUp (e) {
+            GLOBAL_SHORTCUT.runKeyLeaveEvent(e, Key.fromKey(this.currentKey))
+            this.currentKey.remove(e.keyCode)
         },
 
         openCheatModal (componentName) {

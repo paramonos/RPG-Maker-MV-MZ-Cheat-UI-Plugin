@@ -518,3 +518,73 @@ export class BattleCheat {
     }
 }
 
+export class MessageCheat {
+    static initialize () {
+        this.skip = false
+
+        // Skip message display animation
+        // It seems to be executed whenever each character is output in the message window
+        const _Window_Message_updateShowFast = Window_Message.prototype.updateShowFast;
+        Window_Message.prototype.updateShowFast = function () {
+            _Window_Message_updateShowFast.call(this);
+            // 여기에 skip 키 입력 체크
+            if (MessageCheat.skip) {
+                this._showFast = true;
+                this._pauseSkip = true;
+            }
+        };
+
+        // Skip waiting for input after displaying text
+        // It seems to always run every few ms
+        const _Window_Message_updateInput = Window_Message.prototype.updateInput;
+        Window_Message.prototype.updateInput = function () {
+            const ret = _Window_Message_updateInput.call(this);
+
+            if(this.pause && MessageCheat.skip){
+                this.pause = false;
+
+                if (!this._textState) {
+                    this.terminateMessage();
+                }
+                return true;
+            }
+
+            return ret;
+        };
+
+        // Accelerates the scrolling message speed
+        const Window_ScrollText_scrollSpeed = Window_ScrollText.prototype.scrollSpeed;
+        Window_ScrollText.prototype.scrollSpeed = function () {
+            let ret = Window_ScrollText_scrollSpeed.call(this);
+
+            if (MessageCheat.skip){ // 여기에서 skip 키 입력 체크
+                ret *= 100;
+            }
+
+            return ret;
+        };
+
+
+        // --------------------------- 배틀 로그 관련
+        // Accelerates the battle log output speed
+        const _Window_BattleLog_messageSpeed = Window_BattleLog.prototype.messageSpeed;
+        Window_BattleLog.prototype.messageSpeed = function () {
+            let ret = _Window_BattleLog_messageSpeed.call(this);
+
+            if (MessageCheat.skip){ // 여기에서 skip 키 입력 체크
+                ret = 1;
+            }
+
+            return ret;
+        };
+    }
+
+    static startSkip () {
+        this.skip = true
+    }
+
+    static stopSkip () {
+        this.skip = false
+    }
+}
+

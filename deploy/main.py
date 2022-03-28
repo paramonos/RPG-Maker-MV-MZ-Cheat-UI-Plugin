@@ -43,8 +43,8 @@ class Paths:
 
         self.deploy_output_dir = 'output'
         self.output_files = {
-            GameTypes.MV: 'rpg-mv-cheat-{}',
-            GameTypes.MZ: 'rpg-mz-cheat-{}'
+            GameTypes.MV: 'rpg-mv-cheat-{}-core',
+            GameTypes.MZ: 'rpg-mz-cheat-{}-core'
         }
 
     def get_output_file_path(self, game_type, version):
@@ -105,7 +105,8 @@ if __name__ == '__main__':
 
         # compress to zip file
         shutil.rmtree(os.path.join(paths.temp.root_dir, '.idea'))
-        shutil.make_archive(paths.get_output_file_path(game_type, args.version), 'zip', paths.temp.root_dir)
+        open(os.path.join(paths.temp.root_dir, f'version-{args.version}'), mode='a').close()
+        shutil.make_archive(paths.get_output_file_path(game_type, args.version), 'gztar', paths.temp.root_dir)
 
         # remove temp directory
         shutil.rmtree(paths.temp_root_path)
