@@ -42,7 +42,7 @@
       <br/><img src="https://user-images.githubusercontent.com/99193603/155840462-028771ef-580c-4b45-969a-85f26329fef0.png" width="500"/>
 
 
-### If embeded nwjs version of game is lower than 1.6.1
+### If embeded nwjs version of game is lower than 0.26.4
 - Cheats may not work properly in older versions of the game since the script is based on es6.
 - In that case, you need to force update to the new nwjs version.
 
