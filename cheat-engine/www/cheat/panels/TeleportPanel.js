@@ -158,7 +158,7 @@ export default {
         async getMapNames (dataMapInfos) {
             const rawNames = dataMapInfos.map(m => m ? m.name : '')
 
-            if (TRANSLATE_SETTINGS.isSwitchTranslateEnabled()) {
+            if (TRANSLATE_SETTINGS.isMapTranslateEnabled()) {
                 return await TRANSLATOR.translateBulk(rawNames)
             }
 
@@ -185,7 +185,9 @@ export default {
                 return true
             }
 
-            return item.name.contains(search) || item.fullPathJoin.contains(search) || String(item.id).contains(search)
+            search = search.toLowerCase()
+
+            return item.name.toLowerCase().contains(search) || item.fullPathJoin.toLowerCase().contains(search) || String(item.id).toLowerCase().contains(search)
         }
     }
 }

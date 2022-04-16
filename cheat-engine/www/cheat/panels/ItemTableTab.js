@@ -178,8 +178,9 @@ export default {
                 return true
             }
 
+            search = search.toLowerCase()
             for (const attr of this.searchableAttrs) {
-                if (item[attr].contains(search)) {
+                if (item[attr].toLowerCase().contains(search)) {
                     return true
                 }
             }

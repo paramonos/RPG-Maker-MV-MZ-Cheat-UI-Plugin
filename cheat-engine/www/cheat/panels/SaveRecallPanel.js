@@ -204,7 +204,7 @@ export default {
 
             fullPath = fullPath.map(id => $dataMapInfos[id].name).join(' / ')
 
-            if (TRANSLATE_SETTINGS.isSwitchTranslateEnabled()) {
+            if (TRANSLATE_SETTINGS.isMapTranslateEnabled()) {
                 return await TRANSLATOR.translate(fullPath)
             }
 
@@ -273,7 +273,9 @@ export default {
                 return true
             }
 
-            return item.name.contains(search) || item.mapName.contains(search) || String(item.value).contains(search)
+            search = search.toLowerCase()
+
+            return item.name.toLowerCase().contains(search) || item.mapName.toLowerCase().contains(search) || String(item.value).toLowerCase().contains(search)
         }
     }
 }

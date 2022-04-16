@@ -10,7 +10,8 @@ export default {
     left
     :color="color"
     v-model="showSnackbar"
-    :timeout="timeout">
+    :timeout="timeout"
+    class="z-index-cheat-1">
     <span 
         v-for="(line, idx) in text"
         :key="idx"
@@ -41,7 +42,7 @@ export default {
     },
 
     mounted () {
-        Alert.alertInternal = (level, msg, err = null) => {
+        Alert.alertInternal = (level, msg, err = null, timeout = 1500) => {
             let color = null
             switch (level) {
                 case 'success':
@@ -63,7 +64,7 @@ export default {
             this.show({
                 text: msg,
                 color: color,
-                timeout: 1500,
+                timeout: timeout,
             })
         }
     },

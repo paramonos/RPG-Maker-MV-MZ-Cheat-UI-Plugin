@@ -3,6 +3,7 @@ import shutil
 from enum import Enum
 import zipfile
 import argparse
+import json
 
 
 class GameTypes(Enum):
@@ -78,6 +79,14 @@ def merge_directory(src, dest, inplace=True):
         merge_directory(src_dir, dest_dir, inplace)
 
 
+def create_cheat_version_file(version, paths):
+    with open(os.path.join(paths.temp.root_dir, 'cheat-version-description.json'), 'w') as wf:
+        data = {
+            'version': version
+        }
+        json.dump(data, wf, indent=2)
+
+
 if __name__ == '__main__':
     # parse args
     parser = argparse.ArgumentParser(description='RPG Maker MV/MZ cheat deploy maker')
@@ -105,7 +114,7 @@ if __name__ == '__main__':
 
         # compress to zip file
         shutil.rmtree(os.path.join(paths.temp.root_dir, '.idea'))
-        open(os.path.join(paths.temp.root_dir, f'version-{args.version}'), mode='a').close()
+        create_cheat_version_file(args.version, paths)
         shutil.make_archive(paths.get_output_file_path(game_type, args.version), 'gztar', paths.temp.root_dir)
 
         # remove temp directory

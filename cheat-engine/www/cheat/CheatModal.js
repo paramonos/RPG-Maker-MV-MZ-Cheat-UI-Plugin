@@ -32,9 +32,9 @@ export default {
     template: `
 <v-card 
     dark
+    class="z-index-cheat-0"
     width="700" 
-    height="400"
-    style="z-index: 990 !important;">
+    height="400">
     <v-row 
         class="fill-height ma-0 pa-0">
         <div

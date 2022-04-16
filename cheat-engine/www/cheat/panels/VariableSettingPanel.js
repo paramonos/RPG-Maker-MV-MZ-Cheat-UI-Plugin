@@ -134,7 +134,7 @@ export default {
         async getVariableNames () {
             const rawVariableNames = $dataSystem.variables.slice()
 
-            if (TRANSLATE_SETTINGS.isSwitchTranslateEnabled()) {
+            if (TRANSLATE_SETTINGS.isVariableTranslateEnabled()) {
                 return await TRANSLATOR.translateBulk(rawVariableNames)
             }
 
@@ -154,7 +154,9 @@ export default {
                 return true
             }
 
-            return item.name.contains(search) || String(item.value).contains(search)
+            search = search.toLowerCase()
+
+            return item.name.toLowerCase().contains(search) || String(item.value).toLowerCase().contains(search)
         }
     }
 }
