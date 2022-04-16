@@ -3,6 +3,7 @@ import shutil
 from enum import Enum
 import zipfile
 import argparse
+import json
 
 
 class GameTypes(Enum):
@@ -43,8 +44,8 @@ class Paths:
 
         self.deploy_output_dir = 'output'
         self.output_files = {
-            GameTypes.MV: 'rpg-mv-cheat-{}',
-            GameTypes.MZ: 'rpg-mz-cheat-{}'
+            GameTypes.MV: 'rpg-mv-cheat-{}-core',
+            GameTypes.MZ: 'rpg-mz-cheat-{}-core'
         }
 
     def get_output_file_path(self, game_type, version):
@@ -78,6 +79,14 @@ def merge_directory(src, dest, inplace=True):
         merge_directory(src_dir, dest_dir, inplace)
 
 
+def create_cheat_version_file(version, paths):
+    with open(os.path.join(paths.temp.root_dir, 'cheat-version-description.json'), 'w') as wf:
+        data = {
+            'version': f'v{version}'
+        }
+        json.dump(data, wf, indent=2)
+
+
 if __name__ == '__main__':
     # parse args
     parser = argparse.ArgumentParser(description='RPG Maker MV/MZ cheat deploy maker')
@@ -105,7 +114,8 @@ if __name__ == '__main__':
 
         # compress to zip file
         shutil.rmtree(os.path.join(paths.temp.root_dir, '.idea'))
-        shutil.make_archive(paths.get_output_file_path(game_type, args.version), 'zip', paths.temp.root_dir)
+        create_cheat_version_file(args.version, paths)
+        shutil.make_archive(paths.get_output_file_path(game_type, args.version), 'gztar', paths.temp.root_dir)
 
         # remove temp directory
         shutil.rmtree(paths.temp_root_path)

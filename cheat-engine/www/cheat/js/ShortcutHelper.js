@@ -1,7 +1,8 @@
+import {MAX_KEY_CODE, UNASSIGNED_KEY_CODE} from './KeyCodes.js'
+
 export class ShortcutMap {
     constructor () {
-        this.maxKeyCode = 255
-        this.actionTable = new Array(2 * 2 * 2 * 2 * (this.maxKeyCode + 1))
+        this.actionTable = new Array(2 * 2 * 2 * 2 * (MAX_KEY_CODE + 1))
     }
 
     static toInt (booleanVar) {
@@ -25,14 +26,16 @@ export class ShortcutMap {
      * @param key
      * @param action
      */
-    register (key, value, action) {
+    register (key, value, enterAction, repeatAction, leaveAction) {
         if (!key || key.isEmpty()) {
             return
         }
 
         this.actionTable[ShortcutMap.tableIndex(key)] = {
             value: value,
-            action: action
+            enterAction: enterAction,
+            repeatAction: repeatAction,
+            leaveAction: leaveAction
         }
     }
 
@@ -60,10 +63,10 @@ export class ShortcutMap {
     }
 
     getValue (key) {
-        const index = ShortcutMap.tableIndex(key)
+        const item = this.getItem(key)
 
-        if (index < this.actionTable.length && this.actionTable[index]) {
-            return this.actionTable[index].value
+        if (item) {
+            return item.value
         }
 
         return null
@@ -75,14 +78,46 @@ export class ShortcutMap {
      * @param key
      * @type Key
      */
-    run (key) {
-        const index = ShortcutMap.tableIndex(key)
+    runEnterAction (key) {
+        const item = this.getItem(key)
 
-        if (index < this.actionTable.length && this.actionTable[index]) {
-            this.actionTable[index].action()
+        if (item) {
+            item.enterAction()
             return true
         }
 
         return false
+    }
+
+    runRepeatAction (key) {
+        const item = this.getItem(key)
+
+        if (item) {
+            item.repeatAction()
+            return true
+        }
+
+        return false
+    }
+
+    runLeaveAction (key) {
+        const item = this.getItem(key)
+
+        if (item) {
+            item.leaveAction()
+            return true
+        }
+
+        return false
+    }
+
+    getItem (key) {
+        const index = ShortcutMap.tableIndex(key)
+
+        if (index < this.actionTable.length && this.actionTable[index]) {
+            return this.actionTable[index]
+        }
+
+        return null
     }
 }

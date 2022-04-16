@@ -67,6 +67,11 @@ export default {
         backgroundColor: {
             type: String,
             default: undefined
+        },
+
+        combiningKeyAlone: {
+            type: Boolean,
+            default: false
         }
     },
 
@@ -90,7 +95,7 @@ export default {
         onShortcutInput (e) {
             const eventKey = Key.fromEvent(e)
 
-            if (eventKey.isCombiningKey()) {
+            if (eventKey.isCombiningKey() && !this.combiningKeyAlone) {
                 return
             }
 

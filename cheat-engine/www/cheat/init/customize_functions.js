@@ -1,4 +1,6 @@
 // customize mv functions
+import {MessageCheat} from '../js/CheatHelper.js'
+
 export function customizeRPGMakerFunctions (mainComponent) {
     if (Utils.RPGMAKER_NAME === 'MV') {
         // WARN: directly changing engine code can be dangerous
@@ -44,4 +46,6 @@ export function customizeRPGMakerFunctions (mainComponent) {
             TouchInput_onMouseDown.call(this, event)
         }
     }
+
+    MessageCheat.initialize()
 }

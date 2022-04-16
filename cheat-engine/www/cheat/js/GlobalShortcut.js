@@ -1,7 +1,7 @@
 import {Key} from './KeyCodes.js'
 import {Alert} from './AlertHelper.js'
 import {cloneObject} from './Tools.js'
-import {SpeedCheat, SceneCheat, GeneralCheat, BattleCheat} from './CheatHelper.js'
+import {SpeedCheat, SceneCheat, GeneralCheat, BattleCheat, MessageCheat} from './CheatHelper.js'
 import {ShortcutMap} from './ShortcutHelper.js'
 
 // default shortcut settings
@@ -79,6 +79,10 @@ const defaultShortcutSettings = {
         }
     },
 
+    skipMessage: {
+        shortcut: ''
+    },
+
     openDevTool: {
         shortcut: 'f12'
     }
@@ -108,7 +112,7 @@ const shortcutConfig = {
         name: 'Toggle cheat window',
         desc: 'Key mapping required',
         necessary: true,
-        action (param) {
+        enterAction (param) {
             GeneralCheat.toggleCheatModal()
         }
     },
@@ -116,7 +120,7 @@ const shortcutConfig = {
     toggleCheatModalToSaveLocationComponent: {
         name: 'Toggle "Save Locations" tab',
         desc: '',
-        action (param) {
+        enterAction (param) {
             GeneralCheat.toggleCheatModal('save-recall-panel')
         }
     },
@@ -136,7 +140,7 @@ const shortcutConfig = {
                 }
             }
         },
-        action (param) {
+        enterAction (param) {
             SceneCheat.quickSave(param.slot)
         }
     },
@@ -156,7 +160,7 @@ const shortcutConfig = {
                 }
             }
         },
-        action (param) {
+        enterAction (param) {
             SceneCheat.quickLoad(param.slot)
         }
     },
@@ -164,7 +168,7 @@ const shortcutConfig = {
     openSaveScene: {
         name: 'Open save scene',
         desc: '',
-        action (param) {
+        enterAction (param) {
             SceneCheat.toggleSaveScene()
         }
     },
@@ -172,7 +176,7 @@ const shortcutConfig = {
     openLoadScene: {
         name: 'Open load scene',
         desc: '',
-        action (param) {
+        enterAction (param) {
             SceneCheat.toggleLoadScene()
         }
     },
@@ -180,7 +184,7 @@ const shortcutConfig = {
     gotoTitle: {
         name: 'Go to title',
         desc: '',
-        action (param) {
+        enterAction (param) {
             SceneCheat.gotoTitle()
         }
     },
@@ -188,7 +192,7 @@ const shortcutConfig = {
     forceVictory: {
         name: 'Force victory from battle',
         desc: '',
-        action (param) {
+        enterAction (param) {
             BattleCheat.victory()
         }
     },
@@ -196,7 +200,7 @@ const shortcutConfig = {
     forceDefeat: {
         name: 'Force defeat from battle',
         desc: '',
-        action (param) {
+        enterAction (param) {
             BattleCheat.defeat()
         }
     },
@@ -204,7 +208,7 @@ const shortcutConfig = {
     forceEscape: {
         name: 'Force escape from battle',
         desc: '',
-        action (param) {
+        enterAction (param) {
             BattleCheat.escape()
         }
     },
@@ -212,7 +216,7 @@ const shortcutConfig = {
     toggleNoClip: {
         name: 'Toggle no clip',
         desc: '',
-        action (param) {
+        enterAction (param) {
             GeneralCheat.toggleNoClip(true)
         }
     },
@@ -220,7 +224,7 @@ const shortcutConfig = {
     enemyWound: {
         name: 'Set enemies HP to 1',
         desc: '',
-        action (param) {
+        enterAction (param) {
             BattleCheat.changeAllEnemyHealth(1)
         }
     },
@@ -228,7 +232,7 @@ const shortcutConfig = {
     enemyRecovery: {
         name: 'Recover all enemies',
         desc: 'Fill HP/MP to max',
-        action (param) {
+        enterAction (param) {
             BattleCheat.recoverAllEnemy()
         }
     },
@@ -236,7 +240,7 @@ const shortcutConfig = {
     partyWound: {
         name: 'Set party HP to 1',
         desc: '',
-        action (param) {
+        enterAction (param) {
             BattleCheat.changeAllPartyHealth(1)
         }
     },
@@ -244,7 +248,7 @@ const shortcutConfig = {
     partyRecovery: {
         name: 'Recover all party',
         desc: 'Fill HP/MP to max',
-        action (param) {
+        enterAction (param) {
             BattleCheat.recoverAllParty()
         }
     },
@@ -264,16 +268,29 @@ const shortcutConfig = {
                 }
             }
         },
-        action (param) {
+        enterAction (param) {
             SpeedCheat.removeFixSpeedInterval()
             SpeedCheat.setSpeed(param.speed)
+        }
+    },
+
+    skipMessage: {
+        name: 'Skip Message',
+        desc: '',
+        combiningKeyAlone: true,
+        enterAction (param) {
+            MessageCheat.startSkip()
+        },
+
+        leaveAction (param) {
+            MessageCheat.stopSkip()
         }
     },
 
     openDevTool: {
         name: 'Open dev tool',
         desc: 'Open Chromium dev tool',
-        action (param) {
+        enterAction (param) {
             if (Utils.isNwjs()) {
                 require('nw.gui').Window.get().showDevTools()
             }
@@ -285,20 +302,36 @@ class ShortcutConfig {
     constructor (id, config) {
         this.id = id
 
-        const fields = ['name', 'desc', 'necessary', 'param', 'action']
+        const fields = ['name', 'desc', 'necessary', 'combiningKeyAlone', 'param', 'enterAction', 'repeatAction', 'leaveAction']
 
         for (const field of fields) {
             this[field] = config[field]
         }
 
         if (!this.necessary) this.necessary = false
+        if (!this.combiningKeyAlone) this.combiningKeyAlone = false
         if (!this.param) this.param = {}
-        if (!this.action) this.action = (param) => {}
+        if (!this.enterAction) this.enterAction = (param) => {}
+        if (!this.repeatAction) this.repeatAction = (param) => {}
+        if (!this.leaveAction) this.leaveAction = (param) => {}
+
     }
 
-    getAction (shortcutSetting) {
+    getEnterAction (shortcutSetting) {
         return () => {
-            this.action(shortcutSetting.param)
+            this.enterAction(shortcutSetting.param)
+        }
+    }
+
+    getRepeatAction (shortcutSetting) {
+        return () => {
+            this.repeatAction(shortcutSetting.param)
+        }
+    }
+
+    getLeaveAction (shortcutSetting) {
+        return () => {
+            this.leaveAction(shortcutSetting.param)
         }
     }
 }
@@ -365,7 +398,6 @@ class GlobalShortcut {
         }
     }
 
-
     migrateShortcutSettings () {
         let defaultSettings = null
         const assignedKeys = new Set(Object.values(this.shortcutSettings).map(setting => setting.shortcut.asString()))
@@ -401,12 +433,29 @@ class GlobalShortcut {
         for (const shortcutConfig of Object.values(this.shortcutConfig)) {
             const shortcutSetting = this.shortcutSettings[shortcutConfig.id]
 
-            this.shortcutMap.register(shortcutSetting.shortcut, shortcutConfig, shortcutConfig.getAction(shortcutSetting))
+            this.shortcutMap.register(shortcutSetting.shortcut, shortcutConfig,
+                shortcutConfig.getEnterAction(shortcutSetting), shortcutConfig.getRepeatAction(shortcutSetting), shortcutConfig.getLeaveAction(shortcutSetting))
         }
     }
 
-    runKeyEvent (e) {
-        if (this.shortcutMap.run(Key.fromEvent(e))) {
+    runKeyEnterEvent (e, key) {
+        if (this.shortcutMap.runEnterAction(key)) {
+            e.preventDefault()
+            e.stopImmediatePropagation()
+            e.stopPropagation()
+        }
+    }
+
+    runKeyRepeatEvent (e, key) {
+        if (this.shortcutMap.runRepeatAction(key)) {
+            e.preventDefault()
+            e.stopImmediatePropagation()
+            e.stopPropagation()
+        }
+    }
+
+    runKeyLeaveEvent (e, key) {
+        if (this.shortcutMap.runLeaveAction(key)) {
             e.preventDefault()
             e.stopImmediatePropagation()
             e.stopPropagation()
@@ -542,7 +591,8 @@ class GlobalShortcut {
         // bind key
         const currValue = this.getConfig(shortcutId)
         const currSettings = this.getSettings(shortcutId)
-        this.shortcutMap.register(newKey, currValue, currValue.getAction(currSettings))
+        this.shortcutMap.register(newKey, currValue,
+            currValue.getEnterAction(currSettings), currValue.getRepeatAction(currSettings), currValue.getLeaveAction(currSettings))
 
         // change settings
         currSettings.shortcut = newKey

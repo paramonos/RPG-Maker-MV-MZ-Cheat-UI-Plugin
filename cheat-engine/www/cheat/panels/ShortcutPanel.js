@@ -38,6 +38,7 @@ export default {
                 dense
                 background-color="grey darken-3"
                 hide-details
+                combining-key-alone
                 @change="onShortcutSearchChange">
             </key-input-field>
         </v-col>
@@ -85,6 +86,7 @@ export default {
                 solo
                 dense
                 background-color="grey darken-3"
+                :combining-key-alone="item.combiningKeyAlone"
                 hide-details
                 @change="onShortcutChange($event, item)">
             </key-input-field>
@@ -189,7 +191,7 @@ export default {
 
         filteredShortcuts () {
             return this.shortcuts.filter(item => {
-                return item.shortcut.equals(this.shortcutSearch) || this.shortcutSearch.isEmpty()
+                return this.shortcutSearch.isEmpty() || item.shortcut.contains(this.shortcutSearch)
             })
         }
     },
@@ -254,6 +256,7 @@ export default {
                 name: config.name,
                 desc: config.desc,
                 necessary: config.necessary,
+                combiningKeyAlone: config.combiningKeyAlone,
                 paramDesc: config.param,
 
                 // use deep copy of settings

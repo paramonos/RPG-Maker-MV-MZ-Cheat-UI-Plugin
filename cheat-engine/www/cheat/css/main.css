@@ -25,17 +25,43 @@ body::-webkit-scrollbar {
     opacity: 1;
 }
 
-.v-dialog__content--active {
-    z-index: 999 !important;
-}
-
-.v-overlay--active {
-    z-index: 998 !important;
-}
-
 .x-small-field .v-input__control {
     height: 24px !important;
     min-height: 24px !important;
+}
+
+/* z-index */
+.z-index-cheat-0 {
+    z-index: 1001 !important;
+}
+
+.z-index-cheat-1 {
+    z-index: 1010 !important;;
+}
+
+.z-index-cheat-2 {
+    z-index: 1020 !important;;
+}
+
+.z-index-cheat-3 {
+    z-index: 1030 !important;;
+}
+
+.z-index-cheat-4 {
+    z-index: 1040 !important;;
+}
+
+/* css for vuetify components */
+.v-dialog__content--active {
+    z-index: 1003 !important;
+}
+
+.v-overlay--active {
+    z-index: 1002 !important;
+}
+
+.v-snack__wrapper {
+    z-index: 1011 !important;
 }
 
 /*.x-small-field .v-input__control {*/

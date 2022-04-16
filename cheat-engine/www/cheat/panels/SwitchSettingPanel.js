@@ -114,7 +114,7 @@ export default {
     computed: {
         filteredTableItems () {
             return this.tableItems.filter(item => {
-                if (item.id === 0 || (this.excludeNameless && !item.name)) {
+                if (item.id === 0 || (this.excludeNameless && !item.name) || (!this.tableItemFilter(item.name, this.search, item))) {
                     return false
                 }
 
@@ -124,7 +124,6 @@ export default {
 
         allSwitchOn () {
             const hasTurnOff = this.filteredTableItems.find((item) => item.value === false)
-
             return !!!hasTurnOff
         },
 
@@ -169,7 +168,7 @@ export default {
                 return true
             }
 
-            return item.name.contains(search)
+            return item.name.toLowerCase().contains(search.toLowerCase())
         },
 
         toggleAllSwitches () {

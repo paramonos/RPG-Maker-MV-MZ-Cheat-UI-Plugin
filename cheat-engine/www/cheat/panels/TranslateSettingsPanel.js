@@ -8,7 +8,7 @@ export default {
 <v-card flat class="ma-0 pa-0">
     <v-card-subtitle class="pb-0">Usage</v-card-subtitle>
     <v-card-text class="pb-0">
-        <a href="https://github.com/HelloKS/ezTransWeb">ezTransWeb</a> must be running before translation.
+        <a href="https://github.com/HelloKS/ezTransWeb" target="_blank">ezTransWeb</a> must be running before translation.
     </v-card-text>
     <v-card-text class="py-0" :class="translatorStatusColor + '--text'">
         {{translatorStatusMessage}}
