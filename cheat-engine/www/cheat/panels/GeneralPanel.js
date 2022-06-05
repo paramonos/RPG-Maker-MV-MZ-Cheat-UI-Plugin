@@ -7,7 +7,7 @@ export default {
 <v-card 
     class="ma-0 pa-0"
     flat>
-    <v-card-subtitle class="pb-0">Edit</v-card-subtitle>
+    <v-card-subtitle class="pb-0 font-weight-bold">Edit</v-card-subtitle>
     
     <v-card-text 
         class="py-0">
@@ -42,7 +42,7 @@ export default {
             hide-details
             @change="onSpeedChange">
             <template v-slot:prepend>
-                <span class="grey--text text--lighten-1 align-self-center mr-2">Speed</span>
+                <span class="grey--text text--lighten-1 align-self-center mr-2 body-2" style="white-space: nowrap;">Move Speed</span>
                 <v-icon color="grey lighten-3" @click="addSpeed(-stepSpeed)">mdi-chevron-left</v-icon>
             </template>
             <template v-slot:append>
@@ -70,12 +70,13 @@ export default {
             hide-details
             @change="onGameSpeedChange">
             <template v-slot:prepend>
-                <span class="grey--text text--lighten-1 align-self-center mr-2 d-inline-block" style="white-space: nowrap;">Game Speed</span>
+                <span class="grey--text text--lighten-1 align-self-center mr-2 d-inline-block body-2" style="white-space: nowrap;">Game Speed</span>
                 <v-icon color="grey lighten-3" @click="addGameSpeed(-stepGameSpeed)">mdi-chevron-left</v-icon>
             </template>
             <template v-slot:append>
                 <v-icon color="grey lighten-3" @click="addGameSpeed(stepGameSpeed)">mdi-chevron-right</v-icon>
-                <span class="grey--text text--lighten-1 align-self-center ml-2">x{{gameSpeed.toFixed(1)}}</span>
+                <span class="grey--text text--lighten-1 align-self-center ml-2 mr-2">x{{gameSpeed.toFixed(1)}}</span>
+                <v-icon size="16" color="grey lighten-3 ml-2" @click="setGameSpeed(1)">mdi-restore</v-icon>
             </template>
         </v-slider>
         
@@ -89,7 +90,7 @@ export default {
         </v-checkbox>
         <v-checkbox
             v-model="applyBattleForGameSpeed"
-            class="d-inline-flex ml-2 pt-0"
+            class="d-inline-flex ml-2 pt-0 mb-0"
             hide-details
             dense
             label="Battle"
@@ -97,10 +98,11 @@ export default {
         </v-checkbox>
     </v-card-text>
     
-    <v-card-subtitle class="mt-3">Quick Actions</v-card-subtitle>
+    <v-card-subtitle class="mt-3 font-weight-bold">Quick Actions</v-card-subtitle>
     
     <v-card-text class="py-0">
         <v-btn
+            small
             @click="gotoTitle">
             To Title
         </v-btn>
@@ -108,11 +110,13 @@ export default {
     
     <v-card-text>
         <v-btn 
+            small
             class="mr-1"
             @click="toggleSaveScene">
             Open Save
         </v-btn>
         <v-btn
+            small
             @click="toggleLoadScene">
             Open Load
         </v-btn>
@@ -189,10 +193,7 @@ export default {
 
         onSpeedChange () {
             SpeedCheat.setSpeed(this.speed, this.fixSpeed)
-
-            if (!this.fixSpeed) {
-                SpeedCheat.removeFixSpeedInterval()
-            }
+            SpeedCheat.__writeSettings(this.speed, this.fixSpeed)
             this.initializeVariables()
         },
 
@@ -239,11 +240,17 @@ export default {
             }
 
             GameSpeedCheat.setGameSpeed(this.gameSpeed, sceneOption)
+            GameSpeedCheat.__writeSettings(this.gameSpeed, sceneOption)
             this.initializeVariables()
         },
 
         addGameSpeed (amount) {
             this.gameSpeed = Math.min(Math.max(this.gameSpeed + amount, this.minGameSpeed), this.maxGameSpeed)
+            this.onGameSpeedChange()
+        },
+
+        setGameSpeed (amount) {
+            this.gameSpeed = 1
             this.onGameSpeedChange()
         },
 

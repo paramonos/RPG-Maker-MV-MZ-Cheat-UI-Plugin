@@ -80,7 +80,10 @@ const defaultShortcutSettings = {
     },
 
     skipMessage: {
-        shortcut: ''
+        shortcut: '',
+        param: {
+            accelerate: 1
+        }
     },
 
     openDevTool: {
@@ -278,8 +281,20 @@ const shortcutConfig = {
         name: 'Skip Message',
         desc: '',
         combiningKeyAlone: true,
+        param: {
+            accelerate: {
+                name: 'Accelerate game speed',
+                desc: 'Accelerate game speed while skipping message',
+                isInvalidValue (value) {
+                    return isInValueInRange(value, 1, 50)
+                },
+                convertValue (value) {
+                    return Number(value)
+                }
+            }
+        },
         enterAction (param) {
-            MessageCheat.startSkip()
+            MessageCheat.startSkip(param.accelerate)
         },
 
         leaveAction (param) {

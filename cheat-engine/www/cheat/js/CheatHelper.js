@@ -1,4 +1,5 @@
 import {Alert} from './AlertHelper.js'
+import {KeyValueStorage} from './KeyValueStorage.js'
 
 export class GeneralCheat {
     // static saveCheatSettings () {
@@ -252,6 +253,10 @@ export class GameSpeedCheat {
             this.origin_Spriteset_Base_update = Spriteset_Base.prototype.update
         }
 
+        if (!sceneOption) {
+            sceneOption = GameSpeedCheat.sceneOptions().all
+        }
+
         this.rate = rate
         this.sceneOption = sceneOption
 
@@ -290,23 +295,30 @@ export class GameSpeedCheat {
             }
         }
 
-        // const Scene_Map_update = this.origin_Scene_Map_update
-        // let currentSceneMapUpdate = 0
-        // Scene_Map.prototype.update = function () {
-        //     for (let i = 0; i < Math.floor(rate); ++i) {
-        //         Scene_Map_update.call(this)
-        //     }
-        // }
-        //
-        // const Spriteset_Base_update = this.origin_Spriteset_Base_update
-        // let currentSpritestUpdate = 0
-        // Spriteset_Base.prototype.update = function () {
-        //     for (let i = 0; i < Math.floor(rate); ++i) {
-        //         Spriteset_Base_update.call(this)
-        //     }
-        // }
-
         this.isApplied = true
+    }
+
+    static __writeSettings (rate, sceneOption) {
+        const options = GameSpeedCheat.sceneOptions()
+        const sceneOptionKey = Object.keys(GameSpeedCheat.sceneOptions()).find(key => options[key] === sceneOption)
+
+        const storage = new KeyValueStorage('./www/cheat-settings/gameSpeed.json')
+
+        storage.setItem('data', JSON.stringify({ rate: rate, sceneOption: sceneOptionKey }))
+    }
+
+    static __readSettings () {
+        const storage = new KeyValueStorage('./www/cheat-settings/gameSpeed.json')
+
+        const json = storage.getItem('data')
+
+        if (!json) {
+            return
+        }
+
+        const data = JSON.parse(json)
+
+        GameSpeedCheat.setGameSpeed(data.rate, GameSpeedCheat.sceneOptions()[data.sceneOption])
     }
 }
 
@@ -323,7 +335,7 @@ export class SpeedCheat {
         }
 
         SpeedCheat.fixed = setInterval(() => {
-            SpeedCheat.setSpeed(speed, false)
+            SpeedCheat.__setSpeed(speed, false)
         }, 1000)
     }
 
@@ -334,11 +346,39 @@ export class SpeedCheat {
         }
     }
 
-    static setSpeed (speed, fixed = false) {
+    static __setSpeed(speed) {
         $gamePlayer.setMoveSpeed(speed)
+    }
+
+    static setSpeed (speed, fixed = false) {
+        SpeedCheat.__setSpeed(speed)
 
         if (fixed) {
             SpeedCheat.setFixSpeedInterval(speed)
+        } else {
+            SpeedCheat.removeFixSpeedInterval()
+        }
+    }
+
+    static __writeSettings (speed, fixed) {
+        const storage = new KeyValueStorage('./www/cheat-settings/speed.json')
+
+        storage.setItem('data', JSON.stringify({ speed: speed, fixed: fixed }))
+    }
+
+    static __readSettings () {
+        const storage = new KeyValueStorage('./www/cheat-settings/speed.json')
+
+        const json = storage.getItem('data')
+
+        if (!json) {
+            return
+        }
+
+        const data = JSON.parse(json)
+
+        if (data.fixed) {
+            SpeedCheat.setSpeed(data.speed, data.fixed)
         }
     }
 }
@@ -579,12 +619,64 @@ export class MessageCheat {
         };
     }
 
-    static startSkip () {
+    static startSkip (gameSpeed) {
+        if (gameSpeed === 1) {
+            this.gameSpeedBackup = null
+        } else {
+            this.gameSpeedBackup = {
+                rate: GameSpeedCheat.getRate(),
+                sceneOption: GameSpeedCheat.getSceneOption()
+            }
+
+            GameSpeedCheat.setGameSpeed(gameSpeed, GameSpeedCheat.sceneOptions().all)
+        }
+
         this.skip = true
     }
 
     static stopSkip () {
+        if (this.gameSpeedBackup) {
+            // restore game speed
+            GameSpeedCheat.setGameSpeed(this.gameSpeedBackup.rate, this.gameSpeedBackup.sceneOption)
+            this.gameSpeedBackup = null
+        }
+
         this.skip = false
     }
 }
 
+
+async function multiRetryAction (action, intervalTimeout, maxTryCount) {
+    let finished = false
+    let tryCount = 0
+
+    const interval = setInterval(() => {
+        try {
+            ++tryCount
+            action()
+            finished = true
+        } catch (e) {
+            console.log(e)
+            if (tryCount < maxTryCount) {
+                // try again
+                return
+            }
+        }
+
+        clearInterval(interval)
+    }, intervalTimeout)
+}
+
+function initialize () {
+    const intervalTimeout = 500
+    const maxTryCount = 100
+
+    const initializeActions = [
+        SpeedCheat.__readSettings,
+        GameSpeedCheat.__readSettings
+    ]
+
+    const intervals = initializeActions.forEach(action => multiRetryAction(action, intervalTimeout, maxTryCount))
+}
+
+initialize()
