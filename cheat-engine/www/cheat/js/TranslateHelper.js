@@ -48,7 +48,8 @@ class Translator {
         if (epData.method === 'get') {
             return (await axios.get(realUrl)).data
         } else if (epData.method === 'post') {
-
+            const body = epData.body ? epData.body : ''
+            return (await axios.post(realUrl, body.replaceAll(END_POINT_URL_PATTERN_TEXT_SYMBOL, text))).data
         }
 
         return text
