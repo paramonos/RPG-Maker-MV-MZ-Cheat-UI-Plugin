@@ -125,3 +125,6 @@
 동시에 번역할 텍스트가 너무 많은 경우 번역이 안 되거나, 번역 서버가 강제종료 될 수 있습니다.
 
 이런 경우 Translate - Bulk translate 쪽에서 동시에 번역하는 문장 수를 줄여보세요.
+
+
+<img src="https://user-images.githubusercontent.com/99193603/172104076-6345c991-9844-4b97-bf65-3aa613f715e4.png" width="500"/>
