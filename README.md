@@ -1,4 +1,14 @@
-[TOC]
+- [RPG-Maker-MV-MZ-Cheat-UI-Plugin](#rpg-maker-mv-mz-cheat-ui-plugin)
+- [Intro](#intro)
+  * [UI Sample](#ui-sample)
+  * [Features](#features)
+- [Set up](#set-up)
+  * [How to apply](#how-to-apply)
+  * [How to use](#how-to-use)
+  * [Apply same cheat settings from another game](#apply-same-cheat-settings-from-another-game)
+- [Handling Errors](#handling-errors)
+  * [If embeded nwjs version of game is lower than 0.26.4](#if-embeded-nwjs-version-of-game-is-lower-than-0264)
+  * [If the error occurs after updating the cheat](#if-the-error-occurs-after-updating-the-cheat)
 
 
 
