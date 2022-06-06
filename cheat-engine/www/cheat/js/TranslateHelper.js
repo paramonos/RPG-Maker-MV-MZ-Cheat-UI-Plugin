@@ -9,7 +9,7 @@ export const DEFAULT_END_POINTS = {
         helpUrl: 'https://github.com/HelloKS/ezTransWeb',
         data: {
             method: 'get',
-            urlPattern: `http://localhost:5000/translate?text=${END_POINT_URL_PATTERN_TEXT_SYMBOL}`,
+            urlPattern: `http://localhost:5000/translate?text=${END_POINT_URL_PATTERN_TEXT_SYMBOL}`
         }
     },
 
@@ -18,8 +18,9 @@ export const DEFAULT_END_POINTS = {
         name: 'eztrans-server (JP → KR)',
         helpUrl: 'https://github.com/nanikit/eztrans-server',
         data: {
-            method: 'get',
-            urlPattern: `http://localhost:8000?text=${END_POINT_URL_PATTERN_TEXT_SYMBOL}`
+            method: 'post',
+            urlPattern: `http://localhost:8000`,
+            body: END_POINT_URL_PATTERN_TEXT_SYMBOL
         }
     }
 }
