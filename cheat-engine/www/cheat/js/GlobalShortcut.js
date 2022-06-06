@@ -91,7 +91,7 @@ const defaultShortcutSettings = {
     }
 }
 
-function isInValueInRange(value, lowerBound, upperBound) {
+export function isInValueInRange(value, lowerBound, upperBound) {
     try {
         value = Number(value)
     } catch (err) {

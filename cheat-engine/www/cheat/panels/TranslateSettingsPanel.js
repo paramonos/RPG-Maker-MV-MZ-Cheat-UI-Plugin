@@ -1,5 +1,7 @@
-import {TRANSLATE_SETTINGS, DEFAULT_END_POINTS} from '../js/TranslateHelper.js'
+import {TRANSLATE_SETTINGS, DEFAULT_END_POINTS, RECOMMEND_CHUNK_SIZE} from '../js/TranslateHelper.js'
 import {TRANSLATOR} from '../js/TranslateHelper.js'
+import {isInValueInRange} from '../js/GlobalShortcut.js';
+import {Alert} from '../js/AlertHelper.js'
 
 export default {
     name: 'TranslateSettingsPanel',
@@ -118,6 +120,26 @@ export default {
             @change="onChangeCustomEndPointBody">
         </v-textarea>
     </v-card-text>
+    
+    
+    <v-card-subtitle class="pb-0 mt-4 font-weight-bold">Bulk translate</v-card-subtitle>
+    <v-card-text class="py-0 mt-1">
+        <v-text-field
+            class="body-2"
+            v-model="bulkTranslateChunkSize"
+            dense
+            hide-details
+            label="Chunk size"
+            background-color="grey darken-3"
+            solo
+            :disabled="!enabled"
+            @keydown.self.stop
+            @change="onChnageBulkTranslateChunkSize">
+        </v-text-field>
+        <span class="caption grey--text">Number of sentences to be translated simultaneously.</span><br/>
+        <span class="caption grey--text">If the translation doesn't work properly, try reducing the size.</span><br/>
+        <span v-if="recommendChunkSizeDesc" class="caption font-weight-bold teal--text">{{recommendChunkSizeDesc}}</span>
+    </v-card-text>
 
     
     <v-card-subtitle class="pb-0 mt-4 font-weight-bold">Targets</v-card-subtitle>
@@ -189,7 +211,9 @@ export default {
                 }
             ],
 
-            customEndPointData: {}
+            customEndPointData: {},
+
+            bulkTranslateChunkSize: 500
         }
     },
 
@@ -236,6 +260,14 @@ export default {
 
         selectedDefaultEndPoint () {
             return DEFAULT_END_POINTS[this.endPointSelection]
+        },
+
+        recommendChunkSizeDesc () {
+            if (this.isCustomEndPoint || !RECOMMEND_CHUNK_SIZE[this.endPointSelection]) {
+                return null
+            }
+
+            return `Recommended chunk size for ${this.selectedDefaultEndPoint.name} : ${RECOMMEND_CHUNK_SIZE[this.endPointSelection]}`
         }
     },
 
@@ -247,6 +279,7 @@ export default {
             this.customEndPointData = TRANSLATE_SETTINGS.getCustomEndPointData()
 
             this.targets = TRANSLATE_SETTINGS.getTargets()
+            this.bulkTranslateChunkSize = TRANSLATE_SETTINGS.getBulkTranslateChunkSize()
 
             this.checkTranslatorAvailable()
         },
@@ -290,6 +323,18 @@ export default {
         onChangeCustomEndPointBody () {
             TRANSLATE_SETTINGS.setCustomEndPointBody(this.customEndPointData.body)
             this.checkTranslatorAvailable()
+        },
+
+        onChnageBulkTranslateChunkSize () {
+            const validateMsg = isInValueInRange(this.bulkTranslateChunkSize, 1, 2000)
+
+            if (validateMsg) {
+                Alert.error(validateMsg)
+                this.bulkTranslateChunkSize = 500
+                return
+            }
+
+            TRANSLATE_SETTINGS.setBulkTranslateChunkSize(Number(this.bulkTranslateChunkSize))
         }
     }
 }

@@ -24,6 +24,11 @@ export const DEFAULT_END_POINTS = {
     }
 }
 
+export const RECOMMEND_CHUNK_SIZE = {
+    ezTransWeb: 500,
+    ezTransServer: 100
+}
+
 
 class Translator {
     constructor (settings) {
@@ -43,13 +48,13 @@ class Translator {
     async __translate (text) {
         const epData = this.settings.getEndPointData()
 
-        const realUrl = epData.urlPattern.replaceAll(END_POINT_URL_PATTERN_TEXT_SYMBOL, encodeURI(text))
+        const realUrl = epData.urlPattern.replace(END_POINT_URL_PATTERN_TEXT_SYMBOL, encodeURI(text))
 
         if (epData.method === 'get') {
             return (await axios.get(realUrl)).data
         } else if (epData.method === 'post') {
             const body = epData.body ? epData.body : ''
-            return (await axios.post(realUrl, body.replaceAll(END_POINT_URL_PATTERN_TEXT_SYMBOL, text))).data
+            return (await axios.post(realUrl, body.replace(END_POINT_URL_PATTERN_TEXT_SYMBOL, text))).data
         }
 
         return text
@@ -67,18 +72,31 @@ class Translator {
         }
     }
 
+    // async translateBulk (texts) {
+    //     texts = texts.map(text => text.replace('\n', ''))
+    //
+    //     const chunkSize = 100
+    //     const textsChunk = []
+    //
+    //     for (let i = 0; i < texts.length; i += chunkSize) {
+    //         textsChunk.push(texts.slice(i, Math.min(texts.length, i + chunkSize)))
+    //     }
+    //
+    //     const ret = [].concat(...await Promise.all(textsChunk.map(chunk => this.__translateBulk(chunk))))
+    //     return ret
+    // }
+
     async translateBulk (texts) {
         texts = texts.map(text => text.replace('\n', ''))
 
-        const chunkSize = 300
+        const chunkSize = this.settings.getBulkTranslateChunkSize()
         const textsChunk = []
 
         for (let i = 0; i < texts.length; i += chunkSize) {
-            textsChunk.push(texts.slice(i, Math.min(texts.length, i + chunkSize)))
+            textsChunk.push(await this.__translateBulk(texts.slice(i, Math.min(texts.length, i + chunkSize))))
         }
 
-        const ret = [].concat(...await Promise.all(textsChunk.map(chunk => this.__translateBulk(chunk))))
-        return ret
+        return [].concat(...textsChunk)
     }
 }
 
@@ -109,7 +127,9 @@ class TranslateSettings {
                     variables: true,
                     switches: true,
                     maps: true,
-                }
+                },
+
+                bulkTranslateChunkSize: 500
             }
             return
         }
@@ -164,6 +184,15 @@ class TranslateSettings {
 
     setCustomEndPointBody (body) {
         this.data.customEndPointData.body = body
+        this.__writeSettings()
+    }
+
+    getBulkTranslateChunkSize() {
+        return this.data.bulkTranslateChunkSize
+    }
+
+    setBulkTranslateChunkSize (chunkSize) {
+        this.data.bulkTranslateChunkSize = chunkSize
         this.__writeSettings()
     }
 
