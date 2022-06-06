@@ -199,7 +199,7 @@ export class Key {
         return new Key(UNASSIGNED_KEY_CODE,
             e.keyCode === 17 || e.ctrlKey,
             e.keyCode === 18 || e.altKey,
-            e.keyCode === 16 || e.altKey,
+            e.keyCode === 16 || e.shiftKey,
             e.keyCode === 91 || e.metaKey)
     }
 
@@ -283,6 +283,13 @@ export class Key {
         }
 
         return ret
+    }
+
+    adjustCombiningKey (e) {
+        this.ctrl = e.ctrlKey
+        this.alt = e.altKey
+        this.shift = e.shiftKey
+        this.meta = e.metaKey
     }
 
     add (keyCode) {

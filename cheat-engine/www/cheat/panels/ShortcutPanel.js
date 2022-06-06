@@ -104,10 +104,10 @@ export default {
             </v-btn>
         </template>
         <template v-slot:expanded-item="{ headers, item }">
-            <td :colspan="headers.length">
+            <td :colspan="headers.length" class="ma-0 pa-0">
                 <v-card 
                     flat
-                    class="ma-0 py-2"
+                    class="ma-0 py-2 px-0"
                     v-if="Object.keys(item.paramDesc).length > 0">
                     <v-card-subtitle
                         class="py-0 mb-1">

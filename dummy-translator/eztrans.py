@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 from flask import Flask, request
 import re
+import random
+import time
 
 app = Flask(__name__)
 
@@ -23,6 +25,8 @@ def home():
 
 @app.route("/translate")
 def webtranslate():
+    wait = random.random() * 3
+    time.sleep(wait)
     src_text = request.args.get('text')
     return encode_text('T: ' + decode_text(src_text))
 

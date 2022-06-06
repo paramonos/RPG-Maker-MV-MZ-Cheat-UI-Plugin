@@ -80,10 +80,10 @@ export default {
             } else {
                 GLOBAL_SHORTCUT.runKeyLeaveEvent(e, Key.fromKey(this.currentKey))
                 this.currentKey.add(e.keyCode)
+                this.currentKey.adjustCombiningKey(e)
                 GLOBAL_SHORTCUT.runKeyEnterEvent(e, Key.fromKey(this.currentKey))
             }
         },
-
 
         onGlobalKeyUp (e) {
             GLOBAL_SHORTCUT.runKeyLeaveEvent(e, Key.fromKey(this.currentKey))
