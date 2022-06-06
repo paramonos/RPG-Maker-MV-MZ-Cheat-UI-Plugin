@@ -1,6 +1,15 @@
+[TOC]
+
+
+
 # RPG-Maker-MV-MZ-Cheat-UI-Plugin
+
 - GUI based RPG Maker MV/MZ game cheat tool
 - [한국어 도움말](https://github.com/paramonos/RPG-Maker-MV-MZ-Cheat-UI-Plugin/blob/main/README_ko-kr.md)
+
+
+
+# Intro
 
 
 ## UI Sample
@@ -30,6 +39,10 @@
 - **Maybe more features..?**
 
 
+
+# Set up
+
+
 ## How to apply 
 1. Unpack game if needed.
 2. Download latest version of `rpg-{mv|mz}-cheat-{version}.zip` from **[releases](https://github.com/paramonos/RPG-Maker-MV-Cheat-UI-Plugin/releases)** and unzip.
@@ -42,15 +55,6 @@
       <br/><img src="https://user-images.githubusercontent.com/99193603/155840462-028771ef-580c-4b45-969a-85f26329fef0.png" width="500"/>
 
 
-### If embeded nwjs version of game is lower than 0.26.4
-- Cheats may not work properly in older versions of the game since the script is based on es6.
-- In that case, you need to force update to the new nwjs version.
-
-1. Download latest version of [nwjs](https://dl.nwjs.io/v0.61.0/) and unzip. (`{version}/nwjs-symbol-v{version}-win-{ia32|x64}.7z`)
-    - If you need developer tools, download the sdk version.
-2. Copy `www` directory and `package.json` file from the game directory to nwjs directory.
-    - <img src="https://user-images.githubusercontent.com/99193603/153755660-25da5b48-b542-443e-bd38-2e3e95e13a63.JPG" width="500"/>
-3. Run `nw.exe` and play game.
 
 
 ## How to use
@@ -61,3 +65,40 @@
     
     - <img src="https://user-images.githubusercontent.com/99193603/153754676-cee2b96e-c03a-491f-b71c-3c57d6dcc474.JPG" width="400"/>
 - Just enjoy cheat!
+
+
+
+## Apply same cheat settings from another game
+
+If you want to apply same shortcut keys, move speed, game speed, translation, etc... settings from another game,
+
+Just copy the `www/cheat-settings` folder of the game that already has settings applied to the other game folder.
+
+
+
+# Handling Errors 
+
+## If embeded nwjs version of game is lower than 0.26.4
+
+- Cheats may not work properly in older versions of the game since the script is based on es6.
+- In that case, you need to force update to the new nwjs version.
+
+1. Download latest version of [nwjs](https://dl.nwjs.io/v0.61.0/) and unzip. (`{version}/nwjs-symbol-v{version}-win-{ia32|x64}.7z`)
+   - If you need developer tools, download the sdk version.
+2. Copy `www` directory and `package.json` file from the game directory to nwjs directory.
+   - <img src="https://user-images.githubusercontent.com/99193603/153755660-25da5b48-b542-443e-bd38-2e3e95e13a63.JPG" width="500"/>
+3. Run `nw.exe` and play game.
+
+
+
+> If the game does not work properly after the nwjs update, cheats cannot be applied to the game.
+>
+> - In this case, please use [another cheat](https://github.com/emerladCoder/RPG-Maker-MV-Cheat-Menu-Plugin).
+
+
+
+## If the error occurs after updating the cheat
+
+Settings files created from earlier versions of cheats may cause errors.
+
+Delete the `www/cheat-settings` folder from the game folder.
