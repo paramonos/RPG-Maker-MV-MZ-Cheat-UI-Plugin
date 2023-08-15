@@ -59,7 +59,7 @@ export default {
                 style="width: 60px;"
                 hide-details
                 solo
-                v-model="item.amount"
+                v-model.number="item.amount"
                 label="Amount"
                 dense
                 @keydown.self.stop

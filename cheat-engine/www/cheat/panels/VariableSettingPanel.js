@@ -143,7 +143,10 @@ export default {
 
         onItemChange (item) {
             // modify value
-            $gameVariables.setValue(item.id, item.value)
+            // if the field was a number, make sure we're able to change it to a number
+            // if we don't do this we will set number vars to strings, causing addition to be interpreted as string concatenation
+            // we can't just change the template's model to number because some variables really are strings
+            $gameVariables.setValue(item.id, Number.isNaN(item.value) ? item.value : Number.parseFloat(item.value))
 
             // refresh
             item.value = $gameVariables.value(item.id)

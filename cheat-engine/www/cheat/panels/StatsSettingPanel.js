@@ -55,7 +55,7 @@ export default {
                     <v-col>
                         <v-text-field
                             label="Lv"
-                            v-model="actor.level"
+                            v-model.number="actor.level"
                             outlined
                             dense
                             hide-details
@@ -66,7 +66,7 @@ export default {
                     <v-col>
                         <v-text-field
                             label="EXP"
-                            v-model="actor.exp"
+                            v-model.number="actor.exp"
                             outlined
                             dense
                             hide-details
@@ -85,7 +85,7 @@ export default {
                         md="6">
                         <v-text-field
                             :label="paramNames[paramIdx]"
-                            v-model="actor.param[paramIdx]"
+                            v-model.number="actor.param[paramIdx]"
                             outlined
                             dense
                             hide-details
