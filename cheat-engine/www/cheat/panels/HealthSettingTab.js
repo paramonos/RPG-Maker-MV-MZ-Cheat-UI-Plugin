@@ -21,7 +21,7 @@ export default {
                 style="width: 50px;"
                 hide-details
                 solo
-                v-model="item.hp.hp"
+                v-model.number="item.hp.hp"
                 label="Curr Hp"
                 dense
                 @keydown.self.stop
@@ -38,7 +38,7 @@ export default {
                 style="width: 50px;"
                 hide-details
                 solo
-                v-model="item.mp.mp"
+                v-model.number="item.mp.mp"
                 label="Curr Mp"
                 dense
                 @keydown.self.stop

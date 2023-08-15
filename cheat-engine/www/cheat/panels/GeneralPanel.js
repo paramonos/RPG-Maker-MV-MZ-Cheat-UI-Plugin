@@ -20,7 +20,7 @@ export default {
     
     <v-card-text class="py-0">
         <v-text-field
-            v-model="gold"
+            v-model.number="gold"
             label="Gold"
             outlined
             dense
