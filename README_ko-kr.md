@@ -64,20 +64,20 @@
 
 
 
-## 변수, 스위치 맵 번역 기능 사용을 위한 설정
-
-- 로컬에서 번역 서버가 실행중이어야 합니다.
-- 제대로 번역 서버가 실행이 된 경우 치트 툴 "Translate" 탭에서 초록색 글자로 확인 가능합니다.
-  <img src="https://user-images.githubusercontent.com/99193603/172051828-679dec01-2352-4ea5-ba3f-a4ead6f34cae.png" width="500"/>
-
-
-
 ## 사용 방법
 
 - 기본 설정으로 `Ctrl + C` 입력 시 치트 창이 나타납니다.
     - "Shortcuts" 탭에서 해당 키 설정을 바꿀 수 있습니다.
     - 치트 창에 마우스를 올리지 않은 경우 좀 투명하기 때문에 잘 안 보일 수 있습니다. (게임 창의 우측 상단에 나타납니다)
     - <img src="https://user-images.githubusercontent.com/99193603/153754676-cee2b96e-c03a-491f-b71c-3c57d6dcc474.JPG" width="400"/>
+
+
+
+## 변수, 스위치 맵 번역 기능 사용을 위한 설정
+
+- 로컬에서 번역 서버가 실행중이어야 합니다.
+- 제대로 번역 서버가 실행이 된 경우 치트 툴 "Translate" 탭에서 초록색 글자로 확인 가능합니다.
+  <img src="https://user-images.githubusercontent.com/99193603/172051828-679dec01-2352-4ea5-ba3f-a4ead6f34cae.png" width="500"/>
 
 
 
@@ -128,3 +128,20 @@
 
 
 <img src="https://user-images.githubusercontent.com/99193603/172104076-6345c991-9844-4b97-bf65-3aa613f715e4.png" width="500"/>
+
+
+
+## MZ 에 치트 적용이 잘 안 될 경우
+
+`js/main.js` 이외의 모든 파일을 게임 폴더에 복사한 후, `js/main.js` 파일에 `"cheat/init/import.js",` 한 줄 추가
+
+```js
+//=============================================================================
+// main.js v1.3.0
+//=============================================================================
+
+const scriptUrls = [
+    "cheat/init/import.js", // 가장 위에 한 줄 추가
+    // ... 나머지는 그대로 유지
+]
+```
