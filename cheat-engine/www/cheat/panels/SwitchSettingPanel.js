@@ -65,7 +65,7 @@ export default {
     
     <v-tooltip
         bottom>
-        <span>Reload from game data</span>
+        <span>Reload switches and translations</span>
         <template v-slot:activator="{ on, attrs }">
             <v-btn
                 style="top: 0px; right: 0px;"
@@ -78,7 +78,7 @@ export default {
                 fab
                 v-bind="attrs"
                 v-on="on"
-                @click="initializeVariables">
+                @click="manualRefresh">
                 <v-icon>mdi-refresh</v-icon>
             </v-btn>
         </template>
@@ -153,6 +153,14 @@ export default {
             }
 
             return rawSwitchNames
+        },
+
+        async manualRefresh () {
+            console.log('🔄 Manual refresh triggered - reloading switches and translations')
+            this.switchNames = []
+            this.tableItems = []
+            await this.initializeVariables()
+            console.log('✅ Switch refresh completed')
         },
 
         onItemChange (item) {

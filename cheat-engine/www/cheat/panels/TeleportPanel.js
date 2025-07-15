@@ -86,6 +86,27 @@ export default {
             </v-tooltip>
         </template>
     </v-data-table>
+
+    <v-tooltip
+        bottom>
+        <span>Reload maps and translations</span>
+        <template v-slot:activator="{ on, attrs }">
+            <v-btn
+                style="top: 0px; right: 0px;"
+                color="pink"
+                dark
+                small
+                absolute
+                top
+                right
+                fab
+                v-bind="attrs"
+                v-on="on"
+                @click="manualRefresh">
+                <v-icon>mdi-refresh</v-icon>
+            </v-btn>
+        </template>
+    </v-tooltip>
 </v-card>
     `,
 
@@ -173,6 +194,13 @@ export default {
             }
 
             this.getMapAncestors($dataMapInfos[id].parentId, path)
+        },
+
+        async manualRefresh () {
+            console.log('🔄 Manual refresh triggered - reloading maps and translations')
+            this.maps = []
+            await this.initializeVariables()
+            console.log('✅ Map refresh completed')
         },
 
         teleportLocation (mapId, x, y) {
