@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="ja" class="no-script">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RPGツクール MV/MZ チートUI</title>
+  <meta name="description" content="RPGツクール MV・MZ のゲーム内で開けるチートウィンドウです。">
+  <link rel="stylesheet" href="intro.css">
+</head>
+<body>
+  <p class="notice"><span class="page-width"><strong>v2 に生まれ変わりました。</strong> ウィンドウも中の機能もすべて作り直しています。 旧バージョンが必要な場合は <a href="https://github.com/paramonos/RPG-Maker-MV-MZ-Cheat-UI-Plugin/blob/v1.0.3/README.md">v1 の README（英語）</a> と <a href="https://github.com/paramonos/RPG-Maker-MV-MZ-Cheat-UI-Plugin/releases/tag/v1.0.3">v1 のファイル</a> をご覧ください。</span></p>
+
+  <header class="top page-width">
+    <span class="product">RPGツクール MV/MZ チートUI</span>
+    <nav class="languages" aria-label="Language">
+        <a href="ko.html" lang="ko">한국어</a>
+        <a href="index.html" lang="en">English</a>
+        <a href="ja.html" lang="ja" aria-current="page">日本語</a>
+        <a href="zh.html" lang="zh-CN">简体中文</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero page-width">
+      <div class="hero-copy">
+        <h1>RPGツクール MV・MZ のゲーム内で開けるチートウィンドウです。</h1>
+        <p class="hero-hint">ゲームと同じように <kbd>C</kbd> を押すと、ウィンドウが開閉します。</p>
+      </div>
+      <button type="button" class="stage is-open" data-stage aria-pressed="true" aria-label="ゲームと同じように C を押すと、ウィンドウが開閉します。">
+        <img src="../images/ja/howto-closed.webp" alt="" width="1632" height="1248">
+        <img class="stage-window" src="../images/ja/hero.webp" alt="ゲームの上に開いたチートウィンドウ。テレポートパネルにミニマップが見える" width="1632" height="1248">
+      </button>
+    </section>
+
+    <section class="install page-width">
+      <h2>はじめかた</h2>
+      <p class="lead">チートの入れ方は 2 通りあります。合うほうを選んでください。</p>
+      <div class="install-options">
+        <div class="install-option">
+          <h3>ブラウザで入れる</h3>
+          <p class="who">ゲームに手軽に入れたいときに。</p>
+          <ol>
+            <li>PC の Chrome か Edge で<a href="https://paramonos.github.io/RPG-Maker-MV-MZ-Cheat-UI-Plugin/">「チートを入れる」ページ</a>を開きます。</li>
+            <li><code>Game.exe</code> があるフォルダーを選ぶか、ページにドラッグします。ブラウザーがフォルダーの変更を確認してきたら許可します。</li>
+            <li>「チートを入れる」を押します。</li>
+            <li>ゲームを起動します。</li>
+          </ol>
+          <ul class="note-list">
+            <li>Program Files の中のゲームはブラウザーが開けません。デスクトップなどに移してから選んでください。</li>
+            <li>変わるファイルは同じフォルダーに先にバックアップするので、同じページで元に戻せます。チートの設定ファイルは元に戻しても残ります。</li>
+            <li>ページは韓国語、英語、日本語、中国語で表示できます。</li>
+          </ul>
+          <img class="patch-shot" src="../images/ja/patch-site.webp" alt="ゲームフォルダーを選ぶボタンがある「チートを入れる」ページ" loading="lazy">
+        </div>
+        <div class="install-option">
+          <h3>アプリで入れる <span class="soon">準備中</span></h3>
+          <p class="who">複数のゲームのパッチを管理し、チート設定もまとめて管理したいときに。</p>
+          <ol>
+            <li>アプリをダウンロードします。</li>
+            <li>ゲームフォルダーを追加します。</li>
+            <li>チートを入れるゲームを選び、チート設定もまとめて適用します。</li>
+          </ol>
+          
+          
+        </div>
+      </div>
+    </section>
+
+    <section class="features page-width">
+      <h2>できること</h2>
+      <div class="feature-browser" data-feature-browser>
+        <div class="feature-tabs" role="tablist" aria-orientation="vertical" aria-label="できること">
+          <button type="button" role="tab" id="tab-palette" aria-controls="panel-palette" aria-selected="true">機能を探す</button>
+          <button type="button" role="tab" id="tab-general" aria-controls="panel-general" aria-selected="false" tabindex="-1">基本のチート</button>
+          <button type="button" role="tab" id="tab-stats" aria-controls="panel-stats" aria-selected="false" tabindex="-1">能力値</button>
+          <button type="button" role="tab" id="tab-shortcuts-speed" aria-controls="panel-shortcuts-speed" aria-selected="false" tabindex="-1">ゲーム速度・メッセージ送り</button>
+          <button type="button" role="tab" id="tab-items" aria-controls="panel-items" aria-selected="false" tabindex="-1">アイテム・装備</button>
+          <button type="button" role="tab" id="tab-switches-search" aria-controls="panel-switches-search" aria-selected="false" tabindex="-1">スイッチ</button>
+          <button type="button" role="tab" id="tab-variables" aria-controls="panel-variables" aria-selected="false" tabindex="-1">変数</button>
+          <button type="button" role="tab" id="tab-teleport" aria-controls="panel-teleport" aria-selected="false" tabindex="-1">テレポート・登録地点</button>
+          <button type="button" role="tab" id="tab-messages" aria-controls="panel-messages" aria-selected="false" tabindex="-1">会話ログ</button>
+          <button type="button" role="tab" id="tab-shortcuts" aria-controls="panel-shortcuts" aria-selected="false" tabindex="-1">ショートカット</button>
+          <button type="button" role="tab" id="tab-translate-examples" aria-controls="panel-translate-examples" aria-selected="false" tabindex="-1">翻訳</button>
+          <button type="button" role="tab" id="tab-languages" aria-controls="panel-languages" aria-selected="false" tabindex="-1">多言語</button>
+        </div>
+        <div class="feature-panels">
+          <div class="feature-panel" role="tabpanel" id="panel-palette" aria-labelledby="tab-palette">
+            <img class="shot" src="../images/ja/palette.webp" alt="「機能を探す」で速度を検索した結果" width="1480" height="1088" loading="lazy">
+            
+            <h3>機能を探す <span class="keys"><kbd>Ctrl</kbd> + <kbd>K</kbd></span></h3>
+            <p>場所を覚えていなくても大丈夫です。名前の一部を入力すれば、パネル、設定、ショートカットまで見つけて、その場所へ案内します。</p>
+          </div>
+          <div class="feature-panel" role="tabpanel" id="panel-general" aria-labelledby="tab-general">
+            <img class="shot" src="../images/ja/general.webp" alt="壁抜け、ゴールド、速度の調整がある一般パネル" width="1480" height="1088" loading="lazy">
+            
+            <h3>基本のチート</h3>
+            <p>壁抜けでどこへでも歩けて、ゴールドや移動速度も好きな値に変えられます。</p>
+          </div>
+          <div class="feature-panel" role="tabpanel" id="panel-stats" aria-labelledby="tab-stats">
+            <img class="shot" src="../images/ja/stats.webp" alt="レベル、経験値、能力値の欄がある能力値パネル" width="1480" height="1088" loading="lazy">
+            
+            <h3>能力値</h3>
+            <p>キャラクターごとにレベル、経験値、能力値を変更できます。無敵やステートの解除、パーティーへの加入・離脱もできます。</p>
+          </div>
+          <div class="feature-panel" role="tabpanel" id="panel-shortcuts-speed" aria-labelledby="tab-shortcuts-speed">
+            <img class="shot" src="../images/ja/shortcuts-speed.webp" alt="ゲーム速度とメッセージ送りのショートカット" width="1480" height="1088" loading="lazy">
+            
+            <h3>ゲーム速度・メッセージ送り <span class="keys"><kbd>S</kbd></span></h3>
+            <p>ゲーム全体の速さを x0.1 から x10 まで変えられます。戦闘中だけ速くすることもできます。<kbd>S</kbd> を押している間はメッセージがどんどん進みます。</p>
+          </div>
+          <div class="feature-panel" role="tabpanel" id="panel-items" aria-labelledby="tab-items">
+            <img class="shot" src="../images/ja/items.webp" alt="検索語で絞り込んだアイテムパネル。各行に個数の欄がある" width="1480" height="1088" loading="lazy">
+            <div class="shots"><button type="button" data-shot="../images/ja/items.webp" aria-pressed="true"><img src="../images/ja/items.webp" alt="" loading="lazy"></button><button type="button" data-shot="../images/ja/weapons.webp" aria-pressed="false"><img src="../images/ja/weapons.webp" alt="" loading="lazy"></button></div>
+            <h3>アイテム・装備</h3>
+            <p>アイテム、武器、防具を名前や説明で検索して、好きな個数を入力できます。</p>
+          </div>
+          <div class="feature-panel" role="tabpanel" id="panel-switches-search" aria-labelledby="tab-switches-search">
+            <img class="shot" src="../images/ja/switches-search.webp" alt="検索語で絞り込んだスイッチパネル" width="1480" height="1088" loading="lazy">
+            <div class="shots"><button type="button" data-shot="../images/ja/switches-search.webp" aria-pressed="true"><img src="../images/ja/switches-search.webp" alt="" loading="lazy"></button><button type="button" data-shot="../images/ja/switches.webp" aria-pressed="false"><img src="../images/ja/switches.webp" alt="" loading="lazy"></button></div>
+            <h3>スイッチ</h3>
+            <p>名前で検索して 1 つずつ切り替えるか、一覧に表示中のものをまとめて切り替えられます。</p>
+          </div>
+          <div class="feature-panel" role="tabpanel" id="panel-variables" aria-labelledby="tab-variables">
+            <img class="shot" src="../images/ja/variables.webp" alt="複合値を開いて種類の違う値が見える変数パネル" width="1480" height="1088" loading="lazy">
+            <div class="shots"><button type="button" data-shot="../images/ja/variables.webp" aria-pressed="true"><img src="../images/ja/variables.webp" alt="" loading="lazy"></button><button type="button" data-shot="../images/ja/variables-json.webp" aria-pressed="false"><img src="../images/ja/variables-json.webp" alt="" loading="lazy"></button></div>
+            <h3>変数</h3>
+            <p>名前で検索して、値の種類を保ったまま編集できます。整数、小数、文字列、真偽、配列、複合値、日付に対応しています。複合値は開いて編集するほか、JSON でも編集できます。</p>
+          </div>
+          <div class="feature-panel" role="tabpanel" id="panel-teleport" aria-labelledby="tab-teleport">
+            <img class="shot" src="../images/ja/teleport.webp" alt="マップ一覧とミニマップがあるテレポートパネル" width="1480" height="1088" loading="lazy">
+            <div class="shots"><button type="button" data-shot="../images/ja/teleport.webp" aria-pressed="true"><img src="../images/ja/teleport.webp" alt="" loading="lazy"></button><button type="button" data-shot="../images/ja/locations.webp" aria-pressed="false"><img src="../images/ja/locations.webp" alt="" loading="lazy"></button></div>
+            <h3>テレポート・登録地点 <span class="keys"><kbd>Ctrl</kbd> + <kbd>T</kbd></span></h3>
+            <p>マップを選んでミニマップのマスをクリックすれば、すぐに移動できます。気に入った場所は登録して、いつでも戻れます。</p>
+          </div>
+          <div class="feature-panel" role="tabpanel" id="panel-messages" aria-labelledby="tab-messages">
+            <img class="shot" src="../images/ja/messages.webp" alt="話者とセリフが並ぶ会話ログパネル" width="1480" height="1088" loading="lazy">
+            
+            <h3>会話ログ <span class="keys"><kbd>H</kbd></span></h3>
+            <p>見逃したセリフはありませんか。過ぎたセリフを読み返したり検索したりできます。</p>
+          </div>
+          <div class="feature-panel" role="tabpanel" id="panel-shortcuts" aria-labelledby="tab-shortcuts">
+            <img class="shot" src="../images/ja/shortcuts.webp" alt="機能とキーが並ぶショートカットパネル" width="1480" height="1088" loading="lazy">
+            
+            <h3>ショートカット</h3>
+            <p>ウィンドウを開かなくても、セーブ、ロード、壁抜け、戦闘勝利などをキー 1 つで使えます。キーは自由に変えられます。</p>
+          </div>
+          <div class="feature-panel" role="tabpanel" id="panel-translate-examples" aria-labelledby="tab-translate-examples">
+            <img class="shot" src="../images/ja/translate-examples.webp" alt="設定の翻訳ツール例の一覧" width="1480" height="1088" loading="lazy">
+            
+            <h3>翻訳</h3>
+            <p>使っている翻訳ツールをつなげます。ezTrans、LM Studio、Ollama、LibreTranslate、DeepL、Google 翻訳、Papago の例が入っていて、ほかの API もアドレスと形式を書けば使えます。ゲーム画面やチートパネルの文字を翻訳し、翻訳結果は保存して使い回します。</p>
+          </div>
+          <div class="feature-panel" role="tabpanel" id="panel-languages" aria-labelledby="tab-languages">
+            <img class="shot" src="../images/ja/languages.webp" alt="韓国語、英語、日本語、中国語で表示したショートカットパネル" width="1480" height="1088" loading="lazy">
+            
+            <h3>多言語</h3>
+            <p>チートウィンドウは韓国語、英語、日本語、中国語（簡体字）で表示できます。設定で選ぶとすぐに切り替わります。</p>
+          </div>
+        </div>
+      </div>
+      <p class="more">ほかにも、戦闘の強制勝利・敗北・逃走、ランダムエンカウントの停止、クイックセーブ・ロード、設定のバックアップがあります。どれもインターネットなしで動きます。</p>
+    </section>
+
+    <section class="usage page-width">
+      <h2>使いかた</h2>
+      <div class="usage-layout">
+        <div>
+          <ol>
+            <li>ゲームを起動して <kbd>C</kbd> を押します。左上にチートウィンドウが開きます。</li>
+            <li>ウィンドウが見えませんか。マウスがほかの場所にあるとウィンドウは薄くなります。ゲームの左上にマウスを乗せると、はっきり表示されます。</li>
+            <li>左のメニューでパネルを選ぶか、<kbd>Ctrl</kbd> + <kbd>K</kbd> を押して探します。</li>
+          </ol>
+          <p class="note">薄くならないようにするには、タイトルバーの目のボタンをオフにします。</p>
+          <p class="note">ゲームの起動時に新しいバージョンを確認して、自動で入れ替えます。設定 &gt; アップデートでオフにできます。</p>
+        </div>
+        <figure class="fade-demo" tabindex="0">
+          <div class="fade-frames">
+            <img src="../images/ja/howto-faded.webp" alt="ゲームの上でほとんど見えないチートウィンドウ" width="1632" height="1248" loading="lazy">
+            <img class="fade-hover" src="../images/ja/howto-hover.webp" alt="マウスを乗せてはっきり見えるチートウィンドウ" width="1632" height="1248" loading="lazy">
+          </div>
+          <figcaption>画像にマウスを乗せると、ウィンドウがまた見えます。</figcaption>
+        </figure>
+      </div>
+      <h3>初期設定のキー</h3>
+      <dl class="key-list">
+        <div><dt><kbd>C</kbd></dt><dd>チートウィンドウの開閉</dd></div>
+        <div><dt><kbd>Esc</kbd></dt><dd>チートウィンドウを閉じる</dd></div>
+        <div><dt><kbd>Ctrl</kbd> + <kbd>K</kbd></dt><dd>機能を探す</dd></div>
+        <div><dt><kbd>Ctrl</kbd> + <kbd>F</kbd></dt><dd>パネル内を検索</dd></div>
+        <div><dt><kbd>H</kbd></dt><dd>会話ログの開閉</dd></div>
+        <div><dt><kbd>Ctrl</kbd> + <kbd>T</kbd></dt><dd>テレポートの開閉</dd></div>
+        <div><dt><kbd>Ctrl</kbd> + <kbd>M</kbd></dt><dd>登録地点の開閉</dd></div>
+        <div><dt><kbd>W</kbd></dt><dd>壁抜けのオン・オフ</dd></div>
+        <div><dt><kbd>S</kbd></dt><dd>メッセージ送り（押している間）</dd></div>
+        <div><dt><kbd>Ctrl</kbd> + <kbd>S</kbd></dt><dd>クイックセーブ</dd></div>
+        <div><dt><kbd>Ctrl</kbd> + <kbd>Q</kbd></dt><dd>クイックロード</dd></div>
+      </dl>
+    </section>
+
+    <section class="nwjs page-width">
+      <h2>ゲームの NW.js が 0.26.4 より古い場合</h2>
+      <p>チートは NW.js 0.26.4 以降で動きます。それより古いと、ゲームの起動時に警告が出て、チートが正しく動かないことがあります。主に古い MV のゲームで起こります。</p>
+      <p>アプリを使えば、ゲームの NW.js を簡単に更新できます。 <span class="soon">準備中</span></p>
+    </section>
+
+    <section class="manual page-width">
+      <h2>手動で入れる</h2>
+      <p class="lead">自分で入れたい場合は、ページやアプリを使わなくても入れられます。</p>
+      <div class="manual-layout">
+        <div>
+          <ol>
+            <li>下の表でゲームのエンジンを確認し、<a href="https://github.com/paramonos/RPG-Maker-MV-MZ-Cheat-UI-Plugin/releases/latest">リリース</a>からその zip をダウンロードします。</li>
+            <li>表のフォルダーに展開します。そこに <code>cheat</code> フォルダーと <code>cheat-version-description.json</code> ができます。</li>
+            <li><code>main.js</code> を別の場所にコピーしてから、下の行を追加します。</li>
+            <li>ゲームを起動して <kbd>C</kbd> を押します。</li>
+          </ol>
+          <div class="manual-table">
+            <table>
+<tr><th></th><th>MV</th><th>MZ</th></tr>
+<tr><th scope="row">このファイルがあれば</th><td><code>www/js/rpg_core.js</code></td><td><code>js/rmmz_core.js</code></td></tr>
+<tr><th scope="row">ダウンロードするファイル</th><td><code>rpg-mv-cheat-{version}.zip</code></td><td><code>rpg-mz-cheat-{version}.zip</code></td></tr>
+<tr><th scope="row">展開先</th><td>ゲームフォルダー内の <code>www</code> フォルダー</td><td>ゲームフォルダー</td></tr>
+<tr><th scope="row">編集するファイル</th><td><code>www/js/main.js</code></td><td><code>js/main.js</code></td></tr>
+</table>
+          </div>
+        </div>
+        <div>
+          <p>MV は <code>PluginManager.setup($plugins);</code> のすぐ次に 2 行追加します。</p>
+          <pre><code>PluginManager.setup($plugins);
+PluginManager._path = 'js/plugins/';
+PluginManager.loadScript('../../cheat/init/import.js');</code></pre>
+          <p>MZ は <code>const scriptUrls = [</code> のすぐ次に 1 行追加します。</p>
+          <pre><code>const scriptUrls = [
+    "cheat/init/import.js",
+    "js/libs/pixi.js",</code></pre>
+        </div>
+      </div>
+      <ul>
+        <li><code>cheat/init/import.js</code> を含む行がすでにある場合は、追加しないでください。</li>
+        <li>フォルダーに <code>main.js</code> がない場合、ゲームが 1 つのファイルにまとめられています。先に展開してください。</li>
+        <li>元に戻すには、コピーしておいた <code>main.js</code> を戻し、<code>cheat</code> フォルダーと <code>cheat-version-description.json</code> を削除します。</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="page-width">
+    <p>MIT ライセンス。 画面は NW.js 0.119.2 で撮影しました。画面内のスイッチと変数の名前は例です。</p>
+  </footer>
+  <script src="intro.js"></script>
+</body>
+</html>

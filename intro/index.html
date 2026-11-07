@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en" class="no-script">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RPG Maker MV/MZ Cheat UI</title>
+  <meta name="description" content="A cheat window that opens right inside your RPG Maker MV and MZ games.">
+  <link rel="stylesheet" href="intro.css">
+</head>
+<body>
+  <p class="notice"><span class="page-width"><strong>v2 is here.</strong> The window and everything in it have been rebuilt from scratch. Need the old version? See the <a href="https://github.com/paramonos/RPG-Maker-MV-MZ-Cheat-UI-Plugin/blob/v1.0.3/README.md">v1 README</a> and <a href="https://github.com/paramonos/RPG-Maker-MV-MZ-Cheat-UI-Plugin/releases/tag/v1.0.3">v1 files</a>.</span></p>
+
+  <header class="top page-width">
+    <span class="product">RPG Maker MV/MZ Cheat UI</span>
+    <nav class="languages" aria-label="Language">
+        <a href="ko.html" lang="ko">한국어</a>
+        <a href="index.html" lang="en" aria-current="page">English</a>
+        <a href="ja.html" lang="ja">日本語</a>
+        <a href="zh.html" lang="zh-CN">简体中文</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero page-width">
+      <div class="hero-copy">
+        <h1>A cheat window that opens right inside your RPG Maker MV and MZ games.</h1>
+        <p class="hero-hint">Press <kbd>C</kbd> to open and close the window, just like in a game.</p>
+      </div>
+      <button type="button" class="stage is-open" data-stage aria-pressed="true" aria-label="Press C to open and close the window, just like in a game.">
+        <img src="../images/en/howto-closed.webp" alt="" width="1632" height="1248">
+        <img class="stage-window" src="../images/en/hero.webp" alt="The cheat window open over a game, showing the Teleport panel with a minimap" width="1632" height="1248">
+      </button>
+    </section>
+
+    <section class="install page-width">
+      <h2>Get started</h2>
+      <p class="lead">There are two ways to add the cheat. Pick the one that suits you.</p>
+      <div class="install-options">
+        <div class="install-option">
+          <h3>In your browser</h3>
+          <p class="who">The quick way to add it to a game.</p>
+          <ol>
+            <li>Open the <a href="https://paramonos.github.io/RPG-Maker-MV-MZ-Cheat-UI-Plugin/">“Add the cheat” page</a> in Chrome or Edge on your PC.</li>
+            <li>Pick the folder with <code>Game.exe</code> in it, or drag it onto the page. If the browser asks to change the folder, allow it.</li>
+            <li>Press Add the cheat.</li>
+            <li>Start the game.</li>
+          </ol>
+          <ul class="note-list">
+            <li>Browsers won’t open games inside Program Files. Move the game somewhere like your desktop, then pick it.</li>
+            <li>Files that change get backed up in the same folder first, and you can undo it on the same page. Your cheat settings file stays after you undo.</li>
+            <li>The page comes in Korean, English, Japanese and Simplified Chinese.</li>
+          </ul>
+          <img class="patch-shot" src="../images/en/patch-site.webp" alt="The “Add the cheat” page with a Pick game folder button" loading="lazy">
+        </div>
+        <div class="install-option">
+          <h3>With the desktop app <span class="soon">Coming soon</span></h3>
+          <p class="who">For patching lots of games and managing your cheat settings along with them.</p>
+          <ol>
+            <li>Download the app.</li>
+            <li>Add your game folders.</li>
+            <li>Pick the games to patch and apply your cheat settings to them.</li>
+          </ol>
+          
+          
+        </div>
+      </div>
+    </section>
+
+    <section class="features page-width">
+      <h2>What it can do</h2>
+      <div class="feature-browser" data-feature-browser>
+        <div class="feature-tabs" role="tablist" aria-orientation="vertical" aria-label="What it can do">
+          <button type="button" role="tab" id="tab-palette" aria-controls="panel-palette" aria-selected="true">Find a feature</button>
+          <button type="button" role="tab" id="tab-general" aria-controls="panel-general" aria-selected="false" tabindex="-1">General cheats</button>
+          <button type="button" role="tab" id="tab-stats" aria-controls="panel-stats" aria-selected="false" tabindex="-1">Stats</button>
+          <button type="button" role="tab" id="tab-shortcuts-speed" aria-controls="panel-shortcuts-speed" aria-selected="false" tabindex="-1">Speed & message skip</button>
+          <button type="button" role="tab" id="tab-items" aria-controls="panel-items" aria-selected="false" tabindex="-1">Items & equipment</button>
+          <button type="button" role="tab" id="tab-switches-search" aria-controls="panel-switches-search" aria-selected="false" tabindex="-1">Switches</button>
+          <button type="button" role="tab" id="tab-variables" aria-controls="panel-variables" aria-selected="false" tabindex="-1">Variables</button>
+          <button type="button" role="tab" id="tab-teleport" aria-controls="panel-teleport" aria-selected="false" tabindex="-1">Teleport & locations</button>
+          <button type="button" role="tab" id="tab-messages" aria-controls="panel-messages" aria-selected="false" tabindex="-1">Message log</button>
+          <button type="button" role="tab" id="tab-shortcuts" aria-controls="panel-shortcuts" aria-selected="false" tabindex="-1">Shortcuts</button>
+          <button type="button" role="tab" id="tab-translate-examples" aria-controls="panel-translate-examples" aria-selected="false" tabindex="-1">Translation</button>
+          <button type="button" role="tab" id="tab-languages" aria-controls="panel-languages" aria-selected="false" tabindex="-1">Four languages</button>
+        </div>
+        <div class="feature-panels">
+          <div class="feature-panel" role="tabpanel" id="panel-palette" aria-labelledby="tab-palette">
+            <img class="shot" src="../images/en/palette.webp" alt="Search results for speed in Find a feature" width="1480" height="1088" loading="lazy">
+            
+            <h3>Find a feature <span class="keys"><kbd>Ctrl</kbd> + <kbd>K</kbd></span></h3>
+            <p>Not sure where something is? Type a few letters and it finds panels, settings and shortcuts, then takes you right there.</p>
+          </div>
+          <div class="feature-panel" role="tabpanel" id="panel-general" aria-labelledby="tab-general">
+            <img class="shot" src="../images/en/general.webp" alt="The General panel with No clip, gold and speed controls" width="1480" height="1088" loading="lazy">
+            
+            <h3>General cheats</h3>
+            <p>Walk through walls with No clip, and set your gold and move speed to whatever you like.</p>
+          </div>
+          <div class="feature-panel" role="tabpanel" id="panel-stats" aria-labelledby="tab-stats">
+            <img class="shot" src="../images/en/stats.webp" alt="The Stats panel with level, EXP and stat fields" width="1480" height="1088" loading="lazy">
+            
+            <h3>Stats</h3>
+            <p>Change level, EXP and stats for each character. You can also turn on God mode, clear status effects, and add or remove party members.</p>
+          </div>
+          <div class="feature-panel" role="tabpanel" id="panel-shortcuts-speed" aria-labelledby="tab-shortcuts-speed">
+            <img class="shot" src="../images/en/shortcuts-speed.webp" alt="Shortcuts for game speed and skipping messages" width="1480" height="1088" loading="lazy">
+            
+            <h3>Game speed and message skip <span class="keys"><kbd>S</kbd></span></h3>
+            <p>Run the whole game anywhere from x0.1 to x10, all the time or only in battle. Hold <kbd>S</kbd> and messages fly by.</p>
+          </div>
+          <div class="feature-panel" role="tabpanel" id="panel-items" aria-labelledby="tab-items">
+            <img class="shot" src="../images/en/items.webp" alt="The Items panel filtered by a search word, with an amount field on each row" width="1480" height="1088" loading="lazy">
+            <div class="shots"><button type="button" data-shot="../images/en/items.webp" aria-pressed="true"><img src="../images/en/items.webp" alt="" loading="lazy"></button><button type="button" data-shot="../images/en/weapons.webp" aria-pressed="false"><img src="../images/en/weapons.webp" alt="" loading="lazy"></button></div>
+            <h3>Items and equipment</h3>
+            <p>Search items, weapons and armor by name or description, then type in how many you want.</p>
+          </div>
+          <div class="feature-panel" role="tabpanel" id="panel-switches-search" aria-labelledby="tab-switches-search">
+            <img class="shot" src="../images/en/switches-search.webp" alt="The Switches panel filtered by a search word" width="1480" height="1088" loading="lazy">
+            <div class="shots"><button type="button" data-shot="../images/en/switches-search.webp" aria-pressed="true"><img src="../images/en/switches-search.webp" alt="" loading="lazy"></button><button type="button" data-shot="../images/en/switches.webp" aria-pressed="false"><img src="../images/en/switches.webp" alt="" loading="lazy"></button></div>
+            <h3>Switches</h3>
+            <p>Find switches by name and flip them one by one, or everything in the list at once.</p>
+          </div>
+          <div class="feature-panel" role="tabpanel" id="panel-variables" aria-labelledby="tab-variables">
+            <img class="shot" src="../images/en/variables.webp" alt="The Variables panel with an object expanded into fields of different types" width="1480" height="1088" loading="lazy">
+            <div class="shots"><button type="button" data-shot="../images/en/variables.webp" aria-pressed="true"><img src="../images/en/variables.webp" alt="" loading="lazy"></button><button type="button" data-shot="../images/en/variables-json.webp" aria-pressed="false"><img src="../images/en/variables-json.webp" alt="" loading="lazy"></button></div>
+            <h3>Variables</h3>
+            <p>Find variables by name and edit them without changing their type. Integers, decimals, text, yes/no, lists, objects and dates all work. Open objects as a tree, or edit them as JSON.</p>
+          </div>
+          <div class="feature-panel" role="tabpanel" id="panel-teleport" aria-labelledby="tab-teleport">
+            <img class="shot" src="../images/en/teleport.webp" alt="The Teleport panel with a map list and a minimap" width="1480" height="1088" loading="lazy">
+            <div class="shots"><button type="button" data-shot="../images/en/teleport.webp" aria-pressed="true"><img src="../images/en/teleport.webp" alt="" loading="lazy"></button><button type="button" data-shot="../images/en/locations.webp" aria-pressed="false"><img src="../images/en/locations.webp" alt="" loading="lazy"></button></div>
+            <h3>Teleport and saved locations <span class="keys"><kbd>Ctrl</kbd> + <kbd>T</kbd></span></h3>
+            <p>Pick a map, click a tile on the minimap and go. Save the spots you like and come back any time.</p>
+          </div>
+          <div class="feature-panel" role="tabpanel" id="panel-messages" aria-labelledby="tab-messages">
+            <img class="shot" src="../images/en/messages.webp" alt="The Message log panel listing past dialogue with speaker names" width="1480" height="1088" loading="lazy">
+            
+            <h3>Message log <span class="keys"><kbd>H</kbd></span></h3>
+            <p>Missed a line? Read and search past dialogue.</p>
+          </div>
+          <div class="feature-panel" role="tabpanel" id="panel-shortcuts" aria-labelledby="tab-shortcuts">
+            <img class="shot" src="../images/en/shortcuts.webp" alt="The Shortcuts panel listing actions and their keys" width="1480" height="1088" loading="lazy">
+            
+            <h3>Shortcuts</h3>
+            <p>Save, load, no clip, win a battle and much more with one key, without opening the window. Change any key to suit you.</p>
+          </div>
+          <div class="feature-panel" role="tabpanel" id="panel-translate-examples" aria-labelledby="tab-translate-examples">
+            <img class="shot" src="../images/en/translate-examples.webp" alt="The translator example list in Settings" width="1480" height="1088" loading="lazy">
+            
+            <h3>Translation</h3>
+            <p>Connect the translator you use. Examples are built in for ezTrans, LM Studio, Ollama, LibreTranslate, DeepL, Google Translate and Papago, and other APIs work once you fill in the address and format. Translate the game screen or just the cheat panels. Results are saved and reused.</p>
+          </div>
+          <div class="feature-panel" role="tabpanel" id="panel-languages" aria-labelledby="tab-languages">
+            <img class="shot" src="../images/en/languages.webp" alt="The Shortcuts panel shown in Korean, English, Japanese and Chinese" width="1480" height="1088" loading="lazy">
+            
+            <h3>Four languages</h3>
+            <p>The cheat window comes in Korean, English, Japanese and Simplified Chinese. Change it in Settings and it switches right away.</p>
+          </div>
+        </div>
+      </div>
+      <p class="more">There’s more in the window: force a battle win, loss or escape, turn off random encounters, quick save and load, and back up your settings. It all runs without an internet connection.</p>
+    </section>
+
+    <section class="usage page-width">
+      <h2>How to use</h2>
+      <div class="usage-layout">
+        <div>
+          <ol>
+            <li>Start the game and press <kbd>C</kbd>. The cheat window opens in the top left.</li>
+            <li>Can’t see it? The window fades while your mouse is elsewhere. Move the mouse over the top left of the game and it comes back.</li>
+            <li>Pick a panel on the left, or press <kbd>Ctrl</kbd> + <kbd>K</kbd> and search.</li>
+          </ol>
+          <p class="note">To stop the fading, turn off the eye button in the title bar.</p>
+          <p class="note">When the game starts, the cheat checks for a new version and updates itself. You can turn this off in Settings &gt; Updates.</p>
+        </div>
+        <figure class="fade-demo" tabindex="0">
+          <div class="fade-frames">
+            <img src="../images/en/howto-faded.webp" alt="The cheat window almost invisible over the game" width="1632" height="1248" loading="lazy">
+            <img class="fade-hover" src="../images/en/howto-hover.webp" alt="The cheat window fully visible with the mouse over it" width="1632" height="1248" loading="lazy">
+          </div>
+          <figcaption>Hover over the picture to bring the window back.</figcaption>
+        </figure>
+      </div>
+      <h3>Default keys</h3>
+      <dl class="key-list">
+        <div><dt><kbd>C</kbd></dt><dd>Open/close cheat window</dd></div>
+        <div><dt><kbd>Esc</kbd></dt><dd>Close cheat window</dd></div>
+        <div><dt><kbd>Ctrl</kbd> + <kbd>K</kbd></dt><dd>Find a feature</dd></div>
+        <div><dt><kbd>Ctrl</kbd> + <kbd>F</kbd></dt><dd>Search this panel</dd></div>
+        <div><dt><kbd>H</kbd></dt><dd>Open/close message log</dd></div>
+        <div><dt><kbd>Ctrl</kbd> + <kbd>T</kbd></dt><dd>Open/close teleport</dd></div>
+        <div><dt><kbd>Ctrl</kbd> + <kbd>M</kbd></dt><dd>Open/close saved locations</dd></div>
+        <div><dt><kbd>W</kbd></dt><dd>Turn no clip on/off</dd></div>
+        <div><dt><kbd>S</kbd></dt><dd>Skip messages (hold)</dd></div>
+        <div><dt><kbd>Ctrl</kbd> + <kbd>S</kbd></dt><dd>Quick save</dd></div>
+        <div><dt><kbd>Ctrl</kbd> + <kbd>Q</kbd></dt><dd>Quick load</dd></div>
+      </dl>
+    </section>
+
+    <section class="nwjs page-width">
+      <h2>If your game’s NW.js is older than 0.26.4</h2>
+      <p>The cheat needs NW.js 0.26.4 or newer. On an older version you’ll see a warning when the game starts, and the cheat may not work properly. This mostly happens with older MV games.</p>
+      <p>The desktop app can update the game’s NW.js for you. <span class="soon">Coming soon</span></p>
+    </section>
+
+    <section class="manual page-width">
+      <h2>Adding the cheat by hand</h2>
+      <p class="lead">Prefer to do it yourself? This works without the page or the app.</p>
+      <div class="manual-layout">
+        <div>
+          <ol>
+            <li>Find your engine in the table below, then download its zip from <a href="https://github.com/paramonos/RPG-Maker-MV-MZ-Cheat-UI-Plugin/releases/latest">Releases</a>.</li>
+            <li>Unzip it into the folder in the table. A <code>cheat</code> folder and <code>cheat-version-description.json</code> appear there.</li>
+            <li>Copy <code>main.js</code> somewhere safe, then add the lines below to it.</li>
+            <li>Start the game and press <kbd>C</kbd>.</li>
+          </ol>
+          <div class="manual-table">
+            <table>
+<tr><th></th><th>MV</th><th>MZ</th></tr>
+<tr><th scope="row">Has this file</th><td><code>www/js/rpg_core.js</code></td><td><code>js/rmmz_core.js</code></td></tr>
+<tr><th scope="row">Download</th><td><code>rpg-mv-cheat-{version}.zip</code></td><td><code>rpg-mz-cheat-{version}.zip</code></td></tr>
+<tr><th scope="row">Unzip into</th><td>The <code>www</code> folder in the game folder</td><td>The game folder</td></tr>
+<tr><th scope="row">File to edit</th><td><code>www/js/main.js</code></td><td><code>js/main.js</code></td></tr>
+</table>
+          </div>
+        </div>
+        <div>
+          <p>For MV, add two lines right after <code>PluginManager.setup($plugins);</code>.</p>
+          <pre><code>PluginManager.setup($plugins);
+PluginManager._path = 'js/plugins/';
+PluginManager.loadScript('../../cheat/init/import.js');</code></pre>
+          <p>For MZ, add one line right after <code>const scriptUrls = [</code>.</p>
+          <pre><code>const scriptUrls = [
+    "cheat/init/import.js",
+    "js/libs/pixi.js",</code></pre>
+        </div>
+      </div>
+      <ul>
+        <li>If a line with <code>cheat/init/import.js</code> is already there, don’t add it again.</li>
+        <li>No <code>main.js</code> in the folder? The game is packed into a single file. Unpack it first.</li>
+        <li>To undo it, put your copy of <code>main.js</code> back and delete the <code>cheat</code> folder and <code>cheat-version-description.json</code>.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="page-width">
+    <p>MIT license. Screenshots were taken on NW.js 0.119.2. The switch and variable names in them are examples.</p>
+  </footer>
+  <script src="intro.js"></script>
+</body>
+</html>
