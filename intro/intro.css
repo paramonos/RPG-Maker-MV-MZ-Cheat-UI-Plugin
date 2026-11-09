@@ -65,9 +65,20 @@ section { padding-block: 64px; }
 .languages a { padding: 2px 10px; border: 1px solid transparent; border-radius: 7px; color: var(--muted); text-decoration: none; }
 .languages a:hover { color: var(--text); }
 .languages a[aria-current] { border-color: var(--amber); color: var(--amber); }
+.top-links { display: flex; align-items: center; }
+.repository { display: inline-flex; flex: none; align-items: center; justify-content: center; width: 36px; height: 36px; margin-left: 10px; border: 1px solid var(--line); border-radius: 9px; color: var(--text); }
+.repository:hover { border-color: var(--amber); color: var(--amber); }
+.repository svg { display: block; }
+.releases { display: inline-flex; flex: none; align-items: center; gap: 6px; height: 36px; margin-left: 10px; padding: 0 12px; border: 1px solid var(--line); border-radius: 9px; color: var(--text); font-size: .92rem; text-decoration: none; }
+.releases:hover { border-color: var(--amber); color: var(--amber); }
+.releases svg { display: block; }
 
 .hero { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 8fr); align-items: center; padding-block: 24px 56px; }
 .hero-copy { padding-right: 48px; }
+.latest-version { display: inline-block; margin: 0 0 14px; padding: 2px 12px; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); font-size: .9rem; text-decoration: none; }
+.latest-version:hover { border-color: var(--amber); color: var(--text); }
+.latest-version[hidden] { display: none; }
+.latest-version strong { color: var(--amber); }
 h1 { font-size: clamp(2rem, 3.6vw, 3.1rem); }
 .hero-hint { margin: 20px 0 0; color: var(--muted); }
 
@@ -197,6 +208,15 @@ footer p { margin: 0; }
   .feature-browser { grid-template-columns: minmax(0, 1fr); }
   .feature-tabs { flex-direction: row; margin-bottom: 14px; padding: 0 0 6px; overflow-x: auto; scrollbar-width: none; }
   .feature-tabs button { flex: none; white-space: nowrap; }
+}
+
+@media (max-width: 480px) {
+  .top-links { display: contents; }
+  .product { flex: 1 1 0%; min-width: 0; }
+  .releases, .repository { order: 1; }
+  .releases { width: 36px; padding: 0; justify-content: center; }
+  .releases span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .languages { order: 2; flex-basis: 100%; margin-top: 8px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

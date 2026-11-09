@@ -68,7 +68,27 @@
     })
   }
 
+  function setUpLatestVersion () {
+    const badge = document.querySelector('[data-latest-version]')
+    if (!badge || !window.fetch) {
+      return
+    }
+    window.fetch('../cheat-version-description.json', { cache: 'no-cache' })
+      .then(response => response.ok ? response.json() : null)
+      .then(description => {
+        const version = description && description.version
+        if (typeof version !== 'string' || version === '') {
+          return
+        }
+        badge.querySelector('strong').textContent = version
+        badge.href = badge.dataset.releaseBase + encodeURIComponent(version)
+        badge.hidden = false
+      })
+      .catch(() => {})
+  }
+
   setUpStage()
   setUpFeatureBrowser()
   setUpShotSwitches()
+  setUpLatestVersion()
 })()

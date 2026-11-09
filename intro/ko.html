@@ -12,17 +12,22 @@
 
   <header class="top page-width">
     <span class="product">RPG Maker MV/MZ 치트 창</span>
-    <nav class="languages" aria-label="Language">
+    <div class="top-links">
+      <nav class="languages" aria-label="Language">
         <a href="ko.html" lang="ko" aria-current="page">한국어</a>
         <a href="index.html" lang="en">English</a>
         <a href="ja.html" lang="ja">日本語</a>
         <a href="zh.html" lang="zh-CN">简体中文</a>
-    </nav>
+      </nav>
+      <a class="releases" href="https://github.com/paramonos/RPG-Maker-MV-MZ-Cheat-UI-Plugin/releases/latest"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73zm1 .27V12"/><path d="M3.29 7L12 12l8.71-5M7.5 4.27l9 5.15"/></g></svg><span>릴리스</span></a>
+      <a class="repository" href="https://github.com/paramonos/RPG-Maker-MV-MZ-Cheat-UI-Plugin" aria-label="GitHub 저장소"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5c.08-1.25-.27-2.48-1-3.5c.28-1.15.28-2.35 0-3.5c0 0-1 0-3 1.5c-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5c-.39.49-.68 1.05-.85 1.65S8.93 17.38 9 18v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></g></svg></a>
+    </div>
   </header>
 
   <main>
     <section class="hero page-width">
       <div class="hero-copy">
+        <a class="latest-version" data-latest-version data-release-base="https://github.com/paramonos/RPG-Maker-MV-MZ-Cheat-UI-Plugin/releases/tag/" hidden>최신 버전 <strong></strong></a>
         <h1>RPG Maker MV · MZ 게임 안에서 바로 여는 치트 창이에요.</h1>
         <p class="hero-hint">게임에서처럼 <kbd>C</kbd> 를 누르면 창이 열리고 닫혀요.</p>
       </div>
@@ -40,13 +45,15 @@
           <h3>웹에서 넣기</h3>
           <p class="who">게임에 간단하게 넣고 싶을 때.</p>
           <ol>
-            <li>PC 의 Chrome 이나 Edge 로 <a href="https://paramonos.github.io/RPG-Maker-MV-MZ-Cheat-UI-Plugin/">치트 넣기 페이지</a> 를 열어요.</li>
+            <li>PC 브라우저로 <a href="https://paramonos.github.io/RPG-Maker-MV-MZ-Cheat-UI-Plugin/">치트 넣기 페이지</a> 를 열어요. Chrome 이나 Edge 가 가장 쉬워요.</li>
             <li><code>Game.exe</code> 가 있는 폴더를 고르거나 페이지로 끌어다 놓아요. 브라우저가 폴더 수정을 물으면 허용해요.</li>
             <li>「치트 넣기」를 눌러요.</li>
             <li>게임을 켜요.</li>
           </ol>
           <ul class="note-list">
-            <li>Program Files 안의 게임은 브라우저가 열어 주지 않아요. 바탕화면 같은 곳으로 옮긴 뒤 골라요.</li>
+            <li>Firefox · Safari 처럼 폴더에 쓰지 못하는 브라우저에서는 이 게임에 맞춘 압축 파일을 받아요. 풀어서 게임 폴더에 붙여넣기만 하면 돼요.</li>
+            <li>Brave 는 설정 하나만 켜면 Chrome 처럼 바로 넣을 수 있어요. 켜는 방법은 페이지가 알려 줘요.</li>
+            <li>Program Files 안의 게임은 브라우저가 열어 주지 않아요. 그럴 때도 「압축 파일로 받기」로 넣으면 돼요.</li>
             <li>바뀌는 파일은 같은 폴더에 먼저 백업해서, 같은 페이지에서 원래대로 되돌릴 수 있어요. 치트 설정 파일은 되돌려도 남아요.</li>
             <li>페이지는 한국어, 영어, 일본어, 중국어로 볼 수 있어요.</li>
           </ul>
@@ -72,93 +79,163 @@
         <div class="feature-tabs" role="tablist" aria-orientation="vertical" aria-label="이런 걸 할 수 있어요">
           <button type="button" role="tab" id="tab-palette" aria-controls="panel-palette" aria-selected="true">기능 찾기</button>
           <button type="button" role="tab" id="tab-general" aria-controls="panel-general" aria-selected="false" tabindex="-1">일반 치트</button>
+          <button type="button" role="tab" id="tab-battle" aria-controls="panel-battle" aria-selected="false" tabindex="-1">체력·전투</button>
+          <button type="button" role="tab" id="tab-enemies" aria-controls="panel-enemies" aria-selected="false" tabindex="-1">적 편집 · 소환</button>
           <button type="button" role="tab" id="tab-stats" aria-controls="panel-stats" aria-selected="false" tabindex="-1">능력치</button>
-          <button type="button" role="tab" id="tab-shortcuts-speed" aria-controls="panel-shortcuts-speed" aria-selected="false" tabindex="-1">게임 속도 · 메시지 스킵</button>
+          <button type="button" role="tab" id="tab-skills" aria-controls="panel-skills" aria-selected="false" tabindex="-1">스킬 · 직업</button>
           <button type="button" role="tab" id="tab-items" aria-controls="panel-items" aria-selected="false" tabindex="-1">아이템 · 장비</button>
+          <button type="button" role="tab" id="tab-tooltips" aria-controls="panel-tooltips" aria-selected="false" tabindex="-1">자세한 툴팁</button>
+          <button type="button" role="tab" id="tab-locks" aria-controls="panel-locks" aria-selected="false" tabindex="-1">값 고정 · 즐겨찾기</button>
           <button type="button" role="tab" id="tab-switches-search" aria-controls="panel-switches-search" aria-selected="false" tabindex="-1">스위치</button>
           <button type="button" role="tab" id="tab-variables" aria-controls="panel-variables" aria-selected="false" tabindex="-1">변수</button>
+          <button type="button" role="tab" id="tab-snapshots" aria-controls="panel-snapshots" aria-selected="false" tabindex="-1">값 비교</button>
+          <button type="button" role="tab" id="tab-map-events" aria-controls="panel-map-events" aria-selected="false" tabindex="-1">맵 이벤트</button>
           <button type="button" role="tab" id="tab-teleport" aria-controls="panel-teleport" aria-selected="false" tabindex="-1">텔레포트 · 위치 저장</button>
+          <button type="button" role="tab" id="tab-minimap-window" aria-controls="panel-minimap-window" aria-selected="false" tabindex="-1">미니맵 창</button>
           <button type="button" role="tab" id="tab-messages" aria-controls="panel-messages" aria-selected="false" tabindex="-1">대화 기록</button>
+          <button type="button" role="tab" id="tab-shortcuts-speed" aria-controls="panel-shortcuts-speed" aria-selected="false" tabindex="-1">게임 속도 · 메시지 스킵</button>
           <button type="button" role="tab" id="tab-shortcuts" aria-controls="panel-shortcuts" aria-selected="false" tabindex="-1">단축키</button>
+          <button type="button" role="tab" id="tab-game-options" aria-controls="panel-game-options" aria-selected="false" tabindex="-1">게임 옵션</button>
+          <button type="button" role="tab" id="tab-backup" aria-controls="panel-backup" aria-selected="false" tabindex="-1">설정 백업</button>
           <button type="button" role="tab" id="tab-translate-examples" aria-controls="panel-translate-examples" aria-selected="false" tabindex="-1">번역</button>
           <button type="button" role="tab" id="tab-languages" aria-controls="panel-languages" aria-selected="false" tabindex="-1">다국어</button>
         </div>
         <div class="feature-panels">
           <div class="feature-panel" role="tabpanel" id="panel-palette" aria-labelledby="tab-palette">
-            <img class="shot" src="../images/ko/palette.webp" alt="기능 찾기에서 속도를 찾은 결과" width="1480" height="1088" loading="lazy">
+            <img class="shot" src="../images/ko/palette.webp" alt="기능 찾기에서 속도를 찾은 결과" width="1480" height="1248" loading="lazy">
             
             <h3>기능 찾기 <span class="keys"><kbd>Ctrl</kbd> + <kbd>K</kbd></span></h3>
             <p>어디 있는지 몰라도 괜찮아요. 이름 몇 글자만 치면 패널과 설정, 단축키까지 찾아서 그 자리로 데려다줘요.</p>
           </div>
           <div class="feature-panel" role="tabpanel" id="panel-general" aria-labelledby="tab-general">
-            <img class="shot" src="../images/ko/general.webp" alt="벽 통과, 골드, 속도 조절이 있는 일반 패널" width="1480" height="1088" loading="lazy">
+            <img class="shot" src="../images/ko/general.webp" alt="벽 통과, 골드, 타이머, 속도 조절이 있는 일반 패널" width="1480" height="1248" loading="lazy">
             
             <h3>일반 치트</h3>
-            <p>벽 통과로 어디든 걸어 다니고, 골드와 이동 속도를 원하는 대로 바꿔요.</p>
+            <p>벽 통과로 어디든 걸어 다니고, 골드와 이동 속도를 원하는 대로 바꿔요. 게임의 타이머를 새로 걸거나 끄고, 고정해서 시간이 줄지 않게 할 수도 있어요.</p>
+          </div>
+          <div class="feature-panel" role="tabpanel" id="panel-battle" aria-labelledby="tab-battle">
+            <img class="shot" src="../images/ko/battle.webp" alt="전투 중인 체력·전투 패널. 적과 아군의 HP · MP · TP 가 보인다" width="1480" height="1248" loading="lazy">
+            
+            <h3>체력·전투</h3>
+            <p>전투를 바로 이기거나 지거나 도망쳐요. 아군과 적의 HP · MP · TP 를 고치고, 한 번에 회복하거나 0 · 1 로 만들어요. 랜덤 인카운터도 끌 수 있어요.</p>
+          </div>
+          <div class="feature-panel" role="tabpanel" id="panel-enemies" aria-labelledby="tab-enemies">
+            <img class="shot" src="../images/ko/enemies.webp" alt="Wolf 의 능력치와 행동을 펼친 적 패널" width="1480" height="1248" loading="lazy">
+            
+            <h3>적 편집 · 소환</h3>
+            <p>적의 능력치와 행동을 고쳐요. 원하는 적 그룹이나 고른 적과 바로 싸우고, 싸우는 중에 적을 더 불러낼 수도 있어요. 고친 값은 게임을 저장하면 남아요.</p>
           </div>
           <div class="feature-panel" role="tabpanel" id="panel-stats" aria-labelledby="tab-stats">
-            <img class="shot" src="../images/ko/stats.webp" alt="레벨, 경험치, 능력치 칸이 있는 능력치 패널" width="1480" height="1088" loading="lazy">
+            <img class="shot" src="../images/ko/stats.webp" alt="직업, 레벨, 능력치, 상태, 스킬이 있는 능력치 패널" width="1480" height="1248" loading="lazy">
             
             <h3>능력치</h3>
-            <p>캐릭터마다 레벨, 경험치, 능력치를 고쳐요. 무적을 켜거나 상태를 풀고, 파티에 넣고 뺄 수도 있어요.</p>
+            <p>캐릭터마다 레벨, 경험치, 능력치를 고쳐요. 직업을 바꾸고, 상태를 걸거나 풀고, 스킬을 배우거나 잊게 할 수 있어요. 무적을 켜거나 파티에 넣고 뺄 수도 있어요.</p>
           </div>
-          <div class="feature-panel" role="tabpanel" id="panel-shortcuts-speed" aria-labelledby="tab-shortcuts-speed">
-            <img class="shot" src="../images/ko/shortcuts-speed.webp" alt="게임 속도와 메시지 스킵 단축키" width="1480" height="1088" loading="lazy">
-            
-            <h3>게임 속도 · 메시지 스킵 <span class="keys"><kbd>S</kbd></span></h3>
-            <p>게임 전체의 빠르기를 x0.1 부터 x10 까지 바꿔요. 전투에서만 빠르게 할 수도 있어요. <kbd>S</kbd> 를 누르고 있으면 메시지가 쭉 넘어가요.</p>
+          <div class="feature-panel" role="tabpanel" id="panel-skills" aria-labelledby="tab-skills">
+            <img class="shot" src="../images/ko/skills.webp" alt="Fire I 의 값을 펼친 스킬 패널" width="1480" height="1248" loading="lazy">
+            <div class="shots"><button type="button" data-shot="../images/ko/skills.webp" aria-pressed="true"><img src="../images/ko/skills.webp" alt="" loading="lazy"></button><button type="button" data-shot="../images/ko/classes.webp" aria-pressed="false"><img src="../images/ko/classes.webp" alt="" loading="lazy"></button></div>
+            <h3>스킬 · 직업</h3>
+            <p>스킬의 소모, 성공률, 피해 계산식 같은 값을 고쳐요. 직업은 능력치 곡선, 경험치 곡선, 레벨업 스킬, 특성까지 바꿀 수 있어요. 고친 값은 게임을 저장하면 남아요.</p>
           </div>
           <div class="feature-panel" role="tabpanel" id="panel-items" aria-labelledby="tab-items">
-            <img class="shot" src="../images/ko/items.webp" alt="검색어로 걸러진 아이템 패널. 줄마다 개수 칸이 있다" width="1480" height="1088" loading="lazy">
+            <img class="shot" src="../images/ko/items.webp" alt="검색어로 걸러진 아이템 패널. 줄마다 개수 칸이 있다" width="1480" height="1248" loading="lazy">
             <div class="shots"><button type="button" data-shot="../images/ko/items.webp" aria-pressed="true"><img src="../images/ko/items.webp" alt="" loading="lazy"></button><button type="button" data-shot="../images/ko/weapons.webp" aria-pressed="false"><img src="../images/ko/weapons.webp" alt="" loading="lazy"></button></div>
             <h3>아이템 · 장비</h3>
             <p>아이템, 무기, 방어구를 이름이나 설명으로 찾아서 원하는 개수를 적어요.</p>
           </div>
+          <div class="feature-panel" role="tabpanel" id="panel-tooltips" aria-labelledby="tab-tooltips">
+            <img class="shot" src="../images/ko/tooltips.webp" alt="무기 줄 위에 뜬 카드. 공격력, 특성, 가격이 보인다" width="1480" height="1248" loading="lazy">
+            
+            <h3>자세한 툴팁</h3>
+            <p>아이템, 장비, 스킬, 직업, 상태, 적에 마우스를 올리면 능력치, 특성, 효과, 가격을 카드로 보여 줘요.</p>
+          </div>
+          <div class="feature-panel" role="tabpanel" id="panel-locks" aria-labelledby="tab-locks">
+            <img class="shot" src="../images/ko/locks.webp" alt="별을 단 아이템이 맨 위에 있고, 고정한 아이템에 자물쇠가 켜진 아이템 패널" width="1480" height="1248" loading="lazy">
+            
+            <h3>값 고정 · 즐겨찾기</h3>
+            <p>아이템 · 장비 개수, 골드, 변수, 스위치, 상태, 타이머를 고정하면 게임이 바꿔도 그대로예요. 자주 쓰는 줄은 별을 달아 맨 위에 모아요. 둘 다 게임마다 따로 남고 설정 백업에는 안 들어가요.</p>
+          </div>
           <div class="feature-panel" role="tabpanel" id="panel-switches-search" aria-labelledby="tab-switches-search">
-            <img class="shot" src="../images/ko/switches-search.webp" alt="검색어로 걸러진 스위치 패널" width="1480" height="1088" loading="lazy">
+            <img class="shot" src="../images/ko/switches-search.webp" alt="검색어로 걸러진 스위치 패널" width="1480" height="1248" loading="lazy">
             <div class="shots"><button type="button" data-shot="../images/ko/switches-search.webp" aria-pressed="true"><img src="../images/ko/switches-search.webp" alt="" loading="lazy"></button><button type="button" data-shot="../images/ko/switches.webp" aria-pressed="false"><img src="../images/ko/switches.webp" alt="" loading="lazy"></button></div>
             <h3>스위치</h3>
             <p>이름으로 찾아서 하나씩 켜고 끄거나, 목록에 보이는 것을 한 번에 바꿔요.</p>
           </div>
           <div class="feature-panel" role="tabpanel" id="panel-variables" aria-labelledby="tab-variables">
-            <img class="shot" src="../images/ko/variables.webp" alt="객체를 펼쳐 종류가 다른 값들이 보이는 변수 패널" width="1480" height="1088" loading="lazy">
+            <img class="shot" src="../images/ko/variables.webp" alt="객체를 펼쳐 종류가 다른 값들이 보이는 변수 패널" width="1480" height="1248" loading="lazy">
             <div class="shots"><button type="button" data-shot="../images/ko/variables.webp" aria-pressed="true"><img src="../images/ko/variables.webp" alt="" loading="lazy"></button><button type="button" data-shot="../images/ko/variables-json.webp" aria-pressed="false"><img src="../images/ko/variables-json.webp" alt="" loading="lazy"></button></div>
             <h3>변수</h3>
             <p>이름으로 찾아서 값의 종류를 유지한 채 고쳐요. 정수, 실수, 문자열, 참거짓, 배열, 객체, 날짜를 모두 다뤄요. 객체는 펼쳐서 고치거나 JSON 으로 고칠 수 있어요.</p>
           </div>
+          <div class="feature-panel" role="tabpanel" id="panel-snapshots" aria-labelledby="tab-snapshots">
+            <img class="shot" src="../images/ko/snapshots.webp" alt="스냅샷과 지금 게임을 비교한 값 비교 홈. 묶음마다 바뀐 수가 보인다" width="1480" height="1248" loading="lazy">
+            <div class="shots"><button type="button" data-shot="../images/ko/snapshots.webp" aria-pressed="true"><img src="../images/ko/snapshots.webp" alt="" loading="lazy"></button><button type="button" data-shot="../images/ko/snapshots-variables.webp" aria-pressed="false"><img src="../images/ko/snapshots-variables.webp" alt="" loading="lazy"></button></div>
+            <h3>값 비교</h3>
+            <p>지금 값을 스냅샷으로 찍어 두고, 게임을 조금 한 뒤 무엇이 바뀌었는지 봐요. 변수, 스위치, 캐릭터, 아이템이 어떻게 바뀌었는지 한눈에 보여서 퀘스트가 쓰는 변수도 쉽게 찾아요. 스냅샷은 파일로 남아요.</p>
+          </div>
+          <div class="feature-panel" role="tabpanel" id="panel-map-events" aria-labelledby="tab-map-events">
+            <img class="shot" src="../images/ko/map-events.webp" alt="이벤트를 고르면 뜨는 창. 미니맵과 이벤트 내용이 보인다" width="1480" height="1248" loading="lazy">
+            
+            <h3>맵 이벤트</h3>
+            <p>맵마다 이벤트를 목록으로 보고, 내용을 편집기처럼 읽어요. 셀프 스위치를 바꾸거나 바로 실행하고, 곁으로 가거나 지우고 옮길 수도 있어요.</p>
+          </div>
           <div class="feature-panel" role="tabpanel" id="panel-teleport" aria-labelledby="tab-teleport">
-            <img class="shot" src="../images/ko/teleport.webp" alt="맵 목록과 미니맵이 있는 텔레포트 패널" width="1480" height="1088" loading="lazy">
+            <img class="shot" src="../images/ko/teleport.webp" alt="맵 목록과 미니맵이 있는 텔레포트 패널" width="1480" height="1248" loading="lazy">
             <div class="shots"><button type="button" data-shot="../images/ko/teleport.webp" aria-pressed="true"><img src="../images/ko/teleport.webp" alt="" loading="lazy"></button><button type="button" data-shot="../images/ko/locations.webp" aria-pressed="false"><img src="../images/ko/locations.webp" alt="" loading="lazy"></button></div>
             <h3>텔레포트 · 위치 저장 <span class="keys"><kbd>Ctrl</kbd> + <kbd>T</kbd></span></h3>
             <p>맵을 고르고 미니맵에서 칸을 누르면 바로 이동해요. 마음에 드는 자리는 저장해 두고 언제든 돌아와요.</p>
           </div>
+          <div class="feature-panel" role="tabpanel" id="panel-minimap-window" aria-labelledby="tab-minimap-window">
+            <img class="shot" src="../images/ko/minimap-window.webp" alt="게임 화면 오른쪽 위에 뜬 미니맵 창" width="1480" height="1248" loading="lazy">
+            
+            <h3>미니맵 창 <span class="keys"><kbd>M</kbd></span></h3>
+            <p>치트 창을 열지 않고 <kbd>M</kbd> 으로 지금 맵의 미니맵을 띄워요. 칸을 두 번 누르면 화면 전환 없이 바로 가요. 「이벤트 보이기」를 켜고 이벤트를 누르면 맵 이벤트에서 그 이벤트를 열고, 고른 칸은 제목 줄 단추로 바로 저장해요.</p>
+          </div>
           <div class="feature-panel" role="tabpanel" id="panel-messages" aria-labelledby="tab-messages">
-            <img class="shot" src="../images/ko/messages.webp" alt="말한 사람과 대사가 나열된 대화 기록 패널" width="1480" height="1088" loading="lazy">
+            <img class="shot" src="../images/ko/messages.webp" alt="말한 사람과 대사가 나열된 대화 기록 패널" width="1480" height="1248" loading="lazy">
             
             <h3>대화 기록 <span class="keys"><kbd>H</kbd></span></h3>
             <p>놓친 대사가 있나요? 지나간 대사를 다시 읽고 검색해요.</p>
           </div>
+          <div class="feature-panel" role="tabpanel" id="panel-shortcuts-speed" aria-labelledby="tab-shortcuts-speed">
+            <img class="shot" src="../images/ko/shortcuts-speed.webp" alt="게임 속도와 메시지 스킵 단축키" width="1480" height="1248" loading="lazy">
+            
+            <h3>게임 속도 · 메시지 스킵 <span class="keys"><kbd>S</kbd></span></h3>
+            <p>게임 전체의 빠르기를 x0.1 부터 x10 까지 바꿔요. 전투에서만 빠르게 할 수도 있어요. <kbd>S</kbd> 를 누르고 있으면 메시지가 쭉 넘어가요.</p>
+          </div>
           <div class="feature-panel" role="tabpanel" id="panel-shortcuts" aria-labelledby="tab-shortcuts">
-            <img class="shot" src="../images/ko/shortcuts.webp" alt="기능과 키가 나열된 단축키 패널" width="1480" height="1088" loading="lazy">
+            <img class="shot" src="../images/ko/shortcuts.webp" alt="기능과 키가 나열된 단축키 패널" width="1480" height="1248" loading="lazy">
             
             <h3>단축키</h3>
             <p>창을 열지 않고도 저장, 불러오기, 벽 통과, 전투 승리 같은 치트를 키 하나로 써요. 키는 원하는 대로 바꿀 수 있어요.</p>
           </div>
+          <div class="feature-panel" role="tabpanel" id="panel-game-options" aria-labelledby="tab-game-options">
+            <img class="shot" src="../images/ko/game-options.webp" alt="항상 대시, 명령 기억, BGM 크기가 백업에 들어간 게임 옵션 탭" width="1480" height="1248" loading="lazy">
+            
+            <h3>게임 옵션</h3>
+            <p>항상 대시, 명령 기억, 소리 크기를 치트 창에서 바꿔요. 여기서 바꾼 것만 설정 백업에 들어가서, 새 게임에 백업을 복원하면 옵션을 다시 맞출 필요가 없어요.</p>
+          </div>
+          <div class="feature-panel" role="tabpanel" id="panel-backup" aria-labelledby="tab-backup">
+            <img class="shot" src="../images/ko/backup.webp" alt="백업 폴더와 백업 · 복원 단추가 있는 설정 화면" width="1480" height="1248" loading="lazy">
+            
+            <h3>설정 백업</h3>
+            <p>단축키, 번역기, 속도, 게임 옵션 같은 치트 설정을 폴더에 백업하고 다른 게임에서 복원해요. API 키처럼 민감한 값은 넣을지 백업할 때 물어봐요.</p>
+          </div>
           <div class="feature-panel" role="tabpanel" id="panel-translate-examples" aria-labelledby="tab-translate-examples">
-            <img class="shot" src="../images/ko/translate-examples.webp" alt="설정의 번역기 예시 목록" width="1480" height="1088" loading="lazy">
+            <img class="shot" src="../images/ko/translate-examples.webp" alt="설정의 번역기 예시 목록" width="1480" height="1248" loading="lazy">
             
             <h3>번역</h3>
             <p>쓰는 번역기를 연결해요. ezTrans, LM Studio, Ollama, LibreTranslate, DeepL, 구글 번역, 파파고 예시가 들어 있고, 다른 API 도 주소와 형식만 적으면 돼요. 게임 화면이나 치트 패널의 글을 번역하고, 번역한 글은 저장해 두고 다시 써요.</p>
           </div>
           <div class="feature-panel" role="tabpanel" id="panel-languages" aria-labelledby="tab-languages">
-            <img class="shot" src="../images/ko/languages.webp" alt="한국어, 영어, 일본어, 중국어로 표시된 단축키 패널" width="1480" height="1088" loading="lazy">
+            <img class="shot" src="../images/ko/languages.webp" alt="한국어, 영어, 일본어, 중국어로 표시된 단축키 패널" width="1480" height="1248" loading="lazy">
             
             <h3>다국어</h3>
             <p>치트 창은 한국어, 영어, 일본어, 중국어(간체)로 볼 수 있어요. 설정에서 고르면 바로 바뀌어요.</p>
           </div>
         </div>
       </div>
-      <p class="more">이 밖에도 전투 강제 승리 · 패배 · 도주, 랜덤 인카운터 끄기, 빠른 저장 · 불러오기, 설정 백업이 있어요. 전부 인터넷 없이 돌아가요.</p>
+      <p class="more">이 밖에도 빠른 저장 · 불러오기, 왼쪽 메뉴 접기, 네 변을 끌어 창 크기 바꾸기가 있어요. 전부 인터넷 없이 돌아가요.</p>
     </section>
 
     <section class="usage page-width">
@@ -190,6 +267,7 @@
         <div><dt><kbd>H</kbd></dt><dd>대화 기록 열기·닫기</dd></div>
         <div><dt><kbd>Ctrl</kbd> + <kbd>T</kbd></dt><dd>텔레포트 열기·닫기</dd></div>
         <div><dt><kbd>Ctrl</kbd> + <kbd>M</kbd></dt><dd>위치 저장 열기·닫기</dd></div>
+        <div><dt><kbd>M</kbd></dt><dd>미니맵 창 열기·닫기</dd></div>
         <div><dt><kbd>W</kbd></dt><dd>벽 통과 켜기·끄기</dd></div>
         <div><dt><kbd>S</kbd></dt><dd>메시지 스킵(누르는 동안)</dd></div>
         <div><dt><kbd>Ctrl</kbd> + <kbd>S</kbd></dt><dd>빠른 저장</dd></div>
@@ -225,8 +303,9 @@
           </div>
         </div>
         <div>
-          <p>MV 는 <code>PluginManager.setup($plugins);</code> 바로 다음에 두 줄을 더해요.</p>
+          <p>MV 는 <code>PluginManager.setup($plugins);</code> 바로 다음에 세 줄을 더해요.</p>
           <pre><code>PluginManager.setup($plugins);
+// auto generated for cheat
 PluginManager._path = 'js/plugins/';
 PluginManager.loadScript('../../cheat/init/import.js');</code></pre>
           <p>MZ 는 <code>const scriptUrls = [</code> 바로 다음에 한 줄을 더해요.</p>

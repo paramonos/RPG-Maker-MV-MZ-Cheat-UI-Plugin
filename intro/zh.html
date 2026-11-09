@@ -12,17 +12,22 @@
 
   <header class="top page-width">
     <span class="product">RPG Maker MV/MZ 作弊窗口</span>
-    <nav class="languages" aria-label="Language">
+    <div class="top-links">
+      <nav class="languages" aria-label="Language">
         <a href="ko.html" lang="ko">한국어</a>
         <a href="index.html" lang="en">English</a>
         <a href="ja.html" lang="ja">日本語</a>
         <a href="zh.html" lang="zh-CN" aria-current="page">简体中文</a>
-    </nav>
+      </nav>
+      <a class="releases" href="https://github.com/paramonos/RPG-Maker-MV-MZ-Cheat-UI-Plugin/releases/latest"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73zm1 .27V12"/><path d="M3.29 7L12 12l8.71-5M7.5 4.27l9 5.15"/></g></svg><span>Releases</span></a>
+      <a class="repository" href="https://github.com/paramonos/RPG-Maker-MV-MZ-Cheat-UI-Plugin" aria-label="GitHub 仓库"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5c.08-1.25-.27-2.48-1-3.5c.28-1.15.28-2.35 0-3.5c0 0-1 0-3 1.5c-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5c-.39.49-.68 1.05-.85 1.65S8.93 17.38 9 18v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></g></svg></a>
+    </div>
   </header>
 
   <main>
     <section class="hero page-width">
       <div class="hero-copy">
+        <a class="latest-version" data-latest-version data-release-base="https://github.com/paramonos/RPG-Maker-MV-MZ-Cheat-UI-Plugin/releases/tag/" hidden>最新版本 <strong></strong></a>
         <h1>在 RPG Maker MV、MZ 游戏里直接打开的作弊窗口。</h1>
         <p class="hero-hint">和在游戏里一样，按 <kbd>C</kbd> 就能打开和关闭窗口。</p>
       </div>
@@ -40,13 +45,15 @@
           <h3>用网页添加</h3>
           <p class="who">想简单地给游戏加上时。</p>
           <ol>
-            <li>在电脑上用 Chrome 或 Edge 打开<a href="https://paramonos.github.io/RPG-Maker-MV-MZ-Cheat-UI-Plugin/">“添加作弊”页面</a>。</li>
+            <li>在电脑的浏览器里打开<a href="https://paramonos.github.io/RPG-Maker-MV-MZ-Cheat-UI-Plugin/">“添加作弊”页面</a>。用 Chrome 或 Edge 最简单。</li>
             <li>选择有 <code>Game.exe</code> 的文件夹，也可以直接拖到页面上。如果浏览器询问是否允许修改文件夹，请选择允许。</li>
             <li>点击“添加作弊”。</li>
             <li>启动游戏。</li>
           </ol>
           <ul class="note-list">
-            <li>浏览器打不开 Program Files 里的游戏。先把游戏移到桌面之类的地方再选。</li>
+            <li>在 Firefox、Safari 等不能写入文件夹的浏览器里，下载按这个游戏做好的压缩包，解压后粘贴到游戏文件夹就行。</li>
+            <li>Brave 只要打开一个设置，就能像 Chrome 一样直接添加。页面会告诉你怎么打开。</li>
+            <li>浏览器打不开 Program Files 里的游戏。这时用“改用压缩包”来添加。</li>
             <li>会改动的文件先备份到同一文件夹，可以在同一页面还原。还原后作弊的设置文件还留着。</li>
             <li>页面支持韩语、英语、日语和中文。</li>
           </ul>
@@ -72,93 +79,163 @@
         <div class="feature-tabs" role="tablist" aria-orientation="vertical" aria-label="能做什么">
           <button type="button" role="tab" id="tab-palette" aria-controls="panel-palette" aria-selected="true">查找功能</button>
           <button type="button" role="tab" id="tab-general" aria-controls="panel-general" aria-selected="false" tabindex="-1">常用作弊</button>
+          <button type="button" role="tab" id="tab-battle" aria-controls="panel-battle" aria-selected="false" tabindex="-1">HP·战斗</button>
+          <button type="button" role="tab" id="tab-enemies" aria-controls="panel-enemies" aria-selected="false" tabindex="-1">编辑与召唤敌人</button>
           <button type="button" role="tab" id="tab-stats" aria-controls="panel-stats" aria-selected="false" tabindex="-1">能力值</button>
-          <button type="button" role="tab" id="tab-shortcuts-speed" aria-controls="panel-shortcuts-speed" aria-selected="false" tabindex="-1">游戏速度与跳过对话</button>
+          <button type="button" role="tab" id="tab-skills" aria-controls="panel-skills" aria-selected="false" tabindex="-1">技能与职业</button>
           <button type="button" role="tab" id="tab-items" aria-controls="panel-items" aria-selected="false" tabindex="-1">物品与装备</button>
+          <button type="button" role="tab" id="tab-tooltips" aria-controls="panel-tooltips" aria-selected="false" tabindex="-1">详细提示</button>
+          <button type="button" role="tab" id="tab-locks" aria-controls="panel-locks" aria-selected="false" tabindex="-1">锁定与收藏</button>
           <button type="button" role="tab" id="tab-switches-search" aria-controls="panel-switches-search" aria-selected="false" tabindex="-1">开关</button>
           <button type="button" role="tab" id="tab-variables" aria-controls="panel-variables" aria-selected="false" tabindex="-1">变量</button>
+          <button type="button" role="tab" id="tab-snapshots" aria-controls="panel-snapshots" aria-selected="false" tabindex="-1">数值对比</button>
+          <button type="button" role="tab" id="tab-map-events" aria-controls="panel-map-events" aria-selected="false" tabindex="-1">地图事件</button>
           <button type="button" role="tab" id="tab-teleport" aria-controls="panel-teleport" aria-selected="false" tabindex="-1">传送与地点收藏</button>
+          <button type="button" role="tab" id="tab-minimap-window" aria-controls="panel-minimap-window" aria-selected="false" tabindex="-1">小地图窗口</button>
           <button type="button" role="tab" id="tab-messages" aria-controls="panel-messages" aria-selected="false" tabindex="-1">对话记录</button>
+          <button type="button" role="tab" id="tab-shortcuts-speed" aria-controls="panel-shortcuts-speed" aria-selected="false" tabindex="-1">游戏速度与跳过对话</button>
           <button type="button" role="tab" id="tab-shortcuts" aria-controls="panel-shortcuts" aria-selected="false" tabindex="-1">快捷键</button>
+          <button type="button" role="tab" id="tab-game-options" aria-controls="panel-game-options" aria-selected="false" tabindex="-1">游戏选项</button>
+          <button type="button" role="tab" id="tab-backup" aria-controls="panel-backup" aria-selected="false" tabindex="-1">设置备份</button>
           <button type="button" role="tab" id="tab-translate-examples" aria-controls="panel-translate-examples" aria-selected="false" tabindex="-1">翻译</button>
           <button type="button" role="tab" id="tab-languages" aria-controls="panel-languages" aria-selected="false" tabindex="-1">多语言</button>
         </div>
         <div class="feature-panels">
           <div class="feature-panel" role="tabpanel" id="panel-palette" aria-labelledby="tab-palette">
-            <img class="shot" src="../images/zh/palette.webp" alt="在查找功能里搜索速度的结果" width="1480" height="1088" loading="lazy">
+            <img class="shot" src="../images/zh/palette.webp" alt="在查找功能里搜索速度的结果" width="1480" height="1248" loading="lazy">
             
             <h3>查找功能 <span class="keys"><kbd>Ctrl</kbd> + <kbd>K</kbd></span></h3>
             <p>不知道功能在哪也没关系。输入名称的几个字，就能找到面板、设置和快捷键，并直接带你过去。</p>
           </div>
           <div class="feature-panel" role="tabpanel" id="panel-general" aria-labelledby="tab-general">
-            <img class="shot" src="../images/zh/general.webp" alt="有穿墙、金币和速度调节的常规面板" width="1480" height="1088" loading="lazy">
+            <img class="shot" src="../images/zh/general.webp" alt="有穿墙、金币、计时器和速度调节的常规面板" width="1480" height="1248" loading="lazy">
             
             <h3>常用作弊</h3>
-            <p>开穿墙到处走，金币和移动速度也能改成你想要的值。</p>
+            <p>开穿墙到处走，金币和移动速度也能改成你想要的值。还能开始或停止游戏的计时器，或者把它锁定，让时间不再减少。</p>
+          </div>
+          <div class="feature-panel" role="tabpanel" id="panel-battle" aria-labelledby="tab-battle">
+            <img class="shot" src="../images/zh/battle.webp" alt="战斗中的 HP·战斗面板，显示敌人和我方的 HP、MP、TP" width="1480" height="1248" loading="lazy">
+            
+            <h3>HP·战斗</h3>
+            <p>战斗可以立刻胜利、失败或逃跑。可以修改我方和敌人的 HP、MP、TP，也能一次全部恢复，或者变成 0、1。还可以关闭随机遇敌。</p>
+          </div>
+          <div class="feature-panel" role="tabpanel" id="panel-enemies" aria-labelledby="tab-enemies">
+            <img class="shot" src="../images/zh/enemies.webp" alt="展开了 Wolf 能力值和行动的敌人面板" width="1480" height="1248" loading="lazy">
+            
+            <h3>编辑与召唤敌人</h3>
+            <p>修改敌人的能力值和行动。可以直接和任意敌群或选中的敌人战斗，战斗中还能再叫来敌人。存档后修改会保留。</p>
           </div>
           <div class="feature-panel" role="tabpanel" id="panel-stats" aria-labelledby="tab-stats">
-            <img class="shot" src="../images/zh/stats.webp" alt="有等级、经验值和能力值输入框的能力值面板" width="1480" height="1088" loading="lazy">
+            <img class="shot" src="../images/zh/stats.webp" alt="有职业、等级、能力值、状态和技能的能力值面板" width="1480" height="1248" loading="lazy">
             
             <h3>能力值</h3>
-            <p>逐个角色修改等级、经验值和能力值。还可以开无敌、解除状态，让角色入队或离队。</p>
+            <p>逐个角色修改等级、经验值和能力值。还可以更换职业、附加或解除状态、学会或遗忘技能，开无敌，让角色入队或离队。</p>
           </div>
-          <div class="feature-panel" role="tabpanel" id="panel-shortcuts-speed" aria-labelledby="tab-shortcuts-speed">
-            <img class="shot" src="../images/zh/shortcuts-speed.webp" alt="游戏速度和跳过对话的快捷键" width="1480" height="1088" loading="lazy">
-            
-            <h3>游戏速度与跳过对话 <span class="keys"><kbd>S</kbd></span></h3>
-            <p>整个游戏的速度可以在 x0.1 到 x10 之间调整，也可以只在战斗时加速。按住 <kbd>S</kbd>，对话就会一路跳过。</p>
+          <div class="feature-panel" role="tabpanel" id="panel-skills" aria-labelledby="tab-skills">
+            <img class="shot" src="../images/zh/skills.webp" alt="展开了 Fire I 数值的技能面板" width="1480" height="1248" loading="lazy">
+            <div class="shots"><button type="button" data-shot="../images/zh/skills.webp" aria-pressed="true"><img src="../images/zh/skills.webp" alt="" loading="lazy"></button><button type="button" data-shot="../images/zh/classes.webp" aria-pressed="false"><img src="../images/zh/classes.webp" alt="" loading="lazy"></button></div>
+            <h3>技能与职业</h3>
+            <p>修改技能的消耗、成功率、伤害公式等数值。职业的能力值曲线、经验值曲线、升级技能和特性也能改。存档后修改会保留。</p>
           </div>
           <div class="feature-panel" role="tabpanel" id="panel-items" aria-labelledby="tab-items">
-            <img class="shot" src="../images/zh/items.webp" alt="用关键词筛选的物品面板，每行都有数量输入框" width="1480" height="1088" loading="lazy">
+            <img class="shot" src="../images/zh/items.webp" alt="用关键词筛选的物品面板，每行都有数量输入框" width="1480" height="1248" loading="lazy">
             <div class="shots"><button type="button" data-shot="../images/zh/items.webp" aria-pressed="true"><img src="../images/zh/items.webp" alt="" loading="lazy"></button><button type="button" data-shot="../images/zh/weapons.webp" aria-pressed="false"><img src="../images/zh/weapons.webp" alt="" loading="lazy"></button></div>
             <h3>物品与装备</h3>
             <p>按名称或说明搜索物品、武器和防具，直接填上想要的数量。</p>
           </div>
+          <div class="feature-panel" role="tabpanel" id="panel-tooltips" aria-labelledby="tab-tooltips">
+            <img class="shot" src="../images/zh/tooltips.webp" alt="武器行上方弹出的卡片，显示攻击力、特性和价格" width="1480" height="1248" loading="lazy">
+            
+            <h3>详细提示</h3>
+            <p>把鼠标移到物品、装备、技能、职业、状态或敌人上，就会用卡片显示能力值、特性、效果和价格。</p>
+          </div>
+          <div class="feature-panel" role="tabpanel" id="panel-locks" aria-labelledby="tab-locks">
+            <img class="shot" src="../images/zh/locks.webp" alt="加星的物品排在最上面、锁定的物品显示锁图标的物品面板" width="1480" height="1248" loading="lazy">
+            
+            <h3>锁定与收藏</h3>
+            <p>锁定物品和装备的数量、金币、变量、开关、状态或计时器后，游戏改了也会保持不变。常用的行加上星标，就会排在最上面。两者都按游戏分别保存，不会进入设置备份。</p>
+          </div>
           <div class="feature-panel" role="tabpanel" id="panel-switches-search" aria-labelledby="tab-switches-search">
-            <img class="shot" src="../images/zh/switches-search.webp" alt="用关键词筛选的开关面板" width="1480" height="1088" loading="lazy">
+            <img class="shot" src="../images/zh/switches-search.webp" alt="用关键词筛选的开关面板" width="1480" height="1248" loading="lazy">
             <div class="shots"><button type="button" data-shot="../images/zh/switches-search.webp" aria-pressed="true"><img src="../images/zh/switches-search.webp" alt="" loading="lazy"></button><button type="button" data-shot="../images/zh/switches.webp" aria-pressed="false"><img src="../images/zh/switches.webp" alt="" loading="lazy"></button></div>
             <h3>开关</h3>
             <p>按名称搜索，可以逐个切换，也可以一次切换列表中的全部。</p>
           </div>
           <div class="feature-panel" role="tabpanel" id="panel-variables" aria-labelledby="tab-variables">
-            <img class="shot" src="../images/zh/variables.webp" alt="展开对象后显示不同类型值的变量面板" width="1480" height="1088" loading="lazy">
+            <img class="shot" src="../images/zh/variables.webp" alt="展开对象后显示不同类型值的变量面板" width="1480" height="1248" loading="lazy">
             <div class="shots"><button type="button" data-shot="../images/zh/variables.webp" aria-pressed="true"><img src="../images/zh/variables.webp" alt="" loading="lazy"></button><button type="button" data-shot="../images/zh/variables-json.webp" aria-pressed="false"><img src="../images/zh/variables-json.webp" alt="" loading="lazy"></button></div>
             <h3>变量</h3>
             <p>按名称搜索，修改时保持值的类型不变。支持整数、小数、文本、是/否、数组、对象和日期。对象可以展开修改，也可以用 JSON 修改。</p>
           </div>
+          <div class="feature-panel" role="tabpanel" id="panel-snapshots" aria-labelledby="tab-snapshots">
+            <img class="shot" src="../images/zh/snapshots.webp" alt="把快照和当前游戏做对比的数值对比首页，每组显示变化数量" width="1480" height="1248" loading="lazy">
+            <div class="shots"><button type="button" data-shot="../images/zh/snapshots.webp" aria-pressed="true"><img src="../images/zh/snapshots.webp" alt="" loading="lazy"></button><button type="button" data-shot="../images/zh/snapshots-variables.webp" aria-pressed="false"><img src="../images/zh/snapshots-variables.webp" alt="" loading="lazy"></button></div>
+            <h3>数值对比</h3>
+            <p>先把当前的数值拍成快照，玩一会儿后看看哪些变了。变量、开关、角色和物品的变化一目了然，任务用的变量也很好找。快照会保存成文件。</p>
+          </div>
+          <div class="feature-panel" role="tabpanel" id="panel-map-events" aria-labelledby="tab-map-events">
+            <img class="shot" src="../images/zh/map-events.webp" alt="选中事件后弹出的窗口，显示小地图和事件内容" width="1480" height="1248" loading="lazy">
+            
+            <h3>地图事件</h3>
+            <p>按地图列出事件，像在编辑器里一样查看内容。可以切换独立开关、立即执行、走到旁边，也能消除或移动事件。</p>
+          </div>
           <div class="feature-panel" role="tabpanel" id="panel-teleport" aria-labelledby="tab-teleport">
-            <img class="shot" src="../images/zh/teleport.webp" alt="有地图列表和小地图的传送面板" width="1480" height="1088" loading="lazy">
+            <img class="shot" src="../images/zh/teleport.webp" alt="有地图列表和小地图的传送面板" width="1480" height="1248" loading="lazy">
             <div class="shots"><button type="button" data-shot="../images/zh/teleport.webp" aria-pressed="true"><img src="../images/zh/teleport.webp" alt="" loading="lazy"></button><button type="button" data-shot="../images/zh/locations.webp" aria-pressed="false"><img src="../images/zh/locations.webp" alt="" loading="lazy"></button></div>
             <h3>传送与地点收藏 <span class="keys"><kbd>Ctrl</kbd> + <kbd>T</kbd></span></h3>
             <p>选好地图，在小地图上点一格就能过去。喜欢的地点可以收藏，随时回来。</p>
           </div>
+          <div class="feature-panel" role="tabpanel" id="panel-minimap-window" aria-labelledby="tab-minimap-window">
+            <img class="shot" src="../images/zh/minimap-window.webp" alt="显示在游戏画面右上角的小地图窗口" width="1480" height="1248" loading="lazy">
+            
+            <h3>小地图窗口 <span class="keys"><kbd>M</kbd></span></h3>
+            <p>不用打开作弊窗口，按 <kbd>M</kbd> 就能显示当前地图的小地图。双击格子会直接过去，不切换画面。打开“显示事件”后点击事件，会在地图事件里打开它；选中的格子可以用标题栏的按钮直接保存。</p>
+          </div>
           <div class="feature-panel" role="tabpanel" id="panel-messages" aria-labelledby="tab-messages">
-            <img class="shot" src="../images/zh/messages.webp" alt="列出说话人和台词的对话记录面板" width="1480" height="1088" loading="lazy">
+            <img class="shot" src="../images/zh/messages.webp" alt="列出说话人和台词的对话记录面板" width="1480" height="1248" loading="lazy">
             
             <h3>对话记录 <span class="keys"><kbd>H</kbd></span></h3>
             <p>错过了台词？可以重新看，也能搜索。</p>
           </div>
+          <div class="feature-panel" role="tabpanel" id="panel-shortcuts-speed" aria-labelledby="tab-shortcuts-speed">
+            <img class="shot" src="../images/zh/shortcuts-speed.webp" alt="游戏速度和跳过对话的快捷键" width="1480" height="1248" loading="lazy">
+            
+            <h3>游戏速度与跳过对话 <span class="keys"><kbd>S</kbd></span></h3>
+            <p>整个游戏的速度可以在 x0.1 到 x10 之间调整，也可以只在战斗时加速。按住 <kbd>S</kbd>，对话就会一路跳过。</p>
+          </div>
           <div class="feature-panel" role="tabpanel" id="panel-shortcuts" aria-labelledby="tab-shortcuts">
-            <img class="shot" src="../images/zh/shortcuts.webp" alt="列出功能和按键的快捷键面板" width="1480" height="1088" loading="lazy">
+            <img class="shot" src="../images/zh/shortcuts.webp" alt="列出功能和按键的快捷键面板" width="1480" height="1248" loading="lazy">
             
             <h3>快捷键</h3>
             <p>不用打开窗口，一个键就能存档、读档、穿墙、强制战斗胜利等等。按键可以随意更改。</p>
           </div>
+          <div class="feature-panel" role="tabpanel" id="panel-game-options" aria-labelledby="tab-game-options">
+            <img class="shot" src="../images/zh/game-options.webp" alt="始终奔跑、记住指令和 BGM 音量已进入备份的游戏选项页" width="1480" height="1248" loading="lazy">
+            
+            <h3>游戏选项</h3>
+            <p>在作弊窗口里修改始终奔跑、记住指令和音量。只有在这里改过的项目才会进入设置备份，在新游戏里恢复备份后，就不用重新调选项了。</p>
+          </div>
+          <div class="feature-panel" role="tabpanel" id="panel-backup" aria-labelledby="tab-backup">
+            <img class="shot" src="../images/zh/backup.webp" alt="有备份文件夹和备份、恢复按钮的设置画面" width="1480" height="1248" loading="lazy">
+            
+            <h3>设置备份</h3>
+            <p>把快捷键、翻译器、速度、游戏选项等作弊设置备份到文件夹，再在别的游戏里恢复。API 密钥这类敏感的值，备份时会先问你要不要包含。</p>
+          </div>
           <div class="feature-panel" role="tabpanel" id="panel-translate-examples" aria-labelledby="tab-translate-examples">
-            <img class="shot" src="../images/zh/translate-examples.webp" alt="设置里的翻译器示例列表" width="1480" height="1088" loading="lazy">
+            <img class="shot" src="../images/zh/translate-examples.webp" alt="设置里的翻译器示例列表" width="1480" height="1248" loading="lazy">
             
             <h3>翻译</h3>
             <p>接上你在用的翻译器。内置 ezTrans、LM Studio、Ollama、LibreTranslate、DeepL、Google 翻译和 Papago 的示例，其他 API 填好地址和格式也能用。可以翻译游戏画面或作弊面板里的文字，译文会保存下来重复使用。</p>
           </div>
           <div class="feature-panel" role="tabpanel" id="panel-languages" aria-labelledby="tab-languages">
-            <img class="shot" src="../images/zh/languages.webp" alt="用韩语、英语、日语和中文显示的快捷键面板" width="1480" height="1088" loading="lazy">
+            <img class="shot" src="../images/zh/languages.webp" alt="用韩语、英语、日语和中文显示的快捷键面板" width="1480" height="1248" loading="lazy">
             
             <h3>多语言</h3>
             <p>作弊窗口支持韩语、英语、日语和简体中文。在设置里选好后马上切换。</p>
           </div>
         </div>
       </div>
-      <p class="more">此外还有强制战斗胜利、失败、逃跑，关闭随机遇敌，快速存档、读档和设置备份。这些都不需要联网。</p>
+      <p class="more">此外还有快速存档、读档，可以折叠的菜单，以及拖动四边调整窗口大小。这些都不需要联网。</p>
     </section>
 
     <section class="usage page-width">
@@ -190,6 +267,7 @@
         <div><dt><kbd>H</kbd></dt><dd>打开/关闭对话记录</dd></div>
         <div><dt><kbd>Ctrl</kbd> + <kbd>T</kbd></dt><dd>打开/关闭传送</dd></div>
         <div><dt><kbd>Ctrl</kbd> + <kbd>M</kbd></dt><dd>打开/关闭地点收藏</dd></div>
+        <div><dt><kbd>M</kbd></dt><dd>打开/关闭小地图窗口</dd></div>
         <div><dt><kbd>W</kbd></dt><dd>开关穿墙</dd></div>
         <div><dt><kbd>S</kbd></dt><dd>跳过对话（按住时）</dd></div>
         <div><dt><kbd>Ctrl</kbd> + <kbd>S</kbd></dt><dd>快速存档</dd></div>
@@ -225,8 +303,9 @@
           </div>
         </div>
         <div>
-          <p>MV：在 <code>PluginManager.setup($plugins);</code> 的下一行加上两行。</p>
+          <p>MV：在 <code>PluginManager.setup($plugins);</code> 的下一行加上三行。</p>
           <pre><code>PluginManager.setup($plugins);
+// auto generated for cheat
 PluginManager._path = 'js/plugins/';
 PluginManager.loadScript('../../cheat/init/import.js');</code></pre>
           <p>MZ：在 <code>const scriptUrls = [</code> 的下一行加上一行。</p>

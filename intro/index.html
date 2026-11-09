@@ -12,17 +12,22 @@
 
   <header class="top page-width">
     <span class="product">RPG Maker MV/MZ Cheat UI</span>
-    <nav class="languages" aria-label="Language">
+    <div class="top-links">
+      <nav class="languages" aria-label="Language">
         <a href="ko.html" lang="ko">한국어</a>
         <a href="index.html" lang="en" aria-current="page">English</a>
         <a href="ja.html" lang="ja">日本語</a>
         <a href="zh.html" lang="zh-CN">简体中文</a>
-    </nav>
+      </nav>
+      <a class="releases" href="https://github.com/paramonos/RPG-Maker-MV-MZ-Cheat-UI-Plugin/releases/latest"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73zm1 .27V12"/><path d="M3.29 7L12 12l8.71-5M7.5 4.27l9 5.15"/></g></svg><span>Releases</span></a>
+      <a class="repository" href="https://github.com/paramonos/RPG-Maker-MV-MZ-Cheat-UI-Plugin" aria-label="GitHub repository"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5c.08-1.25-.27-2.48-1-3.5c.28-1.15.28-2.35 0-3.5c0 0-1 0-3 1.5c-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5c-.39.49-.68 1.05-.85 1.65S8.93 17.38 9 18v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></g></svg></a>
+    </div>
   </header>
 
   <main>
     <section class="hero page-width">
       <div class="hero-copy">
+        <a class="latest-version" data-latest-version data-release-base="https://github.com/paramonos/RPG-Maker-MV-MZ-Cheat-UI-Plugin/releases/tag/" hidden>Latest version <strong></strong></a>
         <h1>A cheat window that opens right inside your RPG Maker MV and MZ games.</h1>
         <p class="hero-hint">Press <kbd>C</kbd> to open and close the window, just like in a game.</p>
       </div>
@@ -40,13 +45,15 @@
           <h3>In your browser</h3>
           <p class="who">The quick way to add it to a game.</p>
           <ol>
-            <li>Open the <a href="https://paramonos.github.io/RPG-Maker-MV-MZ-Cheat-UI-Plugin/">“Add the cheat” page</a> in Chrome or Edge on your PC.</li>
+            <li>Open the <a href="https://paramonos.github.io/RPG-Maker-MV-MZ-Cheat-UI-Plugin/">“Add the cheat” page</a> in a browser on your PC. Chrome or Edge is the easiest.</li>
             <li>Pick the folder with <code>Game.exe</code> in it, or drag it onto the page. If the browser asks to change the folder, allow it.</li>
             <li>Press Add the cheat.</li>
             <li>Start the game.</li>
           </ol>
           <ul class="note-list">
-            <li>Browsers won’t open games inside Program Files. Move the game somewhere like your desktop, then pick it.</li>
+            <li>In Firefox, Safari and other browsers that can’t write to folders, you download a zip made for your game. Unzip it and paste the files into the game folder. That’s all.</li>
+            <li>Brave can add it directly once you turn on one setting. The page shows you how.</li>
+            <li>Browsers won’t open games inside Program Files. For those, use Get a zip instead.</li>
             <li>Files that change get backed up in the same folder first, and you can undo it on the same page. Your cheat settings file stays after you undo.</li>
             <li>The page comes in Korean, English, Japanese and Simplified Chinese.</li>
           </ul>
@@ -72,93 +79,163 @@
         <div class="feature-tabs" role="tablist" aria-orientation="vertical" aria-label="What it can do">
           <button type="button" role="tab" id="tab-palette" aria-controls="panel-palette" aria-selected="true">Find a feature</button>
           <button type="button" role="tab" id="tab-general" aria-controls="panel-general" aria-selected="false" tabindex="-1">General cheats</button>
+          <button type="button" role="tab" id="tab-battle" aria-controls="panel-battle" aria-selected="false" tabindex="-1">HP & battle</button>
+          <button type="button" role="tab" id="tab-enemies" aria-controls="panel-enemies" aria-selected="false" tabindex="-1">Edit & summon enemies</button>
           <button type="button" role="tab" id="tab-stats" aria-controls="panel-stats" aria-selected="false" tabindex="-1">Stats</button>
-          <button type="button" role="tab" id="tab-shortcuts-speed" aria-controls="panel-shortcuts-speed" aria-selected="false" tabindex="-1">Speed & message skip</button>
+          <button type="button" role="tab" id="tab-skills" aria-controls="panel-skills" aria-selected="false" tabindex="-1">Skills & classes</button>
           <button type="button" role="tab" id="tab-items" aria-controls="panel-items" aria-selected="false" tabindex="-1">Items & equipment</button>
+          <button type="button" role="tab" id="tab-tooltips" aria-controls="panel-tooltips" aria-selected="false" tabindex="-1">Detailed tooltips</button>
+          <button type="button" role="tab" id="tab-locks" aria-controls="panel-locks" aria-selected="false" tabindex="-1">Locks & favorites</button>
           <button type="button" role="tab" id="tab-switches-search" aria-controls="panel-switches-search" aria-selected="false" tabindex="-1">Switches</button>
           <button type="button" role="tab" id="tab-variables" aria-controls="panel-variables" aria-selected="false" tabindex="-1">Variables</button>
+          <button type="button" role="tab" id="tab-snapshots" aria-controls="panel-snapshots" aria-selected="false" tabindex="-1">Compare</button>
+          <button type="button" role="tab" id="tab-map-events" aria-controls="panel-map-events" aria-selected="false" tabindex="-1">Map events</button>
           <button type="button" role="tab" id="tab-teleport" aria-controls="panel-teleport" aria-selected="false" tabindex="-1">Teleport & locations</button>
+          <button type="button" role="tab" id="tab-minimap-window" aria-controls="panel-minimap-window" aria-selected="false" tabindex="-1">Minimap window</button>
           <button type="button" role="tab" id="tab-messages" aria-controls="panel-messages" aria-selected="false" tabindex="-1">Message log</button>
+          <button type="button" role="tab" id="tab-shortcuts-speed" aria-controls="panel-shortcuts-speed" aria-selected="false" tabindex="-1">Speed & message skip</button>
           <button type="button" role="tab" id="tab-shortcuts" aria-controls="panel-shortcuts" aria-selected="false" tabindex="-1">Shortcuts</button>
+          <button type="button" role="tab" id="tab-game-options" aria-controls="panel-game-options" aria-selected="false" tabindex="-1">Game options</button>
+          <button type="button" role="tab" id="tab-backup" aria-controls="panel-backup" aria-selected="false" tabindex="-1">Settings backup</button>
           <button type="button" role="tab" id="tab-translate-examples" aria-controls="panel-translate-examples" aria-selected="false" tabindex="-1">Translation</button>
           <button type="button" role="tab" id="tab-languages" aria-controls="panel-languages" aria-selected="false" tabindex="-1">Four languages</button>
         </div>
         <div class="feature-panels">
           <div class="feature-panel" role="tabpanel" id="panel-palette" aria-labelledby="tab-palette">
-            <img class="shot" src="../images/en/palette.webp" alt="Search results for speed in Find a feature" width="1480" height="1088" loading="lazy">
+            <img class="shot" src="../images/en/palette.webp" alt="Search results for speed in Find a feature" width="1480" height="1248" loading="lazy">
             
             <h3>Find a feature <span class="keys"><kbd>Ctrl</kbd> + <kbd>K</kbd></span></h3>
             <p>Not sure where something is? Type a few letters and it finds panels, settings and shortcuts, then takes you right there.</p>
           </div>
           <div class="feature-panel" role="tabpanel" id="panel-general" aria-labelledby="tab-general">
-            <img class="shot" src="../images/en/general.webp" alt="The General panel with No clip, gold and speed controls" width="1480" height="1088" loading="lazy">
+            <img class="shot" src="../images/en/general.webp" alt="The General panel with No clip, gold, timer and speed controls" width="1480" height="1248" loading="lazy">
             
             <h3>General cheats</h3>
-            <p>Walk through walls with No clip, and set your gold and move speed to whatever you like.</p>
+            <p>Walk through walls with No clip, and set your gold and move speed to whatever you like. You can also start or stop the game’s timer, or freeze it so it doesn’t run down.</p>
+          </div>
+          <div class="feature-panel" role="tabpanel" id="panel-battle" aria-labelledby="tab-battle">
+            <img class="shot" src="../images/en/battle.webp" alt="The HP &amp; battle panel mid-battle, showing HP, MP and TP for the enemies and the party" width="1480" height="1248" loading="lazy">
+            
+            <h3>HP & battle</h3>
+            <p>Win, lose or escape a battle right away. Edit HP, MP and TP for your party and the enemies, or heal everyone or drop them to 0 or 1 at once. You can also turn off random encounters.</p>
+          </div>
+          <div class="feature-panel" role="tabpanel" id="panel-enemies" aria-labelledby="tab-enemies">
+            <img class="shot" src="../images/en/enemies.webp" alt="The Enemies panel with the stats and actions of Wolf expanded" width="1480" height="1248" loading="lazy">
+            
+            <h3>Edit and summon enemies</h3>
+            <p>Change an enemy’s stats and actions. Fight any troop or the enemies you pick, or call in more enemies mid-battle. Saving the game keeps your changes.</p>
           </div>
           <div class="feature-panel" role="tabpanel" id="panel-stats" aria-labelledby="tab-stats">
-            <img class="shot" src="../images/en/stats.webp" alt="The Stats panel with level, EXP and stat fields" width="1480" height="1088" loading="lazy">
+            <img class="shot" src="../images/en/stats.webp" alt="The Stats panel with class, level, stats, status effects and skills" width="1480" height="1248" loading="lazy">
             
             <h3>Stats</h3>
-            <p>Change level, EXP and stats for each character. You can also turn on God mode, clear status effects, and add or remove party members.</p>
+            <p>Change level, EXP and stats for each character. Switch classes, add or remove status effects, and teach or forget skills. You can also turn on God mode and add or remove party members.</p>
           </div>
-          <div class="feature-panel" role="tabpanel" id="panel-shortcuts-speed" aria-labelledby="tab-shortcuts-speed">
-            <img class="shot" src="../images/en/shortcuts-speed.webp" alt="Shortcuts for game speed and skipping messages" width="1480" height="1088" loading="lazy">
-            
-            <h3>Game speed and message skip <span class="keys"><kbd>S</kbd></span></h3>
-            <p>Run the whole game anywhere from x0.1 to x10, all the time or only in battle. Hold <kbd>S</kbd> and messages fly by.</p>
+          <div class="feature-panel" role="tabpanel" id="panel-skills" aria-labelledby="tab-skills">
+            <img class="shot" src="../images/en/skills.webp" alt="The Skills panel with the values of Fire I expanded" width="1480" height="1248" loading="lazy">
+            <div class="shots"><button type="button" data-shot="../images/en/skills.webp" aria-pressed="true"><img src="../images/en/skills.webp" alt="" loading="lazy"></button><button type="button" data-shot="../images/en/classes.webp" aria-pressed="false"><img src="../images/en/classes.webp" alt="" loading="lazy"></button></div>
+            <h3>Skills and classes</h3>
+            <p>Edit skill values like cost, success rate and damage formula. For classes, change the stat curves, EXP curve, level-up skills and traits. Saving the game keeps your changes.</p>
           </div>
           <div class="feature-panel" role="tabpanel" id="panel-items" aria-labelledby="tab-items">
-            <img class="shot" src="../images/en/items.webp" alt="The Items panel filtered by a search word, with an amount field on each row" width="1480" height="1088" loading="lazy">
+            <img class="shot" src="../images/en/items.webp" alt="The Items panel filtered by a search word, with an amount field on each row" width="1480" height="1248" loading="lazy">
             <div class="shots"><button type="button" data-shot="../images/en/items.webp" aria-pressed="true"><img src="../images/en/items.webp" alt="" loading="lazy"></button><button type="button" data-shot="../images/en/weapons.webp" aria-pressed="false"><img src="../images/en/weapons.webp" alt="" loading="lazy"></button></div>
             <h3>Items and equipment</h3>
             <p>Search items, weapons and armor by name or description, then type in how many you want.</p>
           </div>
+          <div class="feature-panel" role="tabpanel" id="panel-tooltips" aria-labelledby="tab-tooltips">
+            <img class="shot" src="../images/en/tooltips.webp" alt="A card over a weapon row showing its attack, traits and price" width="1480" height="1248" loading="lazy">
+            
+            <h3>Detailed tooltips</h3>
+            <p>Hover over items, equipment, skills, classes, status effects or enemies to see their stats, traits, effects and price on a card.</p>
+          </div>
+          <div class="feature-panel" role="tabpanel" id="panel-locks" aria-labelledby="tab-locks">
+            <img class="shot" src="../images/en/locks.webp" alt="The Items panel with starred items at the top and a lock on the locked items" width="1480" height="1248" loading="lazy">
+            
+            <h3>Locks and favorites</h3>
+            <p>Lock item and equipment amounts, gold, variables, switches, status effects or the timer, and they stay put even when the game changes them. Star the rows you use most to keep them at the top. Both are kept per game and left out of settings backups.</p>
+          </div>
           <div class="feature-panel" role="tabpanel" id="panel-switches-search" aria-labelledby="tab-switches-search">
-            <img class="shot" src="../images/en/switches-search.webp" alt="The Switches panel filtered by a search word" width="1480" height="1088" loading="lazy">
+            <img class="shot" src="../images/en/switches-search.webp" alt="The Switches panel filtered by a search word" width="1480" height="1248" loading="lazy">
             <div class="shots"><button type="button" data-shot="../images/en/switches-search.webp" aria-pressed="true"><img src="../images/en/switches-search.webp" alt="" loading="lazy"></button><button type="button" data-shot="../images/en/switches.webp" aria-pressed="false"><img src="../images/en/switches.webp" alt="" loading="lazy"></button></div>
             <h3>Switches</h3>
             <p>Find switches by name and flip them one by one, or everything in the list at once.</p>
           </div>
           <div class="feature-panel" role="tabpanel" id="panel-variables" aria-labelledby="tab-variables">
-            <img class="shot" src="../images/en/variables.webp" alt="The Variables panel with an object expanded into fields of different types" width="1480" height="1088" loading="lazy">
+            <img class="shot" src="../images/en/variables.webp" alt="The Variables panel with an object expanded into fields of different types" width="1480" height="1248" loading="lazy">
             <div class="shots"><button type="button" data-shot="../images/en/variables.webp" aria-pressed="true"><img src="../images/en/variables.webp" alt="" loading="lazy"></button><button type="button" data-shot="../images/en/variables-json.webp" aria-pressed="false"><img src="../images/en/variables-json.webp" alt="" loading="lazy"></button></div>
             <h3>Variables</h3>
             <p>Find variables by name and edit them without changing their type. Integers, decimals, text, yes/no, lists, objects and dates all work. Open objects as a tree, or edit them as JSON.</p>
           </div>
+          <div class="feature-panel" role="tabpanel" id="panel-snapshots" aria-labelledby="tab-snapshots">
+            <img class="shot" src="../images/en/snapshots.webp" alt="The Compare home comparing a snapshot with the current game, with a change count for each group" width="1480" height="1248" loading="lazy">
+            <div class="shots"><button type="button" data-shot="../images/en/snapshots.webp" aria-pressed="true"><img src="../images/en/snapshots.webp" alt="" loading="lazy"></button><button type="button" data-shot="../images/en/snapshots-variables.webp" aria-pressed="false"><img src="../images/en/snapshots-variables.webp" alt="" loading="lazy"></button></div>
+            <h3>Compare</h3>
+            <p>Take a snapshot, play for a bit, then see what changed. Changes to variables, switches, characters and items show at a glance, so finding the variable a quest uses is easy. Snapshots are saved as files.</p>
+          </div>
+          <div class="feature-panel" role="tabpanel" id="panel-map-events" aria-labelledby="tab-map-events">
+            <img class="shot" src="../images/en/map-events.webp" alt="The window that opens when you pick an event, with a minimap and the event’s contents" width="1480" height="1248" loading="lazy">
+            
+            <h3>Map events</h3>
+            <p>List the events on any map and read what they do, just like in the editor. Flip self switches, run an event right away, go stand next to it, or erase and move it.</p>
+          </div>
           <div class="feature-panel" role="tabpanel" id="panel-teleport" aria-labelledby="tab-teleport">
-            <img class="shot" src="../images/en/teleport.webp" alt="The Teleport panel with a map list and a minimap" width="1480" height="1088" loading="lazy">
+            <img class="shot" src="../images/en/teleport.webp" alt="The Teleport panel with a map list and a minimap" width="1480" height="1248" loading="lazy">
             <div class="shots"><button type="button" data-shot="../images/en/teleport.webp" aria-pressed="true"><img src="../images/en/teleport.webp" alt="" loading="lazy"></button><button type="button" data-shot="../images/en/locations.webp" aria-pressed="false"><img src="../images/en/locations.webp" alt="" loading="lazy"></button></div>
             <h3>Teleport and saved locations <span class="keys"><kbd>Ctrl</kbd> + <kbd>T</kbd></span></h3>
             <p>Pick a map, click a tile on the minimap and go. Save the spots you like and come back any time.</p>
           </div>
+          <div class="feature-panel" role="tabpanel" id="panel-minimap-window" aria-labelledby="tab-minimap-window">
+            <img class="shot" src="../images/en/minimap-window.webp" alt="The minimap window at the top right of the game screen" width="1480" height="1248" loading="lazy">
+            
+            <h3>Minimap window <span class="keys"><kbd>M</kbd></span></h3>
+            <p>Press <kbd>M</kbd> for a minimap of the current map, no cheat window needed. Double-click a tile to go there with no screen transition. Turn on Show events and click an event to open it in Map events, and save a picked tile with the button in the title bar.</p>
+          </div>
           <div class="feature-panel" role="tabpanel" id="panel-messages" aria-labelledby="tab-messages">
-            <img class="shot" src="../images/en/messages.webp" alt="The Message log panel listing past dialogue with speaker names" width="1480" height="1088" loading="lazy">
+            <img class="shot" src="../images/en/messages.webp" alt="The Message log panel listing past dialogue with speaker names" width="1480" height="1248" loading="lazy">
             
             <h3>Message log <span class="keys"><kbd>H</kbd></span></h3>
             <p>Missed a line? Read and search past dialogue.</p>
           </div>
+          <div class="feature-panel" role="tabpanel" id="panel-shortcuts-speed" aria-labelledby="tab-shortcuts-speed">
+            <img class="shot" src="../images/en/shortcuts-speed.webp" alt="Shortcuts for game speed and skipping messages" width="1480" height="1248" loading="lazy">
+            
+            <h3>Game speed and message skip <span class="keys"><kbd>S</kbd></span></h3>
+            <p>Run the whole game anywhere from x0.1 to x10, all the time or only in battle. Hold <kbd>S</kbd> and messages fly by.</p>
+          </div>
           <div class="feature-panel" role="tabpanel" id="panel-shortcuts" aria-labelledby="tab-shortcuts">
-            <img class="shot" src="../images/en/shortcuts.webp" alt="The Shortcuts panel listing actions and their keys" width="1480" height="1088" loading="lazy">
+            <img class="shot" src="../images/en/shortcuts.webp" alt="The Shortcuts panel listing actions and their keys" width="1480" height="1248" loading="lazy">
             
             <h3>Shortcuts</h3>
             <p>Save, load, no clip, win a battle and much more with one key, without opening the window. Change any key to suit you.</p>
           </div>
+          <div class="feature-panel" role="tabpanel" id="panel-game-options" aria-labelledby="tab-game-options">
+            <img class="shot" src="../images/en/game-options.webp" alt="The Game options tab with Always dash, Remember commands and BGM volume in the backup" width="1480" height="1248" loading="lazy">
+            
+            <h3>Game options</h3>
+            <p>Change Always dash, Remember commands and volume from the cheat window. Only what you change here goes into the settings backup, so restoring it in a new game means no setting up the options again.</p>
+          </div>
+          <div class="feature-panel" role="tabpanel" id="panel-backup" aria-labelledby="tab-backup">
+            <img class="shot" src="../images/en/backup.webp" alt="Settings with a backup folder and Back up and Restore buttons" width="1480" height="1248" loading="lazy">
+            
+            <h3>Settings backup</h3>
+            <p>Back up cheat settings like shortcuts, translators, speed and game options to a folder, then restore them in another game. You’re asked whether to include sensitive values like API keys.</p>
+          </div>
           <div class="feature-panel" role="tabpanel" id="panel-translate-examples" aria-labelledby="tab-translate-examples">
-            <img class="shot" src="../images/en/translate-examples.webp" alt="The translator example list in Settings" width="1480" height="1088" loading="lazy">
+            <img class="shot" src="../images/en/translate-examples.webp" alt="The translator example list in Settings" width="1480" height="1248" loading="lazy">
             
             <h3>Translation</h3>
             <p>Connect the translator you use. Examples are built in for ezTrans, LM Studio, Ollama, LibreTranslate, DeepL, Google Translate and Papago, and other APIs work once you fill in the address and format. Translate the game screen or just the cheat panels. Results are saved and reused.</p>
           </div>
           <div class="feature-panel" role="tabpanel" id="panel-languages" aria-labelledby="tab-languages">
-            <img class="shot" src="../images/en/languages.webp" alt="The Shortcuts panel shown in Korean, English, Japanese and Chinese" width="1480" height="1088" loading="lazy">
+            <img class="shot" src="../images/en/languages.webp" alt="The Shortcuts panel shown in Korean, English, Japanese and Chinese" width="1480" height="1248" loading="lazy">
             
             <h3>Four languages</h3>
             <p>The cheat window comes in Korean, English, Japanese and Simplified Chinese. Change it in Settings and it switches right away.</p>
           </div>
         </div>
       </div>
-      <p class="more">There’s more in the window: force a battle win, loss or escape, turn off random encounters, quick save and load, and back up your settings. It all runs without an internet connection.</p>
+      <p class="more">There’s more in the window: quick save and load, a menu you can collapse, and resizing from any edge. It all runs without an internet connection.</p>
     </section>
 
     <section class="usage page-width">
@@ -190,6 +267,7 @@
         <div><dt><kbd>H</kbd></dt><dd>Open/close message log</dd></div>
         <div><dt><kbd>Ctrl</kbd> + <kbd>T</kbd></dt><dd>Open/close teleport</dd></div>
         <div><dt><kbd>Ctrl</kbd> + <kbd>M</kbd></dt><dd>Open/close saved locations</dd></div>
+        <div><dt><kbd>M</kbd></dt><dd>Open/close minimap window</dd></div>
         <div><dt><kbd>W</kbd></dt><dd>Turn no clip on/off</dd></div>
         <div><dt><kbd>S</kbd></dt><dd>Skip messages (hold)</dd></div>
         <div><dt><kbd>Ctrl</kbd> + <kbd>S</kbd></dt><dd>Quick save</dd></div>
@@ -225,8 +303,9 @@
           </div>
         </div>
         <div>
-          <p>For MV, add two lines right after <code>PluginManager.setup($plugins);</code>.</p>
+          <p>For MV, add three lines right after <code>PluginManager.setup($plugins);</code>.</p>
           <pre><code>PluginManager.setup($plugins);
+// auto generated for cheat
 PluginManager._path = 'js/plugins/';
 PluginManager.loadScript('../../cheat/init/import.js');</code></pre>
           <p>For MZ, add one line right after <code>const scriptUrls = [</code>.</p>

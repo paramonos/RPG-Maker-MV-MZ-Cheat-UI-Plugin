@@ -12,17 +12,22 @@
 
   <header class="top page-width">
     <span class="product">RPGツクール MV/MZ チートUI</span>
-    <nav class="languages" aria-label="Language">
+    <div class="top-links">
+      <nav class="languages" aria-label="Language">
         <a href="ko.html" lang="ko">한국어</a>
         <a href="index.html" lang="en">English</a>
         <a href="ja.html" lang="ja" aria-current="page">日本語</a>
         <a href="zh.html" lang="zh-CN">简体中文</a>
-    </nav>
+      </nav>
+      <a class="releases" href="https://github.com/paramonos/RPG-Maker-MV-MZ-Cheat-UI-Plugin/releases/latest"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73zm1 .27V12"/><path d="M3.29 7L12 12l8.71-5M7.5 4.27l9 5.15"/></g></svg><span>リリース</span></a>
+      <a class="repository" href="https://github.com/paramonos/RPG-Maker-MV-MZ-Cheat-UI-Plugin" aria-label="GitHub リポジトリ"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5c.08-1.25-.27-2.48-1-3.5c.28-1.15.28-2.35 0-3.5c0 0-1 0-3 1.5c-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5c-.39.49-.68 1.05-.85 1.65S8.93 17.38 9 18v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></g></svg></a>
+    </div>
   </header>
 
   <main>
     <section class="hero page-width">
       <div class="hero-copy">
+        <a class="latest-version" data-latest-version data-release-base="https://github.com/paramonos/RPG-Maker-MV-MZ-Cheat-UI-Plugin/releases/tag/" hidden>最新バージョン <strong></strong></a>
         <h1>RPGツクール MV・MZ のゲーム内で開けるチートウィンドウです。</h1>
         <p class="hero-hint">ゲームと同じように <kbd>C</kbd> を押すと、ウィンドウが開閉します。</p>
       </div>
@@ -40,13 +45,15 @@
           <h3>ブラウザで入れる</h3>
           <p class="who">ゲームに手軽に入れたいときに。</p>
           <ol>
-            <li>PC の Chrome か Edge で<a href="https://paramonos.github.io/RPG-Maker-MV-MZ-Cheat-UI-Plugin/">「チートを入れる」ページ</a>を開きます。</li>
+            <li>PC のブラウザーで<a href="https://paramonos.github.io/RPG-Maker-MV-MZ-Cheat-UI-Plugin/">「チートを入れる」ページ</a>を開きます。Chrome か Edge がいちばん簡単です。</li>
             <li><code>Game.exe</code> があるフォルダーを選ぶか、ページにドラッグします。ブラウザーがフォルダーの変更を確認してきたら許可します。</li>
             <li>「チートを入れる」を押します。</li>
             <li>ゲームを起動します。</li>
           </ol>
           <ul class="note-list">
-            <li>Program Files の中のゲームはブラウザーが開けません。デスクトップなどに移してから選んでください。</li>
+            <li>Firefox や Safari のようにフォルダーに書き込めないブラウザーでは、このゲーム用の zip をダウンロードします。展開してゲームフォルダーに貼り付けるだけです。</li>
+            <li>Brave は設定をひとつオンにすれば、Chrome と同じように直接入れられます。やり方はページが案内します。</li>
+            <li>Program Files の中のゲームはブラウザーが開けません。そのときは「zip で受け取る」で入れてください。</li>
             <li>変わるファイルは同じフォルダーに先にバックアップするので、同じページで元に戻せます。チートの設定ファイルは元に戻しても残ります。</li>
             <li>ページは韓国語、英語、日本語、中国語で表示できます。</li>
           </ul>
@@ -72,93 +79,163 @@
         <div class="feature-tabs" role="tablist" aria-orientation="vertical" aria-label="できること">
           <button type="button" role="tab" id="tab-palette" aria-controls="panel-palette" aria-selected="true">機能を探す</button>
           <button type="button" role="tab" id="tab-general" aria-controls="panel-general" aria-selected="false" tabindex="-1">基本のチート</button>
+          <button type="button" role="tab" id="tab-battle" aria-controls="panel-battle" aria-selected="false" tabindex="-1">HP・戦闘</button>
+          <button type="button" role="tab" id="tab-enemies" aria-controls="panel-enemies" aria-selected="false" tabindex="-1">敵の編集・呼び出し</button>
           <button type="button" role="tab" id="tab-stats" aria-controls="panel-stats" aria-selected="false" tabindex="-1">能力値</button>
-          <button type="button" role="tab" id="tab-shortcuts-speed" aria-controls="panel-shortcuts-speed" aria-selected="false" tabindex="-1">ゲーム速度・メッセージ送り</button>
+          <button type="button" role="tab" id="tab-skills" aria-controls="panel-skills" aria-selected="false" tabindex="-1">スキル・職業</button>
           <button type="button" role="tab" id="tab-items" aria-controls="panel-items" aria-selected="false" tabindex="-1">アイテム・装備</button>
+          <button type="button" role="tab" id="tab-tooltips" aria-controls="panel-tooltips" aria-selected="false" tabindex="-1">詳しいツールチップ</button>
+          <button type="button" role="tab" id="tab-locks" aria-controls="panel-locks" aria-selected="false" tabindex="-1">値の固定・お気に入り</button>
           <button type="button" role="tab" id="tab-switches-search" aria-controls="panel-switches-search" aria-selected="false" tabindex="-1">スイッチ</button>
           <button type="button" role="tab" id="tab-variables" aria-controls="panel-variables" aria-selected="false" tabindex="-1">変数</button>
+          <button type="button" role="tab" id="tab-snapshots" aria-controls="panel-snapshots" aria-selected="false" tabindex="-1">値の比較</button>
+          <button type="button" role="tab" id="tab-map-events" aria-controls="panel-map-events" aria-selected="false" tabindex="-1">マップイベント</button>
           <button type="button" role="tab" id="tab-teleport" aria-controls="panel-teleport" aria-selected="false" tabindex="-1">テレポート・登録地点</button>
+          <button type="button" role="tab" id="tab-minimap-window" aria-controls="panel-minimap-window" aria-selected="false" tabindex="-1">ミニマップウィンドウ</button>
           <button type="button" role="tab" id="tab-messages" aria-controls="panel-messages" aria-selected="false" tabindex="-1">会話ログ</button>
+          <button type="button" role="tab" id="tab-shortcuts-speed" aria-controls="panel-shortcuts-speed" aria-selected="false" tabindex="-1">ゲーム速度・メッセージ送り</button>
           <button type="button" role="tab" id="tab-shortcuts" aria-controls="panel-shortcuts" aria-selected="false" tabindex="-1">ショートカット</button>
+          <button type="button" role="tab" id="tab-game-options" aria-controls="panel-game-options" aria-selected="false" tabindex="-1">ゲーム設定</button>
+          <button type="button" role="tab" id="tab-backup" aria-controls="panel-backup" aria-selected="false" tabindex="-1">設定のバックアップ</button>
           <button type="button" role="tab" id="tab-translate-examples" aria-controls="panel-translate-examples" aria-selected="false" tabindex="-1">翻訳</button>
           <button type="button" role="tab" id="tab-languages" aria-controls="panel-languages" aria-selected="false" tabindex="-1">多言語</button>
         </div>
         <div class="feature-panels">
           <div class="feature-panel" role="tabpanel" id="panel-palette" aria-labelledby="tab-palette">
-            <img class="shot" src="../images/ja/palette.webp" alt="「機能を探す」で速度を検索した結果" width="1480" height="1088" loading="lazy">
+            <img class="shot" src="../images/ja/palette.webp" alt="「機能を探す」で速度を検索した結果" width="1480" height="1248" loading="lazy">
             
             <h3>機能を探す <span class="keys"><kbd>Ctrl</kbd> + <kbd>K</kbd></span></h3>
             <p>場所を覚えていなくても大丈夫です。名前の一部を入力すれば、パネル、設定、ショートカットまで見つけて、その場所へ案内します。</p>
           </div>
           <div class="feature-panel" role="tabpanel" id="panel-general" aria-labelledby="tab-general">
-            <img class="shot" src="../images/ja/general.webp" alt="壁抜け、ゴールド、速度の調整がある一般パネル" width="1480" height="1088" loading="lazy">
+            <img class="shot" src="../images/ja/general.webp" alt="壁抜け、ゴールド、タイマー、速度の調整がある一般パネル" width="1480" height="1248" loading="lazy">
             
             <h3>基本のチート</h3>
-            <p>壁抜けでどこへでも歩けて、ゴールドや移動速度も好きな値に変えられます。</p>
+            <p>壁抜けでどこへでも歩けて、ゴールドや移動速度も好きな値に変えられます。ゲームのタイマーを始めたり止めたり、固定して時間が減らないようにもできます。</p>
+          </div>
+          <div class="feature-panel" role="tabpanel" id="panel-battle" aria-labelledby="tab-battle">
+            <img class="shot" src="../images/ja/battle.webp" alt="戦闘中の HP・戦闘パネル。敵と味方の HP・MP・TP が見える" width="1480" height="1248" loading="lazy">
+            
+            <h3>HP・戦闘</h3>
+            <p>戦闘にすぐ勝ったり、負けたり、逃げたりできます。味方と敵の HP・MP・TP を変えたり、まとめて回復したり 0・1 にしたりできます。ランダムエンカウントも止められます。</p>
+          </div>
+          <div class="feature-panel" role="tabpanel" id="panel-enemies" aria-labelledby="tab-enemies">
+            <img class="shot" src="../images/ja/enemies.webp" alt="Wolf の能力値と行動を開いた敵パネル" width="1480" height="1248" loading="lazy">
+            
+            <h3>敵の編集・呼び出し</h3>
+            <p>敵の能力値と行動を変えられます。好きな敵グループや選んだ敵とすぐに戦えて、戦闘中に敵を呼び足すこともできます。変えた値はセーブすると残ります。</p>
           </div>
           <div class="feature-panel" role="tabpanel" id="panel-stats" aria-labelledby="tab-stats">
-            <img class="shot" src="../images/ja/stats.webp" alt="レベル、経験値、能力値の欄がある能力値パネル" width="1480" height="1088" loading="lazy">
+            <img class="shot" src="../images/ja/stats.webp" alt="職業、レベル、能力値、ステート、スキルがある能力値パネル" width="1480" height="1248" loading="lazy">
             
             <h3>能力値</h3>
-            <p>キャラクターごとにレベル、経験値、能力値を変更できます。無敵やステートの解除、パーティーへの加入・離脱もできます。</p>
+            <p>キャラクターごとにレベル、経験値、能力値を変更できます。職業の変更、ステートの付与・解除、スキルの習得・忘却もできます。無敵やパーティーへの加入・離脱もできます。</p>
           </div>
-          <div class="feature-panel" role="tabpanel" id="panel-shortcuts-speed" aria-labelledby="tab-shortcuts-speed">
-            <img class="shot" src="../images/ja/shortcuts-speed.webp" alt="ゲーム速度とメッセージ送りのショートカット" width="1480" height="1088" loading="lazy">
-            
-            <h3>ゲーム速度・メッセージ送り <span class="keys"><kbd>S</kbd></span></h3>
-            <p>ゲーム全体の速さを x0.1 から x10 まで変えられます。戦闘中だけ速くすることもできます。<kbd>S</kbd> を押している間はメッセージがどんどん進みます。</p>
+          <div class="feature-panel" role="tabpanel" id="panel-skills" aria-labelledby="tab-skills">
+            <img class="shot" src="../images/ja/skills.webp" alt="Fire I の値を開いたスキルパネル" width="1480" height="1248" loading="lazy">
+            <div class="shots"><button type="button" data-shot="../images/ja/skills.webp" aria-pressed="true"><img src="../images/ja/skills.webp" alt="" loading="lazy"></button><button type="button" data-shot="../images/ja/classes.webp" aria-pressed="false"><img src="../images/ja/classes.webp" alt="" loading="lazy"></button></div>
+            <h3>スキル・職業</h3>
+            <p>スキルの消費、成功率、ダメージ計算式などの値を変えられます。職業は能力値曲線、経験値曲線、習得スキル、特徴まで変えられます。変えた値はセーブすると残ります。</p>
           </div>
           <div class="feature-panel" role="tabpanel" id="panel-items" aria-labelledby="tab-items">
-            <img class="shot" src="../images/ja/items.webp" alt="検索語で絞り込んだアイテムパネル。各行に個数の欄がある" width="1480" height="1088" loading="lazy">
+            <img class="shot" src="../images/ja/items.webp" alt="検索語で絞り込んだアイテムパネル。各行に個数の欄がある" width="1480" height="1248" loading="lazy">
             <div class="shots"><button type="button" data-shot="../images/ja/items.webp" aria-pressed="true"><img src="../images/ja/items.webp" alt="" loading="lazy"></button><button type="button" data-shot="../images/ja/weapons.webp" aria-pressed="false"><img src="../images/ja/weapons.webp" alt="" loading="lazy"></button></div>
             <h3>アイテム・装備</h3>
             <p>アイテム、武器、防具を名前や説明で検索して、好きな個数を入力できます。</p>
           </div>
+          <div class="feature-panel" role="tabpanel" id="panel-tooltips" aria-labelledby="tab-tooltips">
+            <img class="shot" src="../images/ja/tooltips.webp" alt="武器の行の上に出たカード。攻撃力、特徴、価格が見える" width="1480" height="1248" loading="lazy">
+            
+            <h3>詳しいツールチップ</h3>
+            <p>アイテム、装備、スキル、職業、ステート、敵にマウスを乗せると、能力値、特徴、効果、価格をカードで見せます。</p>
+          </div>
+          <div class="feature-panel" role="tabpanel" id="panel-locks" aria-labelledby="tab-locks">
+            <img class="shot" src="../images/ja/locks.webp" alt="星を付けたアイテムが一番上にあり、固定したアイテムに鍵が付いたアイテムパネル" width="1480" height="1248" loading="lazy">
+            
+            <h3>値の固定・お気に入り</h3>
+            <p>アイテムや装備の個数、ゴールド、変数、スイッチ、ステート、タイマーを固定すると、ゲームが変えてもそのままです。よく使う行は星を付けて一番上にまとめられます。どちらもゲームごとに残り、設定のバックアップには入りません。</p>
+          </div>
           <div class="feature-panel" role="tabpanel" id="panel-switches-search" aria-labelledby="tab-switches-search">
-            <img class="shot" src="../images/ja/switches-search.webp" alt="検索語で絞り込んだスイッチパネル" width="1480" height="1088" loading="lazy">
+            <img class="shot" src="../images/ja/switches-search.webp" alt="検索語で絞り込んだスイッチパネル" width="1480" height="1248" loading="lazy">
             <div class="shots"><button type="button" data-shot="../images/ja/switches-search.webp" aria-pressed="true"><img src="../images/ja/switches-search.webp" alt="" loading="lazy"></button><button type="button" data-shot="../images/ja/switches.webp" aria-pressed="false"><img src="../images/ja/switches.webp" alt="" loading="lazy"></button></div>
             <h3>スイッチ</h3>
             <p>名前で検索して 1 つずつ切り替えるか、一覧に表示中のものをまとめて切り替えられます。</p>
           </div>
           <div class="feature-panel" role="tabpanel" id="panel-variables" aria-labelledby="tab-variables">
-            <img class="shot" src="../images/ja/variables.webp" alt="複合値を開いて種類の違う値が見える変数パネル" width="1480" height="1088" loading="lazy">
+            <img class="shot" src="../images/ja/variables.webp" alt="複合値を開いて種類の違う値が見える変数パネル" width="1480" height="1248" loading="lazy">
             <div class="shots"><button type="button" data-shot="../images/ja/variables.webp" aria-pressed="true"><img src="../images/ja/variables.webp" alt="" loading="lazy"></button><button type="button" data-shot="../images/ja/variables-json.webp" aria-pressed="false"><img src="../images/ja/variables-json.webp" alt="" loading="lazy"></button></div>
             <h3>変数</h3>
             <p>名前で検索して、値の種類を保ったまま編集できます。整数、小数、文字列、真偽、配列、複合値、日付に対応しています。複合値は開いて編集するほか、JSON でも編集できます。</p>
           </div>
+          <div class="feature-panel" role="tabpanel" id="panel-snapshots" aria-labelledby="tab-snapshots">
+            <img class="shot" src="../images/ja/snapshots.webp" alt="スナップショットと今のゲームを比べた値の比較のホーム。グループごとに変わった数が見える" width="1480" height="1248" loading="lazy">
+            <div class="shots"><button type="button" data-shot="../images/ja/snapshots.webp" aria-pressed="true"><img src="../images/ja/snapshots.webp" alt="" loading="lazy"></button><button type="button" data-shot="../images/ja/snapshots-variables.webp" aria-pressed="false"><img src="../images/ja/snapshots-variables.webp" alt="" loading="lazy"></button></div>
+            <h3>値の比較</h3>
+            <p>今の値をスナップショットに撮っておき、少し遊んだあと何が変わったかを見られます。変数、スイッチ、キャラクター、アイテムの変化がひと目でわかるので、クエストが使う変数も見つけやすくなります。スナップショットはファイルに残ります。</p>
+          </div>
+          <div class="feature-panel" role="tabpanel" id="panel-map-events" aria-labelledby="tab-map-events">
+            <img class="shot" src="../images/ja/map-events.webp" alt="イベントを選ぶと開くウィンドウ。ミニマップとイベントの中身が見える" width="1480" height="1248" loading="lazy">
+            
+            <h3>マップイベント</h3>
+            <p>マップごとにイベントを一覧で見て、中身をエディターのように読めます。セルフスイッチの切り替え、すぐに実行、そばへの移動、消去や移動もできます。</p>
+          </div>
           <div class="feature-panel" role="tabpanel" id="panel-teleport" aria-labelledby="tab-teleport">
-            <img class="shot" src="../images/ja/teleport.webp" alt="マップ一覧とミニマップがあるテレポートパネル" width="1480" height="1088" loading="lazy">
+            <img class="shot" src="../images/ja/teleport.webp" alt="マップ一覧とミニマップがあるテレポートパネル" width="1480" height="1248" loading="lazy">
             <div class="shots"><button type="button" data-shot="../images/ja/teleport.webp" aria-pressed="true"><img src="../images/ja/teleport.webp" alt="" loading="lazy"></button><button type="button" data-shot="../images/ja/locations.webp" aria-pressed="false"><img src="../images/ja/locations.webp" alt="" loading="lazy"></button></div>
             <h3>テレポート・登録地点 <span class="keys"><kbd>Ctrl</kbd> + <kbd>T</kbd></span></h3>
             <p>マップを選んでミニマップのマスをクリックすれば、すぐに移動できます。気に入った場所は登録して、いつでも戻れます。</p>
           </div>
+          <div class="feature-panel" role="tabpanel" id="panel-minimap-window" aria-labelledby="tab-minimap-window">
+            <img class="shot" src="../images/ja/minimap-window.webp" alt="ゲーム画面の右上に出たミニマップウィンドウ" width="1480" height="1248" loading="lazy">
+            
+            <h3>ミニマップウィンドウ <span class="keys"><kbd>M</kbd></span></h3>
+            <p>チートウィンドウを開かずに、<kbd>M</kbd> で今のマップのミニマップを出せます。マスをダブルクリックすると画面切り替えなしですぐ移動します。「イベントを表示」をオンにしてイベントをクリックするとマップイベントでそのイベントを開き、選んだマスはタイトルバーのボタンですぐ登録できます。</p>
+          </div>
           <div class="feature-panel" role="tabpanel" id="panel-messages" aria-labelledby="tab-messages">
-            <img class="shot" src="../images/ja/messages.webp" alt="話者とセリフが並ぶ会話ログパネル" width="1480" height="1088" loading="lazy">
+            <img class="shot" src="../images/ja/messages.webp" alt="話者とセリフが並ぶ会話ログパネル" width="1480" height="1248" loading="lazy">
             
             <h3>会話ログ <span class="keys"><kbd>H</kbd></span></h3>
             <p>見逃したセリフはありませんか。過ぎたセリフを読み返したり検索したりできます。</p>
           </div>
+          <div class="feature-panel" role="tabpanel" id="panel-shortcuts-speed" aria-labelledby="tab-shortcuts-speed">
+            <img class="shot" src="../images/ja/shortcuts-speed.webp" alt="ゲーム速度とメッセージ送りのショートカット" width="1480" height="1248" loading="lazy">
+            
+            <h3>ゲーム速度・メッセージ送り <span class="keys"><kbd>S</kbd></span></h3>
+            <p>ゲーム全体の速さを x0.1 から x10 まで変えられます。戦闘中だけ速くすることもできます。<kbd>S</kbd> を押している間はメッセージがどんどん進みます。</p>
+          </div>
           <div class="feature-panel" role="tabpanel" id="panel-shortcuts" aria-labelledby="tab-shortcuts">
-            <img class="shot" src="../images/ja/shortcuts.webp" alt="機能とキーが並ぶショートカットパネル" width="1480" height="1088" loading="lazy">
+            <img class="shot" src="../images/ja/shortcuts.webp" alt="機能とキーが並ぶショートカットパネル" width="1480" height="1248" loading="lazy">
             
             <h3>ショートカット</h3>
             <p>ウィンドウを開かなくても、セーブ、ロード、壁抜け、戦闘勝利などをキー 1 つで使えます。キーは自由に変えられます。</p>
           </div>
+          <div class="feature-panel" role="tabpanel" id="panel-game-options" aria-labelledby="tab-game-options">
+            <img class="shot" src="../images/ja/game-options.webp" alt="常時ダッシュ、コマンド記憶、BGM の音量がバックアップに入ったゲーム設定タブ" width="1480" height="1248" loading="lazy">
+            
+            <h3>ゲーム設定</h3>
+            <p>常時ダッシュ、コマンド記憶、音量をチートウィンドウから変えられます。ここで変えたものだけが設定のバックアップに入るので、新しいゲームでバックアップを復元すればオプションを合わせ直す必要はありません。</p>
+          </div>
+          <div class="feature-panel" role="tabpanel" id="panel-backup" aria-labelledby="tab-backup">
+            <img class="shot" src="../images/ja/backup.webp" alt="バックアップフォルダーとバックアップ・復元ボタンがある設定画面" width="1480" height="1248" loading="lazy">
+            
+            <h3>設定のバックアップ</h3>
+            <p>ショートカット、翻訳ツール、速度、ゲーム設定などのチートの設定をフォルダーにバックアップし、ほかのゲームで復元できます。API キーのような大事な値を入れるかどうかは、バックアップのときに確認します。</p>
+          </div>
           <div class="feature-panel" role="tabpanel" id="panel-translate-examples" aria-labelledby="tab-translate-examples">
-            <img class="shot" src="../images/ja/translate-examples.webp" alt="設定の翻訳ツール例の一覧" width="1480" height="1088" loading="lazy">
+            <img class="shot" src="../images/ja/translate-examples.webp" alt="設定の翻訳ツール例の一覧" width="1480" height="1248" loading="lazy">
             
             <h3>翻訳</h3>
             <p>使っている翻訳ツールをつなげます。ezTrans、LM Studio、Ollama、LibreTranslate、DeepL、Google 翻訳、Papago の例が入っていて、ほかの API もアドレスと形式を書けば使えます。ゲーム画面やチートパネルの文字を翻訳し、翻訳結果は保存して使い回します。</p>
           </div>
           <div class="feature-panel" role="tabpanel" id="panel-languages" aria-labelledby="tab-languages">
-            <img class="shot" src="../images/ja/languages.webp" alt="韓国語、英語、日本語、中国語で表示したショートカットパネル" width="1480" height="1088" loading="lazy">
+            <img class="shot" src="../images/ja/languages.webp" alt="韓国語、英語、日本語、中国語で表示したショートカットパネル" width="1480" height="1248" loading="lazy">
             
             <h3>多言語</h3>
             <p>チートウィンドウは韓国語、英語、日本語、中国語（簡体字）で表示できます。設定で選ぶとすぐに切り替わります。</p>
           </div>
         </div>
       </div>
-      <p class="more">ほかにも、戦闘の強制勝利・敗北・逃走、ランダムエンカウントの停止、クイックセーブ・ロード、設定のバックアップがあります。どれもインターネットなしで動きます。</p>
+      <p class="more">ほかにも、クイックセーブ・ロード、メニューの折りたたみ、四辺をドラッグしてのウィンドウサイズ変更があります。どれもインターネットなしで動きます。</p>
     </section>
 
     <section class="usage page-width">
@@ -190,6 +267,7 @@
         <div><dt><kbd>H</kbd></dt><dd>会話ログの開閉</dd></div>
         <div><dt><kbd>Ctrl</kbd> + <kbd>T</kbd></dt><dd>テレポートの開閉</dd></div>
         <div><dt><kbd>Ctrl</kbd> + <kbd>M</kbd></dt><dd>登録地点の開閉</dd></div>
+        <div><dt><kbd>M</kbd></dt><dd>ミニマップウィンドウの開閉</dd></div>
         <div><dt><kbd>W</kbd></dt><dd>壁抜けのオン・オフ</dd></div>
         <div><dt><kbd>S</kbd></dt><dd>メッセージ送り（押している間）</dd></div>
         <div><dt><kbd>Ctrl</kbd> + <kbd>S</kbd></dt><dd>クイックセーブ</dd></div>
@@ -225,8 +303,9 @@
           </div>
         </div>
         <div>
-          <p>MV は <code>PluginManager.setup($plugins);</code> のすぐ次に 2 行追加します。</p>
+          <p>MV は <code>PluginManager.setup($plugins);</code> のすぐ次に 3 行追加します。</p>
           <pre><code>PluginManager.setup($plugins);
+// auto generated for cheat
 PluginManager._path = 'js/plugins/';
 PluginManager.loadScript('../../cheat/init/import.js');</code></pre>
           <p>MZ は <code>const scriptUrls = [</code> のすぐ次に 1 行追加します。</p>
