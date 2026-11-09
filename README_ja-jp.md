@@ -18,13 +18,15 @@
 <b>ブラウザで入れる</b>
 <br>ゲームに手軽に入れたいときに。
 <ol>
-<li>PC の Chrome か Edge で<a href="https://paramonos.github.io/RPG-Maker-MV-MZ-Cheat-UI-Plugin/">「チートを入れる」ページ</a>を開きます。</li>
+<li>PC のブラウザーで<a href="https://paramonos.github.io/RPG-Maker-MV-MZ-Cheat-UI-Plugin/">「チートを入れる」ページ</a>を開きます。Chrome か Edge がいちばん簡単です。</li>
 <li><code>Game.exe</code> があるフォルダーを選ぶか、ページにドラッグします。ブラウザーがフォルダーの変更を確認してきたら許可します。</li>
 <li>「チートを入れる」を押します。</li>
 <li>ゲームを起動します。</li>
 </ol>
 <ul>
-<li>Program Files の中のゲームはブラウザーが開けません。デスクトップなどに移してから選んでください。</li>
+<li>Firefox や Safari のようにフォルダーに書き込めないブラウザーでは、このゲーム用の zip をダウンロードします。展開してゲームフォルダーに貼り付けるだけです。</li>
+<li>Brave は設定をひとつオンにすれば、Chrome と同じように直接入れられます。やり方はページが案内します。</li>
+<li>Program Files の中のゲームはブラウザーが開けません。そのときは「zip で受け取る」で入れてください。</li>
 <li>変わるファイルは同じフォルダーに先にバックアップするので、同じページで元に戻せます。チートの設定ファイルは元に戻しても残ります。</li>
 <li>ページは韓国語、英語、日本語、中国語で表示できます。</li>
 </ul>
@@ -55,21 +57,33 @@
 <br>場所を覚えていなくても大丈夫です。名前の一部を入力すれば、パネル、設定、ショートカットまで見つけて、その場所へ案内します。
 </td>
 <td width="50%" valign="top">
-<img src="https://paramonos.github.io/RPG-Maker-MV-MZ-Cheat-UI-Plugin/images/ja/general.webp" alt="壁抜け、ゴールド、速度の調整がある一般パネル" width="100%">
+<img src="https://paramonos.github.io/RPG-Maker-MV-MZ-Cheat-UI-Plugin/images/ja/general.webp" alt="壁抜け、ゴールド、タイマー、速度の調整がある一般パネル" width="100%">
 <br><b>基本のチート</b>
-<br>壁抜けでどこへでも歩けて、ゴールドや移動速度も好きな値に変えられます。
+<br>壁抜けでどこへでも歩けて、ゴールドや移動速度も好きな値に変えられます。ゲームのタイマーを始めたり止めたり、固定して時間が減らないようにもできます。
 </td>
 </tr>
 <tr>
 <td width="50%" valign="top">
-<img src="https://paramonos.github.io/RPG-Maker-MV-MZ-Cheat-UI-Plugin/images/ja/stats.webp" alt="レベル、経験値、能力値の欄がある能力値パネル" width="100%">
-<br><b>能力値</b>
-<br>キャラクターごとにレベル、経験値、能力値を変更できます。無敵やステートの解除、パーティーへの加入・離脱もできます。
+<img src="https://paramonos.github.io/RPG-Maker-MV-MZ-Cheat-UI-Plugin/images/ja/battle.webp" alt="戦闘中の HP・戦闘パネル。敵と味方の HP・MP・TP が見える" width="100%">
+<br><b>HP・戦闘</b>
+<br>戦闘にすぐ勝ったり、負けたり、逃げたりできます。味方と敵の HP・MP・TP を変えたり、まとめて回復したり 0・1 にしたりできます。ランダムエンカウントも止められます。
 </td>
 <td width="50%" valign="top">
-<img src="https://paramonos.github.io/RPG-Maker-MV-MZ-Cheat-UI-Plugin/images/ja/shortcuts-speed.webp" alt="ゲーム速度とメッセージ送りのショートカット" width="100%">
-<br><b>ゲーム速度・メッセージ送り</b> &nbsp;<kbd>S</kbd>
-<br>ゲーム全体の速さを x0.1 から x10 まで変えられます。戦闘中だけ速くすることもできます。<kbd>S</kbd> を押している間はメッセージがどんどん進みます。
+<img src="https://paramonos.github.io/RPG-Maker-MV-MZ-Cheat-UI-Plugin/images/ja/enemies.webp" alt="Wolf の能力値と行動を開いた敵パネル" width="100%">
+<br><b>敵の編集・呼び出し</b>
+<br>敵の能力値と行動を変えられます。好きな敵グループや選んだ敵とすぐに戦えて、戦闘中に敵を呼び足すこともできます。変えた値はセーブすると残ります。
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+<img src="https://paramonos.github.io/RPG-Maker-MV-MZ-Cheat-UI-Plugin/images/ja/stats.webp" alt="職業、レベル、能力値、ステート、スキルがある能力値パネル" width="100%">
+<br><b>能力値</b>
+<br>キャラクターごとにレベル、経験値、能力値を変更できます。職業の変更、ステートの付与・解除、スキルの習得・忘却もできます。無敵やパーティーへの加入・離脱もできます。
+</td>
+<td width="50%" valign="top">
+<img src="https://paramonos.github.io/RPG-Maker-MV-MZ-Cheat-UI-Plugin/images/ja/skills.webp" alt="Fire I の値を開いたスキルパネル" width="100%">
+<br><b>スキル・職業</b>
+<br>スキルの消費、成功率、ダメージ計算式などの値を変えられます。職業は能力値曲線、経験値曲線、習得スキル、特徴まで変えられます。変えた値はセーブすると残ります。
 </td>
 </tr>
 <tr>
@@ -77,6 +91,18 @@
 <img src="https://paramonos.github.io/RPG-Maker-MV-MZ-Cheat-UI-Plugin/images/ja/items.webp" alt="検索語で絞り込んだアイテムパネル。各行に個数の欄がある" width="100%">
 <br><b>アイテム・装備</b>
 <br>アイテム、武器、防具を名前や説明で検索して、好きな個数を入力できます。
+</td>
+<td width="50%" valign="top">
+<img src="https://paramonos.github.io/RPG-Maker-MV-MZ-Cheat-UI-Plugin/images/ja/tooltips.webp" alt="武器の行の上に出たカード。攻撃力、特徴、価格が見える" width="100%">
+<br><b>詳しいツールチップ</b>
+<br>アイテム、装備、スキル、職業、ステート、敵にマウスを乗せると、能力値、特徴、効果、価格をカードで見せます。
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+<img src="https://paramonos.github.io/RPG-Maker-MV-MZ-Cheat-UI-Plugin/images/ja/locks.webp" alt="星を付けたアイテムが一番上にあり、固定したアイテムに鍵が付いたアイテムパネル" width="100%">
+<br><b>値の固定・お気に入り</b>
+<br>アイテムや装備の個数、ゴールド、変数、スイッチ、ステート、タイマーを固定すると、ゲームが変えてもそのままです。よく使う行は星を付けて一番上にまとめられます。どちらもゲームごとに残り、設定のバックアップには入りません。
 </td>
 <td width="50%" valign="top">
 <img src="https://paramonos.github.io/RPG-Maker-MV-MZ-Cheat-UI-Plugin/images/ja/switches-search.webp" alt="検索語で絞り込んだスイッチパネル" width="100%">
@@ -91,6 +117,18 @@
 <br>名前で検索して、値の種類を保ったまま編集できます。整数、小数、文字列、真偽、配列、複合値、日付に対応しています。複合値は開いて編集するほか、JSON でも編集できます。
 </td>
 <td width="50%" valign="top">
+<img src="https://paramonos.github.io/RPG-Maker-MV-MZ-Cheat-UI-Plugin/images/ja/snapshots.webp" alt="スナップショットと今のゲームを比べた値の比較のホーム。グループごとに変わった数が見える" width="100%">
+<br><b>値の比較</b>
+<br>今の値をスナップショットに撮っておき、少し遊んだあと何が変わったかを見られます。変数、スイッチ、キャラクター、アイテムの変化がひと目でわかるので、クエストが使う変数も見つけやすくなります。スナップショットはファイルに残ります。
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+<img src="https://paramonos.github.io/RPG-Maker-MV-MZ-Cheat-UI-Plugin/images/ja/map-events.webp" alt="イベントを選ぶと開くウィンドウ。ミニマップとイベントの中身が見える" width="100%">
+<br><b>マップイベント</b>
+<br>マップごとにイベントを一覧で見て、中身をエディターのように読めます。セルフスイッチの切り替え、すぐに実行、そばへの移動、消去や移動もできます。
+</td>
+<td width="50%" valign="top">
 <img src="https://paramonos.github.io/RPG-Maker-MV-MZ-Cheat-UI-Plugin/images/ja/teleport.webp" alt="マップ一覧とミニマップがあるテレポートパネル" width="100%">
 <br><b>テレポート・登録地点</b> &nbsp;<kbd>Ctrl</kbd> + <kbd>T</kbd>
 <br>マップを選んでミニマップのマスをクリックすれば、すぐに移動できます。気に入った場所は登録して、いつでも戻れます。
@@ -98,14 +136,38 @@
 </tr>
 <tr>
 <td width="50%" valign="top">
+<img src="https://paramonos.github.io/RPG-Maker-MV-MZ-Cheat-UI-Plugin/images/ja/minimap-window.webp" alt="ゲーム画面の右上に出たミニマップウィンドウ" width="100%">
+<br><b>ミニマップウィンドウ</b> &nbsp;<kbd>M</kbd>
+<br>チートウィンドウを開かずに、<kbd>M</kbd> で今のマップのミニマップを出せます。マスをダブルクリックすると画面切り替えなしですぐ移動します。「イベントを表示」をオンにしてイベントをクリックするとマップイベントでそのイベントを開き、選んだマスはタイトルバーのボタンですぐ登録できます。
+</td>
+<td width="50%" valign="top">
 <img src="https://paramonos.github.io/RPG-Maker-MV-MZ-Cheat-UI-Plugin/images/ja/messages.webp" alt="話者とセリフが並ぶ会話ログパネル" width="100%">
 <br><b>会話ログ</b> &nbsp;<kbd>H</kbd>
 <br>見逃したセリフはありませんか。過ぎたセリフを読み返したり検索したりできます。
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+<img src="https://paramonos.github.io/RPG-Maker-MV-MZ-Cheat-UI-Plugin/images/ja/shortcuts-speed.webp" alt="ゲーム速度とメッセージ送りのショートカット" width="100%">
+<br><b>ゲーム速度・メッセージ送り</b> &nbsp;<kbd>S</kbd>
+<br>ゲーム全体の速さを x0.1 から x10 まで変えられます。戦闘中だけ速くすることもできます。<kbd>S</kbd> を押している間はメッセージがどんどん進みます。
 </td>
 <td width="50%" valign="top">
 <img src="https://paramonos.github.io/RPG-Maker-MV-MZ-Cheat-UI-Plugin/images/ja/shortcuts.webp" alt="機能とキーが並ぶショートカットパネル" width="100%">
 <br><b>ショートカット</b>
 <br>ウィンドウを開かなくても、セーブ、ロード、壁抜け、戦闘勝利などをキー 1 つで使えます。キーは自由に変えられます。
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+<img src="https://paramonos.github.io/RPG-Maker-MV-MZ-Cheat-UI-Plugin/images/ja/game-options.webp" alt="常時ダッシュ、コマンド記憶、BGM の音量がバックアップに入ったゲーム設定タブ" width="100%">
+<br><b>ゲーム設定</b>
+<br>常時ダッシュ、コマンド記憶、音量をチートウィンドウから変えられます。ここで変えたものだけが設定のバックアップに入るので、新しいゲームでバックアップを復元すればオプションを合わせ直す必要はありません。
+</td>
+<td width="50%" valign="top">
+<img src="https://paramonos.github.io/RPG-Maker-MV-MZ-Cheat-UI-Plugin/images/ja/backup.webp" alt="バックアップフォルダーとバックアップ・復元ボタンがある設定画面" width="100%">
+<br><b>設定のバックアップ</b>
+<br>ショートカット、翻訳ツール、速度、ゲーム設定などのチートの設定をフォルダーにバックアップし、ほかのゲームで復元できます。API キーのような大事な値を入れるかどうかは、バックアップのときに確認します。
 </td>
 </tr>
 <tr>
@@ -122,7 +184,7 @@
 </tr>
 </table>
 
-ほかにも、戦闘の強制勝利・敗北・逃走、ランダムエンカウントの停止、クイックセーブ・ロード、設定のバックアップがあります。どれもインターネットなしで動きます。
+ほかにも、クイックセーブ・ロード、メニューの折りたたみ、四辺をドラッグしてのウィンドウサイズ変更があります。どれもインターネットなしで動きます。
 
 ## 使いかた
 
@@ -145,11 +207,11 @@
 
 <table>
 <tr><td><kbd>C</kbd></td><td>チートウィンドウの開閉</td><td><kbd>Ctrl</kbd> + <kbd>M</kbd></td><td>登録地点の開閉</td></tr>
-<tr><td><kbd>Esc</kbd></td><td>チートウィンドウを閉じる</td><td><kbd>W</kbd></td><td>壁抜けのオン・オフ</td></tr>
-<tr><td><kbd>Ctrl</kbd> + <kbd>K</kbd></td><td>機能を探す</td><td><kbd>S</kbd></td><td>メッセージ送り（押している間）</td></tr>
-<tr><td><kbd>Ctrl</kbd> + <kbd>F</kbd></td><td>パネル内を検索</td><td><kbd>Ctrl</kbd> + <kbd>S</kbd></td><td>クイックセーブ</td></tr>
-<tr><td><kbd>H</kbd></td><td>会話ログの開閉</td><td><kbd>Ctrl</kbd> + <kbd>Q</kbd></td><td>クイックロード</td></tr>
-<tr><td><kbd>Ctrl</kbd> + <kbd>T</kbd></td><td>テレポートの開閉</td><td></td><td></td></tr>
+<tr><td><kbd>Esc</kbd></td><td>チートウィンドウを閉じる</td><td><kbd>M</kbd></td><td>ミニマップウィンドウの開閉</td></tr>
+<tr><td><kbd>Ctrl</kbd> + <kbd>K</kbd></td><td>機能を探す</td><td><kbd>W</kbd></td><td>壁抜けのオン・オフ</td></tr>
+<tr><td><kbd>Ctrl</kbd> + <kbd>F</kbd></td><td>パネル内を検索</td><td><kbd>S</kbd></td><td>メッセージ送り（押している間）</td></tr>
+<tr><td><kbd>H</kbd></td><td>会話ログの開閉</td><td><kbd>Ctrl</kbd> + <kbd>S</kbd></td><td>クイックセーブ</td></tr>
+<tr><td><kbd>Ctrl</kbd> + <kbd>T</kbd></td><td>テレポートの開閉</td><td><kbd>Ctrl</kbd> + <kbd>Q</kbd></td><td>クイックロード</td></tr>
 </table>
 
 ## ゲームの NW.js が 0.26.4 より古い場合
@@ -175,10 +237,11 @@
 <tr><th scope="row">編集するファイル</th><td><code>www/js/main.js</code></td><td><code>js/main.js</code></td></tr>
 </table>
 
-MV は <code>PluginManager.setup($plugins);</code> のすぐ次に 2 行追加します。
+MV は <code>PluginManager.setup($plugins);</code> のすぐ次に 3 行追加します。
 
 ```js
 PluginManager.setup($plugins);
+// auto generated for cheat
 PluginManager._path = 'js/plugins/';
 PluginManager.loadScript('../../cheat/init/import.js');
 ```

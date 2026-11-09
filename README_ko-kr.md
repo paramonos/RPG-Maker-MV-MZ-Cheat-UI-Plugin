@@ -18,13 +18,15 @@
 <b>웹에서 넣기</b>
 <br>게임에 간단하게 넣고 싶을 때.
 <ol>
-<li>PC 의 Chrome 이나 Edge 로 <a href="https://paramonos.github.io/RPG-Maker-MV-MZ-Cheat-UI-Plugin/">치트 넣기 페이지</a> 를 열어요.</li>
+<li>PC 브라우저로 <a href="https://paramonos.github.io/RPG-Maker-MV-MZ-Cheat-UI-Plugin/">치트 넣기 페이지</a> 를 열어요. Chrome 이나 Edge 가 가장 쉬워요.</li>
 <li><code>Game.exe</code> 가 있는 폴더를 고르거나 페이지로 끌어다 놓아요. 브라우저가 폴더 수정을 물으면 허용해요.</li>
 <li>「치트 넣기」를 눌러요.</li>
 <li>게임을 켜요.</li>
 </ol>
 <ul>
-<li>Program Files 안의 게임은 브라우저가 열어 주지 않아요. 바탕화면 같은 곳으로 옮긴 뒤 골라요.</li>
+<li>Firefox · Safari 처럼 폴더에 쓰지 못하는 브라우저에서는 이 게임에 맞춘 압축 파일을 받아요. 풀어서 게임 폴더에 붙여넣기만 하면 돼요.</li>
+<li>Brave 는 설정 하나만 켜면 Chrome 처럼 바로 넣을 수 있어요. 켜는 방법은 페이지가 알려 줘요.</li>
+<li>Program Files 안의 게임은 브라우저가 열어 주지 않아요. 그럴 때도 「압축 파일로 받기」로 넣으면 돼요.</li>
 <li>바뀌는 파일은 같은 폴더에 먼저 백업해서, 같은 페이지에서 원래대로 되돌릴 수 있어요. 치트 설정 파일은 되돌려도 남아요.</li>
 <li>페이지는 한국어, 영어, 일본어, 중국어로 볼 수 있어요.</li>
 </ul>
@@ -55,21 +57,33 @@
 <br>어디 있는지 몰라도 괜찮아요. 이름 몇 글자만 치면 패널과 설정, 단축키까지 찾아서 그 자리로 데려다줘요.
 </td>
 <td width="50%" valign="top">
-<img src="https://paramonos.github.io/RPG-Maker-MV-MZ-Cheat-UI-Plugin/images/ko/general.webp" alt="벽 통과, 골드, 속도 조절이 있는 일반 패널" width="100%">
+<img src="https://paramonos.github.io/RPG-Maker-MV-MZ-Cheat-UI-Plugin/images/ko/general.webp" alt="벽 통과, 골드, 타이머, 속도 조절이 있는 일반 패널" width="100%">
 <br><b>일반 치트</b>
-<br>벽 통과로 어디든 걸어 다니고, 골드와 이동 속도를 원하는 대로 바꿔요.
+<br>벽 통과로 어디든 걸어 다니고, 골드와 이동 속도를 원하는 대로 바꿔요. 게임의 타이머를 새로 걸거나 끄고, 고정해서 시간이 줄지 않게 할 수도 있어요.
 </td>
 </tr>
 <tr>
 <td width="50%" valign="top">
-<img src="https://paramonos.github.io/RPG-Maker-MV-MZ-Cheat-UI-Plugin/images/ko/stats.webp" alt="레벨, 경험치, 능력치 칸이 있는 능력치 패널" width="100%">
-<br><b>능력치</b>
-<br>캐릭터마다 레벨, 경험치, 능력치를 고쳐요. 무적을 켜거나 상태를 풀고, 파티에 넣고 뺄 수도 있어요.
+<img src="https://paramonos.github.io/RPG-Maker-MV-MZ-Cheat-UI-Plugin/images/ko/battle.webp" alt="전투 중인 체력·전투 패널. 적과 아군의 HP · MP · TP 가 보인다" width="100%">
+<br><b>체력·전투</b>
+<br>전투를 바로 이기거나 지거나 도망쳐요. 아군과 적의 HP · MP · TP 를 고치고, 한 번에 회복하거나 0 · 1 로 만들어요. 랜덤 인카운터도 끌 수 있어요.
 </td>
 <td width="50%" valign="top">
-<img src="https://paramonos.github.io/RPG-Maker-MV-MZ-Cheat-UI-Plugin/images/ko/shortcuts-speed.webp" alt="게임 속도와 메시지 스킵 단축키" width="100%">
-<br><b>게임 속도 · 메시지 스킵</b> &nbsp;<kbd>S</kbd>
-<br>게임 전체의 빠르기를 x0.1 부터 x10 까지 바꿔요. 전투에서만 빠르게 할 수도 있어요. <kbd>S</kbd> 를 누르고 있으면 메시지가 쭉 넘어가요.
+<img src="https://paramonos.github.io/RPG-Maker-MV-MZ-Cheat-UI-Plugin/images/ko/enemies.webp" alt="Wolf 의 능력치와 행동을 펼친 적 패널" width="100%">
+<br><b>적 편집 · 소환</b>
+<br>적의 능력치와 행동을 고쳐요. 원하는 적 그룹이나 고른 적과 바로 싸우고, 싸우는 중에 적을 더 불러낼 수도 있어요. 고친 값은 게임을 저장하면 남아요.
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+<img src="https://paramonos.github.io/RPG-Maker-MV-MZ-Cheat-UI-Plugin/images/ko/stats.webp" alt="직업, 레벨, 능력치, 상태, 스킬이 있는 능력치 패널" width="100%">
+<br><b>능력치</b>
+<br>캐릭터마다 레벨, 경험치, 능력치를 고쳐요. 직업을 바꾸고, 상태를 걸거나 풀고, 스킬을 배우거나 잊게 할 수 있어요. 무적을 켜거나 파티에 넣고 뺄 수도 있어요.
+</td>
+<td width="50%" valign="top">
+<img src="https://paramonos.github.io/RPG-Maker-MV-MZ-Cheat-UI-Plugin/images/ko/skills.webp" alt="Fire I 의 값을 펼친 스킬 패널" width="100%">
+<br><b>스킬 · 직업</b>
+<br>스킬의 소모, 성공률, 피해 계산식 같은 값을 고쳐요. 직업은 능력치 곡선, 경험치 곡선, 레벨업 스킬, 특성까지 바꿀 수 있어요. 고친 값은 게임을 저장하면 남아요.
 </td>
 </tr>
 <tr>
@@ -77,6 +91,18 @@
 <img src="https://paramonos.github.io/RPG-Maker-MV-MZ-Cheat-UI-Plugin/images/ko/items.webp" alt="검색어로 걸러진 아이템 패널. 줄마다 개수 칸이 있다" width="100%">
 <br><b>아이템 · 장비</b>
 <br>아이템, 무기, 방어구를 이름이나 설명으로 찾아서 원하는 개수를 적어요.
+</td>
+<td width="50%" valign="top">
+<img src="https://paramonos.github.io/RPG-Maker-MV-MZ-Cheat-UI-Plugin/images/ko/tooltips.webp" alt="무기 줄 위에 뜬 카드. 공격력, 특성, 가격이 보인다" width="100%">
+<br><b>자세한 툴팁</b>
+<br>아이템, 장비, 스킬, 직업, 상태, 적에 마우스를 올리면 능력치, 특성, 효과, 가격을 카드로 보여 줘요.
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+<img src="https://paramonos.github.io/RPG-Maker-MV-MZ-Cheat-UI-Plugin/images/ko/locks.webp" alt="별을 단 아이템이 맨 위에 있고, 고정한 아이템에 자물쇠가 켜진 아이템 패널" width="100%">
+<br><b>값 고정 · 즐겨찾기</b>
+<br>아이템 · 장비 개수, 골드, 변수, 스위치, 상태, 타이머를 고정하면 게임이 바꿔도 그대로예요. 자주 쓰는 줄은 별을 달아 맨 위에 모아요. 둘 다 게임마다 따로 남고 설정 백업에는 안 들어가요.
 </td>
 <td width="50%" valign="top">
 <img src="https://paramonos.github.io/RPG-Maker-MV-MZ-Cheat-UI-Plugin/images/ko/switches-search.webp" alt="검색어로 걸러진 스위치 패널" width="100%">
@@ -91,6 +117,18 @@
 <br>이름으로 찾아서 값의 종류를 유지한 채 고쳐요. 정수, 실수, 문자열, 참거짓, 배열, 객체, 날짜를 모두 다뤄요. 객체는 펼쳐서 고치거나 JSON 으로 고칠 수 있어요.
 </td>
 <td width="50%" valign="top">
+<img src="https://paramonos.github.io/RPG-Maker-MV-MZ-Cheat-UI-Plugin/images/ko/snapshots.webp" alt="스냅샷과 지금 게임을 비교한 값 비교 홈. 묶음마다 바뀐 수가 보인다" width="100%">
+<br><b>값 비교</b>
+<br>지금 값을 스냅샷으로 찍어 두고, 게임을 조금 한 뒤 무엇이 바뀌었는지 봐요. 변수, 스위치, 캐릭터, 아이템이 어떻게 바뀌었는지 한눈에 보여서 퀘스트가 쓰는 변수도 쉽게 찾아요. 스냅샷은 파일로 남아요.
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+<img src="https://paramonos.github.io/RPG-Maker-MV-MZ-Cheat-UI-Plugin/images/ko/map-events.webp" alt="이벤트를 고르면 뜨는 창. 미니맵과 이벤트 내용이 보인다" width="100%">
+<br><b>맵 이벤트</b>
+<br>맵마다 이벤트를 목록으로 보고, 내용을 편집기처럼 읽어요. 셀프 스위치를 바꾸거나 바로 실행하고, 곁으로 가거나 지우고 옮길 수도 있어요.
+</td>
+<td width="50%" valign="top">
 <img src="https://paramonos.github.io/RPG-Maker-MV-MZ-Cheat-UI-Plugin/images/ko/teleport.webp" alt="맵 목록과 미니맵이 있는 텔레포트 패널" width="100%">
 <br><b>텔레포트 · 위치 저장</b> &nbsp;<kbd>Ctrl</kbd> + <kbd>T</kbd>
 <br>맵을 고르고 미니맵에서 칸을 누르면 바로 이동해요. 마음에 드는 자리는 저장해 두고 언제든 돌아와요.
@@ -98,14 +136,38 @@
 </tr>
 <tr>
 <td width="50%" valign="top">
+<img src="https://paramonos.github.io/RPG-Maker-MV-MZ-Cheat-UI-Plugin/images/ko/minimap-window.webp" alt="게임 화면 오른쪽 위에 뜬 미니맵 창" width="100%">
+<br><b>미니맵 창</b> &nbsp;<kbd>M</kbd>
+<br>치트 창을 열지 않고 <kbd>M</kbd> 으로 지금 맵의 미니맵을 띄워요. 칸을 두 번 누르면 화면 전환 없이 바로 가요. 「이벤트 보이기」를 켜고 이벤트를 누르면 맵 이벤트에서 그 이벤트를 열고, 고른 칸은 제목 줄 단추로 바로 저장해요.
+</td>
+<td width="50%" valign="top">
 <img src="https://paramonos.github.io/RPG-Maker-MV-MZ-Cheat-UI-Plugin/images/ko/messages.webp" alt="말한 사람과 대사가 나열된 대화 기록 패널" width="100%">
 <br><b>대화 기록</b> &nbsp;<kbd>H</kbd>
 <br>놓친 대사가 있나요? 지나간 대사를 다시 읽고 검색해요.
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+<img src="https://paramonos.github.io/RPG-Maker-MV-MZ-Cheat-UI-Plugin/images/ko/shortcuts-speed.webp" alt="게임 속도와 메시지 스킵 단축키" width="100%">
+<br><b>게임 속도 · 메시지 스킵</b> &nbsp;<kbd>S</kbd>
+<br>게임 전체의 빠르기를 x0.1 부터 x10 까지 바꿔요. 전투에서만 빠르게 할 수도 있어요. <kbd>S</kbd> 를 누르고 있으면 메시지가 쭉 넘어가요.
 </td>
 <td width="50%" valign="top">
 <img src="https://paramonos.github.io/RPG-Maker-MV-MZ-Cheat-UI-Plugin/images/ko/shortcuts.webp" alt="기능과 키가 나열된 단축키 패널" width="100%">
 <br><b>단축키</b>
 <br>창을 열지 않고도 저장, 불러오기, 벽 통과, 전투 승리 같은 치트를 키 하나로 써요. 키는 원하는 대로 바꿀 수 있어요.
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+<img src="https://paramonos.github.io/RPG-Maker-MV-MZ-Cheat-UI-Plugin/images/ko/game-options.webp" alt="항상 대시, 명령 기억, BGM 크기가 백업에 들어간 게임 옵션 탭" width="100%">
+<br><b>게임 옵션</b>
+<br>항상 대시, 명령 기억, 소리 크기를 치트 창에서 바꿔요. 여기서 바꾼 것만 설정 백업에 들어가서, 새 게임에 백업을 복원하면 옵션을 다시 맞출 필요가 없어요.
+</td>
+<td width="50%" valign="top">
+<img src="https://paramonos.github.io/RPG-Maker-MV-MZ-Cheat-UI-Plugin/images/ko/backup.webp" alt="백업 폴더와 백업 · 복원 단추가 있는 설정 화면" width="100%">
+<br><b>설정 백업</b>
+<br>단축키, 번역기, 속도, 게임 옵션 같은 치트 설정을 폴더에 백업하고 다른 게임에서 복원해요. API 키처럼 민감한 값은 넣을지 백업할 때 물어봐요.
 </td>
 </tr>
 <tr>
@@ -122,7 +184,7 @@
 </tr>
 </table>
 
-이 밖에도 전투 강제 승리 · 패배 · 도주, 랜덤 인카운터 끄기, 빠른 저장 · 불러오기, 설정 백업이 있어요. 전부 인터넷 없이 돌아가요.
+이 밖에도 빠른 저장 · 불러오기, 왼쪽 메뉴 접기, 네 변을 끌어 창 크기 바꾸기가 있어요. 전부 인터넷 없이 돌아가요.
 
 ## 사용 방법
 
@@ -145,11 +207,11 @@
 
 <table>
 <tr><td><kbd>C</kbd></td><td>치트 창 열기·닫기</td><td><kbd>Ctrl</kbd> + <kbd>M</kbd></td><td>위치 저장 열기·닫기</td></tr>
-<tr><td><kbd>Esc</kbd></td><td>치트 창 닫기</td><td><kbd>W</kbd></td><td>벽 통과 켜기·끄기</td></tr>
-<tr><td><kbd>Ctrl</kbd> + <kbd>K</kbd></td><td>기능 찾기</td><td><kbd>S</kbd></td><td>메시지 스킵(누르는 동안)</td></tr>
-<tr><td><kbd>Ctrl</kbd> + <kbd>F</kbd></td><td>패널 검색</td><td><kbd>Ctrl</kbd> + <kbd>S</kbd></td><td>빠른 저장</td></tr>
-<tr><td><kbd>H</kbd></td><td>대화 기록 열기·닫기</td><td><kbd>Ctrl</kbd> + <kbd>Q</kbd></td><td>빠른 불러오기</td></tr>
-<tr><td><kbd>Ctrl</kbd> + <kbd>T</kbd></td><td>텔레포트 열기·닫기</td><td></td><td></td></tr>
+<tr><td><kbd>Esc</kbd></td><td>치트 창 닫기</td><td><kbd>M</kbd></td><td>미니맵 창 열기·닫기</td></tr>
+<tr><td><kbd>Ctrl</kbd> + <kbd>K</kbd></td><td>기능 찾기</td><td><kbd>W</kbd></td><td>벽 통과 켜기·끄기</td></tr>
+<tr><td><kbd>Ctrl</kbd> + <kbd>F</kbd></td><td>패널 검색</td><td><kbd>S</kbd></td><td>메시지 스킵(누르는 동안)</td></tr>
+<tr><td><kbd>H</kbd></td><td>대화 기록 열기·닫기</td><td><kbd>Ctrl</kbd> + <kbd>S</kbd></td><td>빠른 저장</td></tr>
+<tr><td><kbd>Ctrl</kbd> + <kbd>T</kbd></td><td>텔레포트 열기·닫기</td><td><kbd>Ctrl</kbd> + <kbd>Q</kbd></td><td>빠른 불러오기</td></tr>
 </table>
 
 ## 게임의 nwjs 버전이 0.26.4 보다 낮은 경우 (=옛날 버전의 MV 게임인 경우)
@@ -175,10 +237,11 @@
 <tr><th scope="row">고칠 파일</th><td><code>www/js/main.js</code></td><td><code>js/main.js</code></td></tr>
 </table>
 
-MV 는 <code>PluginManager.setup($plugins);</code> 바로 다음에 두 줄을 더해요.
+MV 는 <code>PluginManager.setup($plugins);</code> 바로 다음에 세 줄을 더해요.
 
 ```js
 PluginManager.setup($plugins);
+// auto generated for cheat
 PluginManager._path = 'js/plugins/';
 PluginManager.loadScript('../../cheat/init/import.js');
 ```
