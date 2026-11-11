@@ -1,10 +1,10 @@
 {
-  "version": "v2.1.0",
+  "version": "v2.1.1",
   "schema": 1,
   "minimumNwjsVersion": "0.26.4",
   "updatableFrom": "v2.0.0",
   "listings": {
-    "mv": "05d12dfd5fc8f602d3ca7320297ac462f54cb2707bd60117a10f005d51d355e0",
-    "mz": "05d12dfd5fc8f602d3ca7320297ac462f54cb2707bd60117a10f005d51d355e0"
+    "mv": "32415522aaf1ec0b424871e615c132a05de29109dddb01bba104045a3e776752",
+    "mz": "32415522aaf1ec0b424871e615c132a05de29109dddb01bba104045a3e776752"
   }
 }

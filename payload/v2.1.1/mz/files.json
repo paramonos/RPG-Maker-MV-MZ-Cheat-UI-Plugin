@@ -2,19 +2,19 @@
   "files": [
     {
       "path": "cheat-version-description.json",
-      "sha256": "735cb726c803b0dda5708866e9ddf55fee755affa09b7a1f5e040321ef4d5dca"
+      "sha256": "70dd15b92fab1c74eb0fb07ef6dde51848cb29a6aaf4016a467bff27ea47aab2"
     },
     {
       "path": "cheat/cheat.css",
-      "sha256": "e94d26b9db67c83c39131f62df5d42291ed059da97a57aa0ee3a28828518afca"
+      "sha256": "0ad9b7d7818b3e0242ff3093df29449345f4c8698e8c56aabc15e184019d5bb4"
     },
     {
       "path": "cheat/cheat.js",
-      "sha256": "7e71a8505f8d9543e7f080fab3bce900102d5be534f67af28f7ebde20379db69"
+      "sha256": "afb45b22f73bbe3c4c3519bb467f121bda76349966c0158ad54c0082cc288761"
     },
     {
       "path": "cheat/init/import.js",
-      "sha256": "25d29fbec607b82cc9c6689d6082276301729b48bc18d8b2b4e6f0050cf9a094"
+      "sha256": "0c3741fa94fb2984d18b175dadfbadc00b9ab0137df42e8be2d1a6a0aa92707e"
     },
     {
       "path": "cheat/LICENSES.txt",
