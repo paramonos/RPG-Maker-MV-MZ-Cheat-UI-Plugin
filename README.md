@@ -216,9 +216,9 @@ When the game starts, the cheat checks for a new version and updates itself. You
 
 <a id="if-embeded-nwjs-version-of-game-is-lower-than-0264"></a>
 
-## If your game’s NW.js is older than 0.26.4
+## If your game’s NW.js is older than 0.25.4
 
-The cheat needs NW.js 0.26.4 or newer. On an older version you’ll see a warning when the game starts, and the cheat may not work properly. This mostly happens with older MV games.
+The cheat needs NW.js 0.25.4 or newer. On an older version you’ll see a warning when the game starts, and the cheat may not work properly. This mostly happens with older MV games.
 
 The desktop app can update the game’s NW.js for you. 🚧 Coming soon
 
